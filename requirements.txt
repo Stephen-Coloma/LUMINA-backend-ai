@@ -1,0 +1,12 @@
+numpy
+pandas
+scipy
+pydicom
+nibabel
+jupyter
+albumentations
+matplotlib
+seaborn
+tqdm
+scikit-learn
+pillow

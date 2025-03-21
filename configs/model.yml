@@ -1,0 +1,9 @@
+model:
+  architecture: "3D_DenseNet"
+  num_classes: 4
+
+feature_block:
+  growth_rate: 32
+  bottleneck_channels: 128
+  activation: "Relu"
+  normalization: "batch_norm"
