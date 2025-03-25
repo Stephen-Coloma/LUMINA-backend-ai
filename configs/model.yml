@@ -3,7 +3,8 @@ model:
   num_classes: 4
 
 feature_block:
-  growth_rate: 32
-  bottleneck_channels: 128
+  in_channels: 2
+  growth_rate: 32 # can change to 64 if GPU can handle it use either 32 or 16 only
+  num_layers: 6
   activation: "Relu"
   normalization: "batch_norm"
