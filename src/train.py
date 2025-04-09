@@ -49,6 +49,3 @@ optimizer = optim.Adam(model.parameters(), lr=config['training']['learning_rate'
 #         running_loss += loss.item()
 #
 #     print(f'Epoch [{epoch + 1}/{num_epochs}], Loss: {running_loss / len(train_loader)}')
-#
-#     # Optionally, save the model at each epoch or after training
-#     torch.save(model.state_dict(), f'nsclc_model_epoch_{epoch + 1}.pth')
