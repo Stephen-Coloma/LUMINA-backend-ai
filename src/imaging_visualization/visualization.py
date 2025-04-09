@@ -28,8 +28,14 @@ def main():
     if os.path.isdir(args.annotation_path):
         annotations = XML_preprocessor(args.annotation_path, num_classes=num_classes).data
         for k, v in annotations.items():
-            # dcm_name = k + '.dcm'
-            dcm_path, dcm_name = dict[k[:-4]]
+            # Check if the UID is in the dictionary using .get()
+            dcm_path, dcm_name = dict.get(k[:-4], (None, None))
+
+            if dcm_path is None:
+                # UID is not found, log and skip this annotation
+                print(f"UID {k[:-4]} not found in dictionary, skipping annotation.")
+                continue  # Skip to the next annotation if UID is missing
+
             image_data = v
 
             if args.dicom_mode == 'CT':
@@ -43,8 +49,14 @@ def main():
 
     elif os.path.isfile(args.annotation_path):
         xml_name = args.annotation_path.split('/')[-1]
-        # dcm_name = xml_name[:-4] + '.dcm'
-        dcm_path, dcm_name = dict[xml_name[:-4]]
+        # Check if the UID is in the dictionary using .get()
+        dcm_path, dcm_name = dict.get(xml_name[:-4], (None, None))
+
+        if dcm_path is None:
+            # UID is not found, log and stop processing
+            print(f"UID {xml_name[:-4]} not found in dictionary, skipping annotation.")
+            return  # Exit early if UID is missing
+
         _, image_data = get_gt(os.path.join(args.annotation_path), num_class=num_classes)
 
         if args.dicom_mode == 'CT':

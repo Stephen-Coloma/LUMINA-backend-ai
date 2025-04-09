@@ -7,31 +7,29 @@ from utils import *
 
 
 def getUID_path(path):
-    dict = {}
-    list = os.listdir(path)
+    dicom_dict = {}
 
-    for date in list:
-        date_path = os.path.join(path, date)
-        series_list = os.listdir(date_path)
-        series_list.sort()
+    # Walk through all subdirectories and files in the given path
+    for root, dirs, files in os.walk(path):
+        for dicom_file in files:
+            if dicom_file.lower().endswith('.dcm'):  # Check if the file is a DICOM file
+                dicom_path = os.path.join(root, dicom_file)
+                try:
+                    # Assuming `loadFileInformation` gives you the DICOM number (UID)
+                    info = loadFileInformation(dicom_path)
+                    dicom_dict[info['dicom_num']] = (dicom_path, dicom_file)
+                except Exception as e:
+                    print(f"Error loading DICOM info for {dicom_path}: {e}")
+                    continue
 
-        for series in series_list:
-            series_path = os.path.join(date_path, series)
-            dicom_list = os.listdir(series_path)
-            dicom_list.sort()
-
-            for dicom in dicom_list:
-                dicom_path = os.path.join(series_path, dicom)
-                info = loadFileInformation(dicom_path)
-                dict[info['dicom_num']] = (dicom_path, dicom)
-
-    return dict
+    return dicom_dict
 
 
 def getUID_file(path):
-    info = loadFileInformation(path)
-    UID = info['dicom_num']
-    return UID
-
-# dict = getUID_file(path)
-# print(dict)
+    try:
+        info = loadFileInformation(path)
+        UID = info['dicom_num']
+        return UID
+    except Exception as e:
+        print(f"Error loading DICOM info for {path}: {e}")
+        return None
