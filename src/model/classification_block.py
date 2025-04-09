@@ -1,11 +1,11 @@
 import torch
 import torch.nn as nn
 
-class ClassifierBlock(nn.Module):
+class ClassificationBlock(nn.Module):
     def __init__(self, in_channels, num_classes):
-        super(ClassifierBlock, self).__init__()
+        super(ClassificationBlock, self).__init__()
 
-        self.global_avg_pool = nn.AdaptiveAvgPool3d((1, 1, 1))  
+        self.global_avg_pool = nn.AdaptiveAvgPool3d((1, 1, 1))
 
         self.fc = nn.Linear(in_channels, num_classes)
 

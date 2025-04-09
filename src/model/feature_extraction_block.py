@@ -58,15 +58,22 @@ class DenseBlock(nn.Module):
                 nn.ReLU(inplace=True)
             ))
 
-        # apply CBAM after feature extraction
-        self.cbam = CBAM(in_channels + num_layers * growth_rate)
-
     def forward(self, x):
         for layer in self.layers:
             new_features = layer(x) # obtain new feature maps from the current layer
 
             # concatenate new feature maps with the previous ones
             x = torch.cat([x, new_features], dim=1)
+        return x
 
+# ===================== Feature Extraction Block =====================
+class FeatureExtractionBlock(nn.Module):
+    def __init__(self, in_channels, growth_rate, num_layers):
+        super(FeatureExtractionBlock, self).__init__()
+        self.dense_block = DenseBlock(in_channels, growth_rate, num_layers)
+        self.cbam = CBAM(in_channels + num_layers * growth_rate) # apply CBAM after extraction from the dense block
+
+    def forward(self, x):
+        x = self.dense_block(x)
         x = self.cbam(x)
         return x
