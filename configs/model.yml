@@ -2,6 +2,10 @@ model:
   architecture: "3D_DenseNet"
   num_classes: 4
 
+training:
+  epochs: 10
+  learning_rate: 1e-4
+
 feature_block:
   in_channels: 1
   growth_rate: 32 # can change to 64 if GPU can handle it use either 32 or 16 only

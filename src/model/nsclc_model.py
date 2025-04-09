@@ -1,14 +1,12 @@
 import torch
 import torch.nn as nn
-import yaml
-from src.model.cbam import CBAM
 from src.model.classification_block import ClassificationBlock
 from src.model.feature_extraction_block import FeatureExtractionBlock
 from src.model.fusion_block import FusionBlock
 
-class NSCLS_Model(nn.Module):
+class NSCLC_Model(nn.Module):
     def __init__(self, model_config):
-        super(NSCLS_Model, self).__init__()
+        super(NSCLC_Model, self).__init__()
 
         # obtain parameters from the model configuration
         self.num_classes = model_config['model']['num_classes']
@@ -38,10 +36,6 @@ class NSCLS_Model(nn.Module):
         x_fused = self.fusion_block(x_ct_features, x_pet_features)
 
         # classification
-        x = self.classifier_block(x_fused)
+        x = self.classification_block(x_fused)
 
         return x
-
-def load_model_config(yaml_file="configs/model.yml"):
-    with open(yaml_file, 'r') as f:
-        return yaml.safe_load(f)
