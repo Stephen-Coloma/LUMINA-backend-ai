@@ -61,16 +61,31 @@ def MatrixToImage(data, ch):
 
 
 def PETToImage(img_array, color_reversed=True):
-    info = np.finfo(img_array.dtype)
+    # Check if the array is an integer type or a floating-point type
+    if np.issubdtype(img_array.dtype, np.floating):
+        # If it's floating-point, use np.finfo
+        info = np.finfo(img_array.dtype)
+    elif np.issubdtype(img_array.dtype, np.integer):
+        # If it's an integer, use np.iinfo
+        info = np.iinfo(img_array.dtype)
+    else:
+        raise ValueError(f"Unsupported dtype {img_array.dtype}")
+
+    # Normalize the image data
     data = img_array.astype(np.float64) / np.max(img_array)
-    if color_reversed is True:
+
+    if color_reversed:
         data = 255 - 255 * data
-    elif color_reversed is False:
+    else:
         data = 255 * data
-    # data = (data + 1024) * 0.125
+
+    # Convert to uint8 type for display
     img = data.astype(np.uint8)
+
+    # Transpose to correct image dimensions (height, width, channels)
     img = np.transpose(img, (1, 2, 0))
-    # cv2.imshow('test', img)
+
+    # Return the processed image
     return img
 
 

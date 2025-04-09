@@ -40,25 +40,24 @@ def roi2rect(img_name, img_np, img_data, label_list):
         pmax = (xmax, ymax)
 
         label_array = rect[4:]
-        index = int(np.where(label_array == float(1))[0])
-        label = label_list[index]
+        # Find indices where label_array is 1
+        indices = np.where(label_array == float(1))[0]
 
-        # color = tuple(map(int, np.uint8(np.random.uniform(0, 255, 3))))
-        color = colors[index]
-        cv2.rectangle(img_np, pmin, pmax, color, 2)
+        if len(indices) > 0:
+            # Get the first index where the label is 1
+            index = int(indices[0])  # Use the first index
+            label = label_list[index]
 
-        text_top = (xmin, ymin - 10)
-        text_bot = (xmin + 80, ymin + 5)
-        text_pos = (xmin + 5, ymin)
-        cv2.rectangle(img_np, text_top, text_bot, colors[index], -1)
-        cv2.putText(img_np, label, text_pos, cv2.FONT_HERSHEY_PLAIN, cv2.FONT_HERSHEY_PLAIN, 1, 1, 2)
+            color = colors[index]
+            cv2.rectangle(img_np, pmin, pmax, color, 2)
 
-    # cv2.imshow(img_name, img_np)
-    # cv2.waitKey()
-    # # return img_name, img_np
-    # while cv2.waitKey(100) != 27:
-    #     if cv2.getWindowProperty(img_name, cv2.WND_PROP_VISIBLE) <= 0:
-    #         break
-    # cv2.destroyWindow(img_name)
+            text_top = (xmin, ymin - 10)
+            text_bot = (xmin + 80, ymin + 5)
+            text_pos = (xmin + 5, ymin)
+            cv2.rectangle(img_np, text_top, text_bot, colors[index], -1)
+            cv2.putText(img_np, label, text_pos, cv2.FONT_HERSHEY_PLAIN, cv2.FONT_HERSHEY_PLAIN, 1, 1, 2)
+        else:
+            print(f"No label with value 1 found in rect: {rect}")
 
+    # Display the image
     showImage(img=img_np, title=img_name)
