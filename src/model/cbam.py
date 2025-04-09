@@ -1,5 +1,5 @@
 import torch
-from torch import nn as nn
+from torch import nn
 
 # ===================== Channel Attention Module =====================
 class ChannelAttention(nn.Module):
@@ -9,26 +9,25 @@ class ChannelAttention(nn.Module):
         self.max_pool = nn.AdaptiveMaxPool3d(1)
         self.fc = nn.Sequential(
             nn.Linear(in_channels, in_channels // reduction_ratio, bias=False),
-            nn.ReLU(),
+            nn.ReLU(inplace=True),
             nn.Linear(in_channels // reduction_ratio, in_channels, bias=False),
             nn.Sigmoid()
         )
 
     def forward(self, x):
         b, c, _, _, _ = x.shape
-
         avg_out = self.fc(self.avg_pool(x).view(b, c))
         max_out = self.fc(self.max_pool(x).view(b, c))
         out = avg_out + max_out
         out = out.view(b, c, 1, 1, 1)
         return x * out
 
+
 # ===================== Spatial Attention Module =====================
 class SpatialAttention(nn.Module):
     def __init__(self, kernel_size=7):
         super(SpatialAttention, self).__init__()
         self.conv = nn.Conv3d(2, 1, kernel_size=kernel_size, padding=kernel_size // 2, bias=False)
-        self.bn = nn.BatchNorm3d(1) # FIXME: Batch norm is good here but it is not used in forward(). Either remove or include in the next todo comment below
         self.sigmoid = nn.Sigmoid()
 
     def forward(self, x):
@@ -36,8 +35,8 @@ class SpatialAttention(nn.Module):
         max_out, _ = torch.max(x, dim=1, keepdim=True)
         x = torch.cat([avg_out, max_out], dim=1)
         x = self.conv(x)
-        # x = self.bn(x) FIXME: Uncomment if this is intended or remove otherwise
         return self.sigmoid(x)
+
 
 # ===================== Convolutional Block Attention Module (CBAM) =====================
 class CBAM(nn.Module):
