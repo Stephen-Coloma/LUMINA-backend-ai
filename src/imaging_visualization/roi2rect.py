@@ -3,14 +3,25 @@ import numpy as np
 
 
 def showImage(img, title='image', t=0, esc=False):
+    if img is None:
+        print(f"[Warning] Image is None, skipping display for: {title}")
+        return
+
     cv2.imshow(title, img)
     if esc:
-        while cv2.waitKey(0) != 27:
-            if cv2.getWindowProperty(title, cv2.WND_PROP_VISIBLE)<=0:
+        while True:
+            key = cv2.waitKey(0)
+            if key == 27:  # ESC
+                break
+            # Exit loop if the window was closed manually
+            if cv2.getWindowProperty(title, cv2.WND_PROP_VISIBLE) < 1:
                 break
     else:
-        cv2.waitKey(t)
-    cv2.destroyWindow(title)
+        key = cv2.waitKey(t)
+
+    # Only try to destroy if the window is still visible
+    if cv2.getWindowProperty(title, cv2.WND_PROP_VISIBLE) >= 1:
+        cv2.destroyWindow(title)
 
 
 def class_colors(num_colors):
