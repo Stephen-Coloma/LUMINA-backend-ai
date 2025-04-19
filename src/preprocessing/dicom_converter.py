@@ -1,62 +1,59 @@
 import numpy as np
 from pydicom import dcmread
 from pathlib import Path
-from tqdm import tqdm
+import logging
 
-
-def save_array(output_path: Path, filename: str, ct_volume: np.ndarray, pet_volume: np.ndarray):
+def save_array(output_path: Path, filename: str, volume: np.ndarray, modality: str):
     """
-    Saves the 3D NumPy arrays for CT and PET to separate .npy files.
+    Saves a 3D NumPy array as a .npy file
 
-    :param output_path: Path to save the .npy files
-    :param filename: The name of the file
-    :param ct_volume: The 3D CT volume array
-    :param pet_volume: The 3D PET volume array
+    :param output_path: Path to save the created .npy file
+    :param filename: Name of the file
+    :param volume: 3D pixel value array representing the scan series
+    :param modality: 'CT' or 'PET' to tag the filename
     """
+    logger = logging.getLogger('DicomConverter')
     try:
-        np.save(output_path / f'{filename}_CT.npy', ct_volume)
-        np.save(output_path / f'{filename}_PET.npy', pet_volume)
-        print(f'Arrays successfully saved to {output_path}\\{filename}.pny and {output_path}\\{filename}.pny\n')
+        file_path = output_path / f'{filename}_{modality}.npy'
+        np.save(file_path, volume)
+        logger.info(f'3D array successfully saved to {file_path}')
     except Exception as e:
-        print(f'Error saving arrays: {e}\n')
+        logger.error(f'Error saving array: {e}')
 
 
 class DicomConverter:
-    def __init__(self, dicom_path: Path):
-        self.dicom_path = dicom_path
+    def __init__(self):
+        self.logger = logging.getLogger('DicomConverter')
 
-    def convert_to_array(self):
+    def to_2d_array(self, dicom_path: Path) -> list:
         """
-        Converts a folder of DICOM slices into a 3D NumPy array
+        Loads DICOM files from a folder and returns a sorted list of (pixel_array, metadata) tuples.
 
-        :return: A tuple of two 3D NumPy arrays
+        :param dicom_path: The path containing the .dcm files
+        :return: A List of tuples (pixel_array, metadata)
         """
-        ct_slices = []
-        pet_slices = []
+        slices = []
+        files = list(dicom_path.glob('*.dcm'))
+        self.logger.info(f'Found {len(files)} DICOM files in {dicom_path}')
 
-        for modality in ['CT', 'PET']:
-            modality_path = self.dicom_path / modality
-            if not modality_path.exists():
-                continue
+        for file in files:
+            try:
+                ds = dcmread(file)
+                slices.append((ds.InstanceNumber, ds.pixel_array, ds))
+            except Exception as e:
+                self.logger.warning(f'Skipped {file.name}: {e}')
 
-            files = list(modality_path.glob('*.dcm'))
-            for file in tqdm(files, desc=f'Converting {modality} slices to NumPy array'):
-                try:
-                    ds = dcmread(file)
-                    dicom_slice = (ds.InstanceNumber, ds.pixel_array)
+        slices.sort(key=lambda x: x[0])
+        self.logger.info(f'Successfully loaded and sorted {len(slices)} slices.')
 
-                    if modality == 'CT':
-                        ct_slices.append(dicom_slice)
-                    elif modality == 'PET':
-                        pet_slices.append(dicom_slice)
-                except Exception as e:
-                    print(f'Skipped {file.name}: {e}')
+        return [(pixel_array, metadata) for _, pixel_array, metadata in slices]
 
-        ct_slices.sort(key=lambda x: x[0])
-        pet_slices.sort(key=lambda x: x[0])
+    @staticmethod
+    def to_3d_array(slices: list) -> np.ndarray:
+        """
+        Converts a list of 2D image arrays into a 3D shape.
 
-        ct_volume = np.stack([slice_[1] for slice_ in ct_slices], axis=0)
-        pet_volume = np.stack([slice_[1] for slice_ in pet_slices], axis=0)
-
-        return ct_volume, pet_volume
-
+        :param slices: The list of images to be converted.
+        :return: A 3D image array.
+        """
+        return np.stack(slices, axis=0)

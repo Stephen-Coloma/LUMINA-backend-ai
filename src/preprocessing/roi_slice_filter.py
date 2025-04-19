@@ -1,6 +1,6 @@
-from tqdm import tqdm
 from pydicom import dcmread
 from pathlib import Path
+import logging
 
 class DicomROIFilter:
     def __init__(self, dicom_path: Path, anno_path: Path, patient_num: str):
@@ -8,9 +8,30 @@ class DicomROIFilter:
         self.anno_path = anno_path
         self.patient_num = patient_num
         self.roi_slices = []
+        self.logger = logging.getLogger('DicomROIFilter')
         self._get_roi_slices()
 
-    def _get_uid_paths(self):
+    def filter_slices(self):
+        """
+        Filters DICOM slices to retain only those that are a part of the ROI (Region of Interest).
+        Slices that are not a part of the ROI are deleted.
+        """
+        for modality in ['CT', 'PET']:
+            modality_path = self.dicom_path / modality
+            if not modality_path.exists():
+                self.logger.warning(f'{modality_path} does not exist.')
+                continue
+
+            files = list(modality_path.glob('*.dcm'))
+            for file in files:
+                if file.name not in self.roi_slices:
+                    try:
+                        file.unlink()
+                        self.logger.info(f'Deleted {file}')
+                    except Exception as e:
+                        self.logger.error(f'Could not delete {file}: {e}')
+
+    def _get_uid_paths(self) -> dict:
         """
         Retrieves the DICOM slice SOPInstanceUIDs to their file names from the DICOM directory.
 
@@ -21,6 +42,7 @@ class DicomROIFilter:
         for modality in ['CT', 'PET']:
             modality_path = self.dicom_path / modality
             if not modality_path.exists():
+                self.logger.warning(f'{modality_path} does not exist.')
                 continue
 
             for dicom_file in modality_path.iterdir():
@@ -30,32 +52,14 @@ class DicomROIFilter:
                         uid = ds.SOPInstanceUID
                         dicom_dict[uid] = dicom_file.name
                     except Exception as e:
-                        print(f'Error reading {dicom_file}: {e}')
+                        self.logger.error(f'Error reading {dicom_file}: {e}')
                         continue
 
         return dicom_dict
 
-    def filter_slices(self):
-        """
-        Filters DICOM slices to retain only those that are a part of the ROI (Region of Interest). Slices that are
-        not a part of the ROI are deleted.
-        """
-        for modality in ['CT', 'PET']:
-            modality_path = self.dicom_path / modality
-            if not modality_path.exists():
-                continue
-
-            files = modality_path.iterdir()
-            for file in tqdm(files, desc=f'Filtering {modality} for {self.patient_num}'):
-                if file.suffix.lower() == '.dcm' and file.name not in self.roi_slices:
-                    try:
-                        file.unlink()
-                    except Exception as e:
-                        print(f'Could not delete {file}: {e}')
-
     def _get_roi_slices(self):
         """
-        Populates the roi_slices list with DICOM file names that are a part of the ROI (Region of Interest)
+        Populates the roi_slices list with DICOM file names that are a part of the ROI (Region of Interest).
         """
         dicom_dict = self._get_uid_paths()
 
