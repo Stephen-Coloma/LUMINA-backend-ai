@@ -2,7 +2,7 @@ from src.preprocessing.roi_slice_filter import DicomROIFilter
 from src.preprocessing.dicom_converter import DicomConverter
 from src.preprocessing.volume_processing import VolumeProcessor
 from src.preprocessing.intensity_processing import IntensityProcessor
-from src.preprocessing.dicom_converter import save_array
+from src.preprocessing.dicom_converter import save_arrays
 from tqdm import tqdm
 from pathlib import Path
 import logging
@@ -59,19 +59,17 @@ def preprocess_patient_data(anno_path, output_path, patient_dir, logger):
         # TODO: Apply data augmentation if current patient is a minority class
 
         # Apply standardization (resize depth)
-        ct_slices = VolumeProcessor(ct_volume).resize_depth(15)
-        pet_slices = VolumeProcessor(pet_volume).resize_depth(15)
+        ct_volume = VolumeProcessor(ct_volume).resize_depth(15)
+        pet_volume = VolumeProcessor(pet_volume).resize_depth(15)
         # TODO: Augmented data should also be resized
 
         # Save the processed slices
-        save_array(output_path, patient_num, ct_slices, 'CT')
-        save_array(output_path, patient_num, pet_slices, 'PET')
+        save_arrays(output_path, patient_num, ct_volume, pet_volume)
         logger.info(f'Successfully processed patient {patient_num}')
 
     except Exception as e:
         logger.error(f'Error processing patient {patient_num}: {e}')
         raise
-
 
 def main():
     dicom_path = Path(r'D:\Datasets\TEST')

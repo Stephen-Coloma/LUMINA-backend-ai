@@ -3,23 +3,22 @@ from pydicom import dcmread
 from pathlib import Path
 import logging
 
-def save_array(output_path: Path, filename: str, volume: np.ndarray, modality: str):
+def save_arrays(output_path: Path, filename: str, ct_volume: np.ndarray, pet_volume: np.ndarray):
     """
-    Saves a 3D NumPy array as a .npy file
+    Saves the 3D NumPy arrays for the CT and PET scans as a .npy file
 
     :param output_path: Path to save the created .npy file
     :param filename: Name of the file
-    :param volume: 3D pixel value array representing the scan series
-    :param modality: 'CT' or 'PET' to tag the filename
+    :param ct_volume: 3D pixel value array representing the CT scan series
+    :param pet_volume: 3D pixel value array representing the PET scan series
     """
     logger = logging.getLogger('DicomConverter')
     try:
-        file_path = output_path / f'{filename}_{modality}.npy'
-        np.save(file_path, volume)
-        logger.info(f'3D array successfully saved to {file_path}')
+        file_path = output_path / f'{filename}.npy'
+        np.save(file_path, {'CT': ct_volume, 'PET': pet_volume})
+        logger.info(f'CT and PET volumes successfully saved to {file_path}')
     except Exception as e:
-        logger.error(f'Error saving array: {e}')
-
+        logger.error(f'Error saving arrays: {e}')
 
 class DicomConverter:
     def __init__(self):
