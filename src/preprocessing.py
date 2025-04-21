@@ -55,9 +55,13 @@ def preprocess_patient_data(anno_path, output_path, patient_dir, logger):
         ct_volume = DicomConverter.to_3d_array(ct_slices)
         pet_volume = DicomConverter.to_3d_array(pet_slices)
 
+        # Apply data augmentation if current patient is a minority class
+        # TODO: Apply data augmentation if current patient is a minority class
+
         # Apply standardization (resize depth)
         ct_slices = VolumeProcessor(ct_volume).resize_depth(15)
         pet_slices = VolumeProcessor(pet_volume).resize_depth(15)
+        # TODO: Augmented data should also be resized
 
         # Save the processed slices
         save_array(output_path, patient_num, ct_slices, 'CT')
