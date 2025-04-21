@@ -5,23 +5,7 @@ from src.preprocessing.intensity_processing import IntensityProcessor
 from src.preprocessing.dicom_converter import save_arrays
 from tqdm import tqdm
 from pathlib import Path
-import logging
-
-def setup_logger():
-    logger = logging.getLogger('Preprocessing')
-    logger.setLevel(logging.INFO)
-    # Console Handler
-    console_handler = logging.StreamHandler()
-    console_handler.setLevel(logging.INFO)
-    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-    console_handler.setFormatter(formatter)
-    logger.addHandler(console_handler)
-    # File Handler
-    file_handler = logging.FileHandler('preprocessing.log')
-    file_handler.setLevel(logging.INFO)
-    file_handler.setFormatter(formatter)
-    logger.addHandler(file_handler)
-    return logger
+from src.utils.logger import setup_logger
 
 def preprocess_patient_data(anno_path, output_path, patient_dir, logger):
     patient_num = patient_dir.name.split('-')[-1]
@@ -29,6 +13,7 @@ def preprocess_patient_data(anno_path, output_path, patient_dir, logger):
     patient_dicom_pet = patient_dir / 'PET'
     patient_anno = anno_path / patient_num
 
+    logger.info(f'=====< PRE-PROCESSING PATIENT {patient_num} >=====')
     try:
         # Apply ROI filter
         roi_filter = DicomROIFilter(patient_dir, patient_anno, patient_num)
@@ -64,8 +49,12 @@ def preprocess_patient_data(anno_path, output_path, patient_dir, logger):
         # TODO: Augmented data should also be resized
 
         # Save the processed slices
-        save_arrays(output_path, patient_num, ct_volume, pet_volume)
-        logger.info(f'Successfully processed patient {patient_num}')
+        label = patient_num[:1]
+        save_arrays(output_path, patient_num, ct_volume, pet_volume, label)
+        logger.info(
+            '---------------------------------------------'
+            f'Successfully processed patient {patient_num}'
+        )
 
     except Exception as e:
         logger.error(f'Error processing patient {patient_num}: {e}')
@@ -76,7 +65,7 @@ def main():
     anno_path = Path(r'D:\Datasets\Annotation')
     output_path = Path(r'D:\Datasets\Output')
 
-    logger = setup_logger()
+    logger = setup_logger(Path('../logs'), 'preprocessing.log', 'PreprocessingLogger')
 
     directories = dicom_path.iterdir()
     for patient_dir in tqdm(directories, desc='Preprocessing'):

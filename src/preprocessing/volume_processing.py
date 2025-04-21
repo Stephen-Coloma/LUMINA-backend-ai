@@ -4,7 +4,7 @@ import logging
 class VolumeProcessor:
     def __init__(self, input_array: np.ndarray):
         self.input_array = input_array
-        self.logger = logging.getLogger('VolumeProcessor')
+        self.logger = logging.getLogger('PreprocessingLogger')
 
     def resize_depth(self, target_depth: int = 15) -> np.ndarray:
         """

@@ -8,7 +8,7 @@ class DicomROIFilter:
         self.anno_path = anno_path
         self.patient_num = patient_num
         self.roi_slices = []
-        self.logger = logging.getLogger('DicomROIFilter')
+        self.logger = logging.getLogger('PreprocessingLogger')
         self._get_roi_slices()
 
     def filter_slices(self):
@@ -27,9 +27,10 @@ class DicomROIFilter:
                 if file.name not in self.roi_slices:
                     try:
                         file.unlink()
-                        self.logger.info(f'Deleted {file}')
                     except Exception as e:
                         self.logger.error(f'Could not delete {file}: {e}')
+
+            self.logger.info(f'Successfully filtered slices for {modality} scans')
 
     def _get_uid_paths(self) -> dict:
         """

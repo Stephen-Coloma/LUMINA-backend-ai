@@ -5,7 +5,7 @@ class IntensityProcessor:
     def __init__(self, slices: list, normalize: bool = True):
         self.slices = slices
         self.normalize = normalize
-        self.logger = logging.getLogger('IntensityProcessor')
+        self.logger = logging.getLogger('PreprocessingLogger')
 
     def convert(self) -> list:
         """
@@ -73,5 +73,5 @@ class IntensityProcessor:
         try:
             return (image - np.min(image)) / (np.max(image) - np.min(image) + 1e-8)
         except Exception as e:
-            logging.getLogger('IntensityProcessor').error(f'Normalization failed: {e}')
+            logging.getLogger('PreprocessingLogger').error(f'Normalization failed: {e}')
             return image
