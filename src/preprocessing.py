@@ -44,13 +44,13 @@ def preprocess_patient_data(anno_path, output_path, patient_dir, logger):
         # Skip the patient if either CT or PET directory does not contain DICOM files
         if not ct_files or not pet_files:
             logger.info(f'Skipping patient {patient_num} due to missing DICOM files in CT or PET directory.')
-            return  # Skip this patient
+            return  # Skip patient
 
         # Convert slices to 2D NumPy arrays
         ct_slices = DicomConverter().to_2d_array(patient_dicom_ct)
         pet_slices = DicomConverter().to_2d_array(patient_dicom_pet)
 
-        # Apply normalization (pixel intensity and normalization from 0 to 1)
+        # Apply pixel intensity conversion and normalization
         ct_slices = IntensityProcessor(ct_slices, True).convert()
         pet_slices = IntensityProcessor(pet_slices, True).convert()
 
