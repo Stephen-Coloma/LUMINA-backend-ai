@@ -2,10 +2,28 @@ from src.preprocessing.roi_slice_filter import DicomROIFilter
 from src.preprocessing.dicom_converter import DicomConverter
 from src.preprocessing.volume_processing import VolumeProcessor
 from src.preprocessing.intensity_processing import IntensityProcessor
+from src.preprocessing.dicom_augmentor import Augmentator
 from src.preprocessing.dicom_converter import save_arrays
 from tqdm import tqdm
 from pathlib import Path
 from src.utils.logger import setup_logger
+
+def augment_data(input_path):
+    augmentor = Augmentator()
+    tally = augmentor.get_minority_classes(input_path)
+    target = max(tally.values())
+    minority_classes = {k: target - v for k, v in tally.items() if v < target}
+
+    for label, num_augmentations in minority_classes.items():
+        augmentor.augment_class_x_times(
+            label=label,
+            num_augmentations=num_augmentations,
+            npy_dir='path/to/original/npy/files',
+            output_dir='path/to/save/augmented/data'
+        )
+        print(f"Augmented {num_augmentations} samples for class {label}.")
+    
+    print("Data augmentation completed.")
 
 def preprocess_patient_data(anno_path, output_path, patient_dir, logger):
     patient_num = patient_dir.name.split('-')[-1]
@@ -40,14 +58,10 @@ def preprocess_patient_data(anno_path, output_path, patient_dir, logger):
         ct_volume = DicomConverter.to_3d_array(ct_slices)
         pet_volume = DicomConverter.to_3d_array(pet_slices)
 
-        # Apply data augmentation if current patient is a minority class
-        # TODO: Apply data augmentation if current patient is a minority class
-
         # Apply standardization (resize depth)
         ct_volume = VolumeProcessor(ct_volume).resize_depth(15)
         pet_volume = VolumeProcessor(pet_volume).resize_depth(15)
-        # TODO: Augmented data should also be resized
-
+        
         # Save the processed slices
         label = patient_num[:1]
         save_arrays(output_path, patient_num, ct_volume, pet_volume, label)
@@ -64,6 +78,7 @@ def main():
     dicom_path = Path(r'D:\Datasets\TEST')
     anno_path = Path(r'D:\Datasets\Annotation')
     output_path = Path(r'D:\Datasets\Output')
+ 
 
     logger = setup_logger(Path('../logs'), 'preprocessing.log', 'PreprocessingLogger')
 
@@ -71,6 +86,8 @@ def main():
     for patient_dir in tqdm(directories, desc='Preprocessing'):
         if patient_dir.is_dir():
             preprocess_patient_data(anno_path, output_path, patient_dir, logger)
+    
+    augment_data(output_path)
 
 if __name__ == '__main__':
     main()
