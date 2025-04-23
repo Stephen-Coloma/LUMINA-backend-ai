@@ -18,7 +18,7 @@ def augment_data(input_path):
         augmentor.augment_class_x_times(
             label=label,
             num_augmentations=num_augmentations,
-            npy_dir='path/to/original/npy/files',
+            npy_dir=input_path,
             output_dir='path/to/save/augmented/data'
         )
         print(f"Augmented {num_augmentations} samples for class {label}.")
