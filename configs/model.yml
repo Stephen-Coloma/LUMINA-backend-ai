@@ -5,6 +5,10 @@ model:
 training:
   epochs: 10
   learning_rate: 1e-4
+  batch_size: 4
+
+validation:
+  batch_size: 4
 
 feature_block:
   in_channels: 1
