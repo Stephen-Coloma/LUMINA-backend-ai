@@ -19,15 +19,15 @@ def augment_data(input_path: Path, output_path: Path, logger: logging):
         augmentor.augment_class_x_times(
             label=label,
             num_augmentations=num_augmentations,
-            npy_dir=str(input_path),
-            output_dir=str(output_path)
+            npy_dir=input_path,
+            output_dir=output_path
         )
 
         logger.info(f'Augmented {num_augmentations} samples for class {label}.')
 
     logger.info(f'Data augmentation completed')
 
-def preprocess_patient_data(anno_path, output_path, patient_dir, logger):
+def preprocess_patient_data(anno_path: Path, output_path: Path, patient_dir: Path, logger: logging):
     patient_num = patient_dir.name.split('-')[-1]
     patient_dicom_ct = patient_dir / 'CT'
     patient_dicom_pet = patient_dir / 'PET'
