@@ -7,8 +7,9 @@ from src.preprocessing.dicom_converter import save_arrays
 from tqdm import tqdm
 from pathlib import Path
 from src.utils.logger import setup_logger
+import logging
 
-def augment_data(input_path):
+def augment_data(input_path: Path, output_path: Path, logger: logging):
     augmentor = Augmentator()
     tally = augmentor.get_minority_classes(input_path)
     target = max(tally.values())
@@ -18,12 +19,13 @@ def augment_data(input_path):
         augmentor.augment_class_x_times(
             label=label,
             num_augmentations=num_augmentations,
-            npy_dir=input_path,
-            output_dir='path/to/save/augmented/data'
+            npy_dir=str(input_path),
+            output_dir=str(output_path)
         )
-        print(f"Augmented {num_augmentations} samples for class {label}.")
-    
-    print("Data augmentation completed.")
+
+        logger.info(f'Augmented {num_augmentations} samples for class {label}.')
+
+    logger.info(f'Data augmentation completed')
 
 def preprocess_patient_data(anno_path, output_path, patient_dir, logger):
     patient_num = patient_dir.name.split('-')[-1]
@@ -75,19 +77,22 @@ def preprocess_patient_data(anno_path, output_path, patient_dir, logger):
         raise
 
 def main():
-    dicom_path = Path(r'D:\Datasets\TEST')
+    dicom_path = Path(r'D:\Datasets\Dataset')
     anno_path = Path(r'D:\Datasets\Annotation')
-    output_path = Path(r'D:\Datasets\Output')
- 
+    output_path_pny = Path(r'D:\Datasets\Output\PNY')
+    input_path_aug = Path(r'D:\Datasets\Output\PNY')
+    output_path_aug = Path(r'D:\Datasets\Output\AUG')
 
     logger = setup_logger(Path('../logs'), 'preprocessing.log', 'PreprocessingLogger')
 
     directories = dicom_path.iterdir()
     for patient_dir in tqdm(directories, desc='Preprocessing'):
         if patient_dir.is_dir():
-            preprocess_patient_data(anno_path, output_path, patient_dir, logger)
-    
-    augment_data(output_path)
+            preprocess_patient_data(anno_path, output_path_pny, patient_dir, logger)
+
+    logger.info(f'=====< DATA AUGMENTATION >=====')
+
+    augment_data(input_path_aug, output_path_aug, logger)
 
 if __name__ == '__main__':
     main()
