@@ -32,7 +32,7 @@ class NSCLC_Model(nn.Module):
         x_ct_features = self.feature_extraction_ct(x_ct)
         x_pet_features = self.feature_extraction_pet(x_pet)
 
-        # element wise summation fusion
+        # fusion through concatenation
         x_fused = self.fusion_block(x_ct_features, x_pet_features)
 
         # classification
