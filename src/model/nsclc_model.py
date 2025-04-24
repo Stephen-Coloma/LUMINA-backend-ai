@@ -9,12 +9,12 @@ class NSCLC_Model(nn.Module):
         super(NSCLC_Model, self).__init__()
 
         # obtain parameters from the model configuration
-        self.num_classes = model_config['model']['num_classes']
+        self.num_classes = model_config.data.num_classes
 
         # feature block parameters
-        in_channels = model_config['feature_block']['in_channels']
-        growth_rate = model_config['feature_block']['growth_rate']
-        num_layers = model_config['feature_block']['num_layers']
+        in_channels = model_config.feature_block.in_channels
+        growth_rate = model_config.feature_block.growth_rate
+        num_layers = model_config.feature_block.num_layers
 
         # model architecture
         self.feature_extraction_ct = FeatureExtractionBlock(in_channels, growth_rate, num_layers)

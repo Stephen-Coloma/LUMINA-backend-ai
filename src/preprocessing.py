@@ -4,7 +4,6 @@ from src.preprocessing.volume_processing import VolumeProcessor
 from src.preprocessing.intensity_processing import IntensityProcessor
 from src.preprocessing.dicom_augmentor import Augmentator
 from src.preprocessing.dicom_converter import save_arrays
-from tqdm import tqdm
 from pathlib import Path
 from src.utils.logger import setup_logger
 import logging
@@ -61,16 +60,13 @@ def preprocess_patient_data(anno_path: Path, output_path: Path, patient_dir: Pat
         pet_volume = DicomConverter.to_3d_array(pet_slices)
 
         # Apply standardization (resize depth)
-        ct_volume = VolumeProcessor(ct_volume).resize_depth(15)
-        pet_volume = VolumeProcessor(pet_volume).resize_depth(15)
+        ct_volume = VolumeProcessor(ct_volume).resize_depth(32)
+        pet_volume = VolumeProcessor(pet_volume).resize_depth(32)
         
         # Save the processed slices
         label = patient_num[:1]
         save_arrays(output_path, patient_num, ct_volume, pet_volume, label)
-        logger.info(
-            '---------------------------------------------'
-            f'Successfully processed patient {patient_num}'
-        )
+        logger.info(f'---------- Successfully processed patient {patient_num} ----------')
 
     except Exception as e:
         logger.error(f'Error processing patient {patient_num}: {e}')
@@ -79,14 +75,14 @@ def preprocess_patient_data(anno_path: Path, output_path: Path, patient_dir: Pat
 def main():
     dicom_path = Path(r'D:\Datasets\Dataset')
     anno_path = Path(r'D:\Datasets\Annotation')
-    output_path_pny = Path(r'D:\Datasets\Output\PNY')
-    input_path_aug = Path(r'D:\Datasets\Output\PNY')
-    output_path_aug = Path(r'D:\Datasets\Output\AUG')
+    output_path_pny = Path('../data/pny')
+    input_path_aug = Path('../data/pny')
+    output_path_aug = Path('../data/aug')
 
     logger = setup_logger(Path('../logs'), 'preprocessing.log', 'PreprocessingLogger')
 
     directories = dicom_path.iterdir()
-    for patient_dir in tqdm(directories, desc='Preprocessing'):
+    for patient_dir in directories:
         if patient_dir.is_dir():
             preprocess_patient_data(anno_path, output_path_pny, patient_dir, logger)
 
