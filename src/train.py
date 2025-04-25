@@ -1,4 +1,5 @@
 import torch
+from torch.cpu.amp import GradScaler
 from torch.utils.data import DataLoader, random_split
 from src.model.nsclc_model import NSCLC_Model
 from src.utils.logger import setup_logger
@@ -9,36 +10,55 @@ from pathlib import Path
 from torch.amp import autocast
 from src.utils.factory import get_optimizer, get_loss_fn
 from datetime import datetime
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 
-def validate(model, val_loader, criterion, device):
+def validate(model, val_loader, criterion, device, logger):
     model.eval()
     total_loss = 0.0
     total_correct = 0
     total_samples = 0
 
+    all_preds = []
+    all_labels = []
+
     with torch.no_grad():
-        for label, ct, pet in val_loader:
-            label, ct, pet = label.to(device), ct.to(device), pet.to(device)
+        for labels, ct, pet in val_loader:
+            # label, ct_inputs, pet_inputs = label.to(device), ct.to(device), pet.to(device)
             outputs = model(ct, pet)
-            loss = criterion(outputs, label)
+            _, preds = torch.max(outputs, 1)
+            all_preds.extend(preds.cpu().numpy())
+            all_labels.extend(labels().cpu().numpy)
 
-            total_loss += loss.item()
-            _, predicted = torch.max(outputs, 1)
-            total_correct += (predicted == label).sum().item()
-            total_samples += label.size(0)
+            # loss = criterion(outputs, labels)
+            #
+            # total_loss += loss.item()
+            # _, predicted = torch.max(outputs, 1)
+            # total_correct += (predicted == labels).sum().item()
+            # total_samples += labels.size(0)
 
-    avg_loss = total_loss / len(val_loader)
-    accuracy = 100.0 * total_correct / total_samples
-    return avg_loss, accuracy
+    # avg_loss = total_loss / len(val_loader)
+    # accuracy = 100.0 * total_correct / total_samples
+    # return avg_loss, accuracy
+    accuracy = accuracy_score(all_labels, all_preds)
+    precision = precision_score(all_labels, all_preds, average='macro')
+    recall = recall_score(all_labels, all_preds, average='macro')
+    f1 = f1_score(all_labels, all_preds, average='macro')
+    conf_mtx = confusion_matrix(all_labels, all_preds)
 
-def train(model, train_loader, val_loader, loss_fn, optimizer, config, device, logger):
-    model.train()
+    logger.info(f'Val Accuracy: {accuracy:.2f} | Precision: {precision:.2f} | Recall: {recall:.2f} | F1 Score: {f1:.2f}')
+    logger.info(f'Confusion Matrix:\n{conf_mtx}')
+
+def train(model, train_loader, val_loader, loss_fn, optimizer, config, device, logger, start_epoch = None):
+    start_epoch = start_epoch or 0
     num_epochs = config.training.epochs
-    running_loss = 0.0
+
+    scaler = GradScaler()
 
     start_timer()
-    for epoch in range(num_epochs):
+    for epoch in range(start_epoch, num_epochs):
         try:
+            model.train()
+            running_loss = 0.0
             logger.info(f'Starting epoch {epoch + 1}')
 
             for target, ct, pet in train_loader:
@@ -52,24 +72,28 @@ def train(model, train_loader, val_loader, loss_fn, optimizer, config, device, l
                     loss = loss_fn(output, target)
 
                 # backward pass
-                loss.backward()
-                optimizer.step()
+                scaler.scale(loss).backward()
+                scaler.step(optimizer)
+                scaler.update()
 
                 running_loss += loss.item()
 
             avg_train_loss = running_loss / len(train_loader)
-            val_loss, val_acc = validate(model, val_loader, loss_fn, device)
-
             logger.info(
                 f'Epoch [{epoch + 1}/{num_epochs}] | '
-                f'Training Loss: {avg_train_loss:.4f} | '
-                f'Validation Loss: {val_loss:.4f} | '
-                f'Validation Accuracy: {val_acc:.2f}%'
+                f'Training Loss: {avg_train_loss:.4f}'
             )
+
+            validate(model, val_loader, loss_fn, device, logger)
 
             # save model checkpoint
             timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-            torch.save(model.state_dict(), f'../model/checkpoints/{timestamp}.pth')
+            torch.save({
+                'epoch': epoch + 1,
+                'model_state_dict': model.state_dict(),
+                'optimizer_state_dict': optimizer.state_dict(),
+                'loss': loss,
+            }, f'../model/checkpoints/{timestamp}.pth')
 
             allocated = torch.cuda.memory_allocated(device) / (1024 ** 2)
             reserved = torch.cuda.memory_reserved(device) / (1024 ** 2)
@@ -131,9 +155,24 @@ def main():
         pin_memory=config.validation.pin_memory
     )
 
+    # load latest checkpoint if applicable
+    checkpoint_files = sorted(Path(r'../model/checkpoints').glob('*.pth'), reverse=True)
+
+    start_epoch = 0
+    if checkpoint_files:
+        last_checkpoint = checkpoint_files[0]
+        checkpoint = torch.load(last_checkpoint, map_location=device)
+
+
+        model.load_state_dict(checkpoint['model_state_dict'])
+        optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+        start_epoch = checkpoint['epoch'] + 1
+        logger.info(f"Loaded checkpoint from {last_checkpoint.name} (epoch {checkpoint['epoch']})")
+        torch.cuda.empty_cache()
+
     # train model
     logger.info('Training Started')
-    train(model, train_loader, val_loader, loss_fn, optimizer, config, device, logger)
+    train(model, train_loader, val_loader, loss_fn, optimizer, config, device, logger, start_epoch)
 
 if __name__ == '__main__':
     main()
