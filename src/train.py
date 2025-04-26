@@ -1,5 +1,5 @@
 import torch
-from torch.cpu.amp import GradScaler
+from torch.amp import GradScaler, autocast
 from torch.utils.data import DataLoader, random_split
 from src.model.nsclc_model import NSCLC_Model
 from src.utils.logger import setup_logger
@@ -7,84 +7,90 @@ from src.utils.dataset import MedicalDataset
 from src.utils.config_loader import load_config
 from src.utils.timing import start_timer, end_timer_and_print
 from pathlib import Path
-from torch.amp import autocast
 from src.utils.factory import get_optimizer, get_loss_fn
 from datetime import datetime
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 
-def validate(model, val_loader, criterion, device, logger):
+def validate(model, data_loader, loss_fn, device):
     model.eval()
-    total_loss = 0.0
-    total_correct = 0
-    total_samples = 0
-
+    running_loss = 0.0
     all_preds = []
-    all_labels = []
+    all_targets = []
 
     with torch.no_grad():
-        for labels, ct, pet in val_loader:
-            # label, ct_inputs, pet_inputs = label.to(device), ct.to(device), pet.to(device)
-            outputs = model(ct, pet)
+        for targets, ct_batch, pet_batch in data_loader:
+            targets = targets.to(device, non_blocking=True)
+            ct_batch = ct_batch.to(device, non_blocking=True)
+            pet_batch = pet_batch.to(device, non_blocking=True)
+
+            outputs = model(ct_batch, pet_batch)
+            losses = loss_fn(outputs, targets)
             _, preds = torch.max(outputs, 1)
             all_preds.extend(preds.cpu().numpy())
-            all_labels.extend(labels().cpu().numpy)
+            all_targets.extend(targets.cpu().numpy())
 
-            # loss = criterion(outputs, labels)
-            #
-            # total_loss += loss.item()
-            # _, predicted = torch.max(outputs, 1)
-            # total_correct += (predicted == labels).sum().item()
-            # total_samples += labels.size(0)
+            running_loss += losses.item()
 
-    # avg_loss = total_loss / len(val_loader)
-    # accuracy = 100.0 * total_correct / total_samples
-    # return avg_loss, accuracy
-    accuracy = accuracy_score(all_labels, all_preds)
-    precision = precision_score(all_labels, all_preds, average='macro')
-    recall = recall_score(all_labels, all_preds, average='macro')
-    f1 = f1_score(all_labels, all_preds, average='macro')
-    conf_mtx = confusion_matrix(all_labels, all_preds)
+    return compute_metrics(all_targets, all_preds, running_loss, len(data_loader))
 
-    logger.info(f'Val Accuracy: {accuracy:.2f} | Precision: {precision:.2f} | Recall: {recall:.2f} | F1 Score: {f1:.2f}')
-    logger.info(f'Confusion Matrix:\n{conf_mtx}')
+def compute_metrics(all_targets, all_preds, running_loss, data_len):
+    avg_loss = running_loss / data_len
+    accuracy = accuracy_score(all_targets, all_preds)
+    precision = precision_score(all_targets, all_preds, average='macro')
+    recall = recall_score(all_targets, all_preds, average='macro')
+    f1 = f1_score(all_targets, all_preds, average='macro')
+    conf_mtx = confusion_matrix(all_targets, all_preds)
+
+    return (avg_loss, accuracy, precision, recall, f1, conf_mtx)
 
 def train(model, train_loader, val_loader, loss_fn, optimizer, config, device, logger, start_epoch = None):
     start_epoch = start_epoch or 0
-    num_epochs = config.training.epochs
+    num_epochs = config.training.epochs + 1
 
-    scaler = GradScaler()
+    scaler = GradScaler(device.type)
 
     start_timer()
     for epoch in range(start_epoch, num_epochs):
         try:
             model.train()
+            logger.info(f'Starting epoch [{epoch + 1}/{num_epochs}]')
+
+            all_preds = []
+            all_targets = []
+
+            # training phase
+            optimizer.zero_grad()
             running_loss = 0.0
-            logger.info(f'Starting epoch {epoch + 1}')
 
-            for target, ct, pet in train_loader:
-                target, ct, pet = target.to(device), ct.to(device), pet.to(device)
-
-                optimizer.zero_grad()
+            for targets, ct_batch, pet_batch in train_loader:
+                targets = targets.to(device, non_blocking=True)
+                ct_batch = ct_batch.to(device, non_blocking=True)
+                pet_batch = pet_batch.to(device, non_blocking=True)
 
                 # forward pass with mixed precision
                 with autocast(device.type):
-                    output = model(ct, pet)
-                    loss = loss_fn(output, target)
+                    outputs = model(ct_batch, pet_batch)
+                    losses = loss_fn(outputs, targets)
+                    _, preds = torch.max(outputs, 1)
+                    all_preds.extend(preds.cpu().numpy())
+                    all_targets.extend(targets.cpu().numpy())
 
                 # backward pass
-                scaler.scale(loss).backward()
+                scaler.scale(losses).backward()
                 scaler.step(optimizer)
                 scaler.update()
 
-                running_loss += loss.item()
+                running_loss += losses.item()
 
-            avg_train_loss = running_loss / len(train_loader)
-            logger.info(
-                f'Epoch [{epoch + 1}/{num_epochs}] | '
-                f'Training Loss: {avg_train_loss:.4f}'
-            )
+            # metric computation for training data
+            train_results = compute_metrics(all_targets, all_preds, running_loss, len(train_loader))
 
-            validate(model, val_loader, loss_fn, device, logger)
+            # metric computation for validation data
+            val_results = validate(model, val_loader, loss_fn, device)
+
+            # store results in a log file
+            log_metrics(train_results, logger, is_training=True)
+            log_metrics(val_results, logger, is_training=False)
 
             # save model checkpoint
             timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
@@ -92,17 +98,14 @@ def train(model, train_loader, val_loader, loss_fn, optimizer, config, device, l
                 'epoch': epoch + 1,
                 'model_state_dict': model.state_dict(),
                 'optimizer_state_dict': optimizer.state_dict(),
-                'loss': loss,
+                'loss': losses,
             }, f'../model/checkpoints/{timestamp}.pth')
 
-            allocated = torch.cuda.memory_allocated(device) / (1024 ** 2)
-            reserved = torch.cuda.memory_reserved(device) / (1024 ** 2)
-            logger.info(f'GPU Memory - Allocated: {allocated:.2f}MB | Reserved: {reserved:.2f}MB')
             logger.info(f'Epoch {epoch + 1} ended')
         except Exception as e:
             logger.error(e)
 
-    logger.info(f'Training Ended')
+    logger.info('Training Ended')
     end_timer_and_print('Default Precision:')
 
 def main():
@@ -139,17 +142,17 @@ def main():
     split_value = config.data.train_val_split
     train_size = int(split_value * len(dataset))
     val_size = len(dataset) - train_size
-    train_dataset, val_dataset = random_split(dataset, [train_size, val_size])
+    train_dataset, validation_dataset = random_split(dataset, [train_size, val_size])
 
     # create dataloader instances
-    train_loader = DataLoader(
+    train_data_loader = DataLoader(
         train_dataset,
         batch_size=config.training.batch_size,
         shuffle=config.training.shuffle,
         pin_memory=config.training.pin_memory
     )
-    val_loader = DataLoader(
-        val_dataset,
+    validation_data_loader = DataLoader(
+        validation_dataset,
         batch_size=config.validation.batch_size,
         shuffle=config.validation.shuffle,
         pin_memory=config.validation.pin_memory
@@ -172,7 +175,21 @@ def main():
 
     # train model
     logger.info('Training Started')
-    train(model, train_loader, val_loader, loss_fn, optimizer, config, device, logger, start_epoch)
+    train(model, train_data_loader, validation_data_loader, loss_fn, optimizer, config, device, logger, start_epoch)
+
+def log_metrics(results, logger, is_training=True):
+    avg_loss, accuracy, precision, recall, f1_score, conf_mtx = results
+
+    logger.info('\nTraining Results') if is_training else logger.info('\nValidation Results')
+    logger.info(
+        f'Avg Loss: {avg_loss:.4f}'
+        f'Accuracy: {accuracy:.2f}\n'
+        f'Precision: {precision:.2f}\n'
+        f'Recall: {recall:.2f}\n'
+        f'F1 Score: {f1_score:.2f}\n'
+        'Confusion Matrix:\n'
+        f'{conf_mtx}'
+    )
 
 if __name__ == '__main__':
     main()

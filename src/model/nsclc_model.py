@@ -16,12 +16,13 @@ class NSCLC_Model(nn.Module):
         growth_rate = model_config.feature_block.growth_rate
         num_layers = model_config.feature_block.num_layers
 
-        # model architecture
+        # feature extraction block
         self.feature_extraction_ct = FeatureExtractionBlock(in_channels, growth_rate, num_layers)
         self.feature_extraction_pet = FeatureExtractionBlock(in_channels, growth_rate, num_layers)
 
         # fusion block
-        self.fusion_block = FusionBlock()
+        fusion_channels = 2 * (in_channels + num_layers * growth_rate)
+        self.fusion_block = FusionBlock(fusion_channels)
 
         # classification block
         fusion_channels = 2 * (in_channels + num_layers * growth_rate)
@@ -31,6 +32,9 @@ class NSCLC_Model(nn.Module):
         # extract features
         x_ct_features = self.feature_extraction_ct(x_ct)
         x_pet_features = self.feature_extraction_pet(x_pet)
+
+        print(f'Output shape for CT: {x_ct_features.shape}')
+        print(f'Output shape for PET: {x_pet_features.shape}')
 
         # fusion through concatenation
         x_fused = self.fusion_block(x_ct_features, x_pet_features)

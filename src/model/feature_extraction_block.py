@@ -97,4 +97,5 @@ class FeatureExtractionBlock(nn.Module):
     def forward(self, x):
         x = self.dense_block(x)
         x = self.cbam(x)
+        x = self.dropout(x)
         return x
