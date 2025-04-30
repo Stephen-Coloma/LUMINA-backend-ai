@@ -12,6 +12,8 @@ def get_optimizer(name, params, lr=1e-3, weight_decay=0):
         return optim.RMSprop(params, lr=lr, weight_decay=weight_decay)
     elif name == 'adam':
         return optim.Adam(params, lr=lr, weight_decay=weight_decay)
+    elif name == 'adamw':
+        return optim.AdamW(params, lr=lr, weight_decay=weight_decay)
 
 def get_loss_fn(name, **kwargs):
     if name == 'crossentropyloss':

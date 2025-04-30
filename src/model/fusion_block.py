@@ -8,8 +8,8 @@ class FusionBlock(nn.Module):
     """
     def __init__(self, num_features):
         super(FusionBlock, self).__init__()
-        self.bn_ct = nn.BatchNorm3d(num_features)
-        self.bn_pet = nn.BatchNorm3d(num_features)
+        self.bn_ct = nn.BatchNorm3d(num_features, eps=0.00001)
+        self.bn_pet = nn.BatchNorm3d(num_features, eps=0.00001)
         self.conv = nn.Conv3d(2 * num_features, num_features, kernel_size=3, padding=1)
         self.relu = nn.ReLU()
 

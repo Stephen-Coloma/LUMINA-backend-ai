@@ -7,11 +7,15 @@ data:
   train_val_split: 0.8
 
 training:
-  epochs: 100 # change to 20 if all batch size, growth_rate, num_layers are final
+  epochs: 100
   batch_size: 2
   shuffle: True
   pin_memory: True
   mixed_precision: True
+  early_stop:
+    patience: 20
+    min_delta: 0.01
+  weights: [1.0, 11.6, 2.9]
 
 validation:
   batch_size: 2
@@ -19,9 +23,10 @@ validation:
   pin_memory: True
 
 optimizer:
-  name: adam
+  name: adamw
   lr: 0.0001
-  weight_decay: 0
+  weight_decay: 0.0001
+  momentum: 0.9
 
 loss:
   name: crossentropyloss
@@ -30,5 +35,4 @@ feature_block:
   in_channels: 1
   growth_rate: 16 # can change to 64 if GPU can handle it use either 32 or 16 only
   num_layers: 4
-  activation: "Relu"
-  normalization: "batch_norm"
+  dropout_rate: 0.2
