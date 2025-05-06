@@ -33,7 +33,7 @@ class MedicalDataset(Dataset):
         # convert label string to integer index
         label_str = data['label']
         label = self.label_mapping[label_str]
-        label = torch.tensor(label, dtype=torch.uint8)
+        label = torch.tensor(label, dtype=torch.long)
 
         ct_volume = torch.tensor(data['CT'], dtype=torch.float32)
         pet_volume = torch.tensor(data['PET'], dtype=torch.float32)

@@ -33,9 +33,9 @@ loss:
 
 feature_block:
   in_channels: 1
-  growth_rate: 20
+  growth_rate: 24
   use_transition: False
   compression: 0.5
   dense_block:
     blocks: 1
-    layers: 4
+    layers: 5

@@ -47,11 +47,8 @@ class FeatureExtractionBlock(nn.Module):
         self.out_channels = current_channels
 
     def forward(self, x):
-        print(f'Input to feature extraction block: {x.shape}')
-
         for block in self.blocks:
             x = block(x)
-            print(f'Shape after {block.__class__.__name__}: {x.shape}')
         return x
 
 # ===================== Dense Block =====================

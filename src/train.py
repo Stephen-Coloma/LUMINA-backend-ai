@@ -12,27 +12,10 @@ from src.utils.factory import get_optimizer, get_loss_fn
 from src.utils.save import save_densenet as save_model
 from pathlib import Path
 from datetime import datetime
+from tqdm import tqdm
 
 # ================== TRAIN FUNCTION ==================
 def train(model, train_loader, val_loader, loss_fn, optimizer, config, device, logger, start_epoch = None):
-    logger.info(f'Trained on: {torch.cuda.get_device_name()}')
-    logger.info(
-        '\nPARAMETERS:\n'
-        f'> Epochs: {config.training.epochs}\n'
-        f'> Batch Size: {config.training.batch_size} (Training) | {config.validation.batch_size} (Validation)\n'
-        f'> Optimizer: {config.optimizer.name}\n'
-        f'> Learning Rate: {config.optimizer.lr}\n'
-        f'> Weight Decay: {config.optimizer.weight_decay}\n'
-        f'> Loss Function: {config.loss.name}\n'
-        'FEATURE BLOCK:\n'
-        f'> Growth Rate: {config.feature_block.growth_rate}\n'
-        f'> Use Transition: {config.feature_block.use_transition}\n'
-        f'> Compression: {config.feature_block.compression}\n'
-        'DENSE BLOCK:\n'
-        f'> Num Blocks: {config.feature_block.dense_block.blocks}\n'
-        f'> Num Layers: {config.feature_block.dense_block.layers}'
-    )
-
     torch.cuda.empty_cache()
 
     start_epoch = start_epoch or 0
@@ -55,7 +38,8 @@ def train(model, train_loader, val_loader, loss_fn, optimizer, config, device, l
             # training phase
             running_loss = 0.0
 
-            for targets, ct_batch, pet_batch in train_loader:
+            progress_bar = tqdm(train_loader, desc='Training', leave=False)
+            for targets, ct_batch, pet_batch in progress_bar:
                 optimizer.zero_grad()
 
                 targets = targets.to(device, non_blocking=True)
@@ -85,6 +69,7 @@ def train(model, train_loader, val_loader, loss_fn, optimizer, config, device, l
                 optimizer.step()
 
                 running_loss += losses.item()
+                progress_bar.set_postfix(loss=losses.item())
 
             # metric computation for training data
             train_results = compute_metrics(all_targets, all_preds, running_loss, len(train_loader))
@@ -198,9 +183,30 @@ def main():
         logger.info(f"Loaded checkpoint from {last_checkpoint.name} (epoch {checkpoint['epoch']})")
         torch.cuda.empty_cache()
 
+    # log gpu and config setup
+    logger.info(f'Trained on: {torch.cuda.get_device_name()}')
+    logger.info(
+        '\nPARAMETERS:\n'
+        f'> Epochs: {config.training.epochs}\n'
+        f'> Batch Size: {config.training.batch_size} (Training) | {config.validation.batch_size} (Validation)\n'
+        f'> Optimizer: {config.optimizer.name}\n'
+        f'> Learning Rate: {config.optimizer.lr}\n'
+        f'> Weight Decay: {config.optimizer.weight_decay}\n'
+        f'> Loss Function: {config.loss.name}\n'
+        'FEATURE BLOCK:\n'
+        f'> Growth Rate: {config.feature_block.growth_rate}\n'
+        f'> Use Transition: {config.feature_block.use_transition}\n'
+        f'> Compression: {config.feature_block.compression}\n'
+        'DENSE BLOCK:\n'
+        f'> Num Blocks: {config.feature_block.dense_block.blocks}\n'
+        f'> Num Layers: {config.feature_block.dense_block.layers}'
+    )
+
     # train model
     logger.info('Training Started')
     train(model, train_data_loader, validation_data_loader, loss_fn, optimizer, config, device, logger, start_epoch)
+
+
 
 def validate(model, data_loader, loss_fn, device):
     model.eval()
@@ -208,19 +214,36 @@ def validate(model, data_loader, loss_fn, device):
     all_preds = []
     all_targets = []
 
-    with torch.no_grad():
-        for targets, ct_batch, pet_batch in data_loader:
-            targets = targets.to(device, non_blocking=True)
-            ct_batch = ct_batch.to(device, non_blocking=True)
-            pet_batch = pet_batch.to(device, non_blocking=True)
+    # with torch.no_grad():
+    #     for targets, ct_batch, pet_batch in data_loader:
+    #         targets = targets.to(device, non_blocking=True)
+    #         ct_batch = ct_batch.to(device, non_blocking=True)
+    #         pet_batch = pet_batch.to(device, non_blocking=True)
+    #
+    #         outputs = model(ct_batch, pet_batch)
+    #         losses = loss_fn(outputs, targets)
+    #         _, preds = torch.max(outputs, 1)
+    #         all_preds.extend(preds.cpu().numpy())
+    #         all_targets.extend(targets.cpu().numpy())
+    #
+    #         running_loss += losses.item()
+    #
+    # torch.cuda.empty_cache()
 
-            outputs = model(ct_batch, pet_batch)
-            losses = loss_fn(outputs, targets)
-            _, preds = torch.max(outputs, 1)
-            all_preds.extend(preds.cpu().numpy())
-            all_targets.extend(targets.cpu().numpy())
+    progress_bar = tqdm(data_loader, desc='Validating', leave=False)
+    for targets, ct_batch, pet_batch in progress_bar:
+        targets = targets.to(device, non_blocking=True)
+        ct_batch = ct_batch.to(device, non_blocking=True)
+        pet_batch = pet_batch.to(device, non_blocking=True)
 
-            running_loss += losses.item()
+        outputs = model(ct_batch, pet_batch)
+        losses = loss_fn(outputs, targets)
+        _, preds = torch.max(outputs, 1)
+        all_preds.extend(preds.cpu().numpy())
+        all_targets.extend(targets.cpu().numpy())
+
+        running_loss += losses.item()
+        progress_bar.set_postfix(loss=losses.item())
 
     torch.cuda.empty_cache()
 
