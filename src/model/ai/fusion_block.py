@@ -8,8 +8,8 @@ class FusionBlock(nn.Module):
     """
     def __init__(self, num_features):
         super(FusionBlock, self).__init__()
-        self.bn_ct = nn.BatchNorm3d(num_features, eps=0.00001)
-        self.bn_pet = nn.BatchNorm3d(num_features, eps=0.00001)
+        self.bn_ct = nn.InstanceNorm3d(num_features, affine=True)
+        self.bn_pet = nn.InstanceNorm3d(num_features, affine=True)
         self.conv = nn.Conv3d(2 * num_features, num_features, kernel_size=3, padding=1)
         self.relu = nn.ReLU()
 
@@ -20,7 +20,7 @@ class FusionBlock(nn.Module):
         :param feature_pet: Feature map of the PET modality
         :return:
         """
-        # normalize both modalities using BatchNorm
+        # normalize both modalities using InstanceNorm
         feature_ct = self.bn_ct(feature_ct)
         feature_pet = self.bn_pet(feature_pet)
 

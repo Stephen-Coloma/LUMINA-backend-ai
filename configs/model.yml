@@ -8,24 +8,24 @@ data:
 
 training:
   epochs: 100
-  batch_size: 2
+  batch_size: 1
   shuffle: True
   pin_memory: True
   mixed_precision: True
   early_stop:
-    patience: 20
+    patience: 5
     min_delta: 0.01
-  weights: [1.0, 11.6, 2.9]
+  weights: [1.0, 6.0, 3.0]
 
 validation:
-  batch_size: 2
+  batch_size: 1
   shuffle: False
   pin_memory: True
 
 optimizer:
-  name: adamw
-  lr: 0.0001
-  weight_decay: 0.0001
+  name: adam
+  lr: 0.0005
+  weight_decay: 0 # 0.0001
   momentum: 0.9
 
 loss:
@@ -33,6 +33,9 @@ loss:
 
 feature_block:
   in_channels: 1
-  growth_rate: 16 # can change to 64 if GPU can handle it use either 32 or 16 only
-  num_layers: 4
-  dropout_rate: 0.2
+  growth_rate: 20
+  use_transition: False
+  compression: 0.5
+  dense_block:
+    blocks: 1
+    layers: 4

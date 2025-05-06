@@ -9,7 +9,7 @@ class ClassificationBlock(nn.Module):
         Architecture:
             GlobalAvgPool -> Dropout -> Fully Connected Layer
     """
-    def __init__(self, in_channels, num_classes, dropout_val=0.5):
+    def __init__(self, in_channels, num_classes, dropout_val=0.2):
         """
         Args:
         :param in_channels: Number of input feature maps.

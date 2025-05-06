@@ -1,31 +1,49 @@
 import torch
 from torch.amp import GradScaler, autocast
+from sklearn.model_selection import StratifiedShuffleSplit
 from torch.utils.data import DataLoader, Subset
-from src.model.nsclc_model import NSCLC_Model
+from src.model.ai.nsclc_model import NSCLC_Model
 from src.utils.logger import setup_logger
 from src.utils.dataset import MedicalDataset
 from src.utils.config_loader import load_config
 from src.utils.early_stopping import EarlyStopping
-from src.utils.timing import start_timer, end_timer_and_print
-from pathlib import Path
+from src.utils.metrics import compute as compute_metrics, log as log_metrics
 from src.utils.factory import get_optimizer, get_loss_fn
+from src.utils.save import save_densenet as save_model
+from pathlib import Path
 from datetime import datetime
-from sklearn.model_selection import StratifiedShuffleSplit
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 
 # ================== TRAIN FUNCTION ==================
 def train(model, train_loader, val_loader, loss_fn, optimizer, config, device, logger, start_epoch = None):
+    logger.info(f'Trained on: {torch.cuda.get_device_name()}')
+    logger.info(
+        '\nPARAMETERS:\n'
+        f'> Epochs: {config.training.epochs}\n'
+        f'> Batch Size: {config.training.batch_size} (Training) | {config.validation.batch_size} (Validation)\n'
+        f'> Optimizer: {config.optimizer.name}\n'
+        f'> Learning Rate: {config.optimizer.lr}\n'
+        f'> Weight Decay: {config.optimizer.weight_decay}\n'
+        f'> Loss Function: {config.loss.name}\n'
+        'FEATURE BLOCK:\n'
+        f'> Growth Rate: {config.feature_block.growth_rate}\n'
+        f'> Use Transition: {config.feature_block.use_transition}\n'
+        f'> Compression: {config.feature_block.compression}\n'
+        'DENSE BLOCK:\n'
+        f'> Num Blocks: {config.feature_block.dense_block.blocks}\n'
+        f'> Num Layers: {config.feature_block.dense_block.layers}'
+    )
+
+    torch.cuda.empty_cache()
+
     start_epoch = start_epoch or 0
     num_epochs = config.training.epochs + 1
 
-    scaler = GradScaler(enabled=(device.type == 'cuda'))
+    # scaler = GradScaler(enabled=(device.type == 'cuda'))
 
     early_stopper = EarlyStopping(
         patience=config.training.early_stop.patience,
         min_delta=config.training.early_stop.min_delta
     )
-
-    start_timer()
     for epoch in range(start_epoch, num_epochs):
         try:
             model.train()
@@ -35,26 +53,36 @@ def train(model, train_loader, val_loader, loss_fn, optimizer, config, device, l
             all_targets = []
 
             # training phase
-            optimizer.zero_grad()
             running_loss = 0.0
 
             for targets, ct_batch, pet_batch in train_loader:
+                optimizer.zero_grad()
+
                 targets = targets.to(device, non_blocking=True)
                 ct_batch = ct_batch.to(device, non_blocking=True)
                 pet_batch = pet_batch.to(device, non_blocking=True)
 
-                # forward pass with mixed precision
-                with autocast(device.type):
-                    outputs = model(ct_batch, pet_batch)
-                    losses = loss_fn(outputs, targets)
-                    _, preds = torch.max(outputs, 1)
-                    all_preds.extend(preds.cpu().numpy())
-                    all_targets.extend(targets.cpu().numpy())
+                # # forward pass with mixed precision
+                # with autocast(device.type):
+                #     outputs = model(ct_batch, pet_batch)
+                #     losses = loss_fn(outputs, targets)
+                #     _, preds = torch.max(outputs, 1)
+                #     all_preds.extend(preds.cpu().numpy())
+                #     all_targets.extend(targets.cpu().numpy())
+                #
+                # # backward pass
+                # scaler.scale(losses).backward()
+                # scaler.step(optimizer)
+                # scaler.update()
 
-                # backward pass
-                scaler.scale(losses).backward()
-                scaler.step(optimizer)
-                scaler.update()
+                outputs = model(ct_batch, pet_batch)
+                losses = loss_fn(outputs, targets)
+                _, preds = torch.max(outputs, 1)
+                all_preds.extend(preds.cpu().numpy())
+                all_targets.extend(targets.cpu().numpy())
+
+                losses.backward()
+                optimizer.step()
 
                 running_loss += losses.item()
 
@@ -69,32 +97,31 @@ def train(model, train_loader, val_loader, loss_fn, optimizer, config, device, l
             log_metrics(val_results, logger, is_training=False)
 
             # determine if the training needs to stop early
-            # early_stopper(val_results[0])
+            early_stopper(val_results[0])
 
             timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
             model_path = Path(r'../model')
 
             # either save the current model as a checkpoint or as the best model
-            # if early_stopper.early_stop:
-            #     logger.info(f'Early stopping triggered at epoch {epoch + 1}')
-            #     model_path = model_path / 'best_model' / f'{timestamp}.pth'
-            # else:
-            #     model_path = model_path / 'checkpoints' / f'{timestamp}.pth'
+            if early_stopper.early_stop:
+                logger.info(f'Early stopping triggered at epoch {epoch + 1}')
+                model_path = model_path / 'best_model' / f'{timestamp}.pth'
+            else:
+                model_path = model_path / 'checkpoints' / f'{timestamp}.pth'
 
-            model_path = model_path / 'checkpoints' / f'{timestamp}.pth'
             save_model(epoch, model, optimizer, losses, model_path)
 
             logger.info(f'Epoch {epoch + 1} ended')
 
-            # # stop training if early stop is true
-            # if early_stopper.early_stop:
-            #     break
+            # stop training if early stop is true
+            if early_stopper.early_stop:
+                break
 
+            torch.cuda.empty_cache()
         except Exception as e:
             logger.error(e)
 
     logger.info('Training Ended')
-    end_timer_and_print('Training completed in:')
 
 # ================== MAIN FUNCTION ==================
 def main():
@@ -112,7 +139,7 @@ def main():
     model = NSCLC_Model(config).to(device)
 
     # class weights
-    weights = torch.tensor(config.training.weights, dtype=torch.float32)
+    weights = torch.tensor(config.training.weights, dtype=torch.float32).to(device)
 
     # optimizer
     optimizer = get_optimizer(
@@ -125,7 +152,7 @@ def main():
     # loss
     loss_fn = get_loss_fn(
         name=config.loss.name,
-        weight=weights
+        # weight=weights
     )
 
     # load dataset
@@ -175,7 +202,6 @@ def main():
     logger.info('Training Started')
     train(model, train_data_loader, validation_data_loader, loss_fn, optimizer, config, device, logger, start_epoch)
 
-# ================== HELPER FUNCTIONS ==================
 def validate(model, data_loader, loss_fn, device):
     model.eval()
     running_loss = 0.0
@@ -196,40 +222,9 @@ def validate(model, data_loader, loss_fn, device):
 
             running_loss += losses.item()
 
+    torch.cuda.empty_cache()
+
     return compute_metrics(all_targets, all_preds, running_loss, len(data_loader))
-
-def compute_metrics(all_targets, all_preds, running_loss, data_len):
-    avg_loss = running_loss / data_len
-    accuracy = accuracy_score(all_targets, all_preds)
-    precision = precision_score(all_targets, all_preds, average='macro', zero_division=0)
-    recall = recall_score(all_targets, all_preds, average='macro')
-    f1 = f1_score(all_targets, all_preds, average='macro')
-    conf_mtx = confusion_matrix(all_targets, all_preds)
-
-    return (avg_loss, accuracy, precision, recall, f1, conf_mtx)
-
-def log_metrics(results, logger, is_training=True):
-    avg_loss, accuracy, precision, recall, f1_score, conf_mtx = results
-
-    header = 'Training Results' if is_training else 'Validation Results'
-    logger.info(
-        f'\n{header}\n'
-        f'Avg Loss: {avg_loss:.4f}\n'
-        f'Accuracy: {accuracy:.2f}\n'
-        f'Precision: {precision:.2f}\n'
-        f'Recall: {recall:.2f}\n'
-        f'F1 Score: {f1_score:.2f}\n'
-        'Confusion Matrix:\n'
-        f'{conf_mtx}'
-    )
-
-def save_model(epoch, model, optimizer, losses, path):
-    torch.save({
-        'epoch': epoch,
-        'model_state_dict': model.state_dict(),
-        'optimizer_state_dict': optimizer.state_dict(),
-        'loss': losses,
-    }, path)
 
 # ================== RUNNABLE ==================
 if __name__ == '__main__':

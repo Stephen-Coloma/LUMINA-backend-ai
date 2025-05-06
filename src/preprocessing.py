@@ -1,9 +1,9 @@
-from src.preprocessing.roi_slice_filter import DicomROIFilter
-from src.preprocessing.dicom_converter import DicomConverter
-from src.preprocessing.volume_processing import VolumeProcessor
-from src.preprocessing.intensity_processing import IntensityProcessor
-from src.preprocessing.dicom_augmentor import Augmentator
-from src.preprocessing.dicom_converter import save_arrays
+from src.preprocessing.ai.roi_slice_filter import DicomROIFilter
+from src.preprocessing.ai.dicom_converter import DicomConverter
+from src.preprocessing.ai.volume_processing import VolumeProcessor
+from src.preprocessing.ai.intensity_processing import IntensityProcessor
+from src.preprocessing.ai.dicom_augmentor import Augmentator
+from src.preprocessing.ai.dicom_converter import save_arrays
 from pathlib import Path
 from src.utils.logger import setup_logger
 import logging

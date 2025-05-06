@@ -9,7 +9,7 @@ class ChannelAttention(nn.Module):
             shared multi-layer perceptron to compute attention weights for each channel.
 
         Architecture:
-            [AvgPool3D -> MPL -> Sigmoid] + [MaxPool3D -> MLP -> Sigmoid] -> Add -> Scale
+            [AvgPool3D -> MLP -> Sigmoid] + [MaxPool3D -> MLP -> Sigmoid] -> Add -> Scale
     """
     def __init__(self, in_channels, reduction_ratio=16):
         """
@@ -20,7 +20,7 @@ class ChannelAttention(nn.Module):
         super(ChannelAttention, self).__init__()
         self.avg_pool = nn.AdaptiveAvgPool3d(1)
         self.max_pool = nn.AdaptiveMaxPool3d(1)
-        self.fc = nn.Sequential(
+        self.shared_mlp = nn.Sequential(
             nn.Linear(in_channels, in_channels // reduction_ratio, bias=False),
             nn.ReLU(inplace=True),
             nn.Linear(in_channels // reduction_ratio, in_channels, bias=False),
@@ -29,8 +29,8 @@ class ChannelAttention(nn.Module):
 
     def forward(self, x):
         b, c, _, _, _ = x.shape
-        avg_out = self.fc(self.avg_pool(x).view(b, c))
-        max_out = self.fc(self.max_pool(x).view(b, c))
+        avg_out = self.shared_mlp(self.avg_pool(x).view(b, c))
+        max_out = self.shared_mlp(self.max_pool(x).view(b, c))
         out = avg_out + max_out
         out = out.view(b, c, 1, 1, 1)
         return x * out
