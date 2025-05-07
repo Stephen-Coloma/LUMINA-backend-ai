@@ -38,7 +38,7 @@ class FeatureExtractionBlock(nn.Module):
             self.blocks.append(CBAM(current_channels))
 
             # Transition
-            if use_transition and (i == 0 or i == 2):
+            if use_transition and i != 1:
                 reduced_channels = int(current_channels * compression)
                 transition = Transition(current_channels, reduced_channels)
                 self.blocks.append(transition)

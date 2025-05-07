@@ -8,34 +8,34 @@ data:
 
 training:
   epochs: 100
-  batch_size: 1
+  batch_size: 2
   shuffle: True
   pin_memory: True
   mixed_precision: True
   early_stop:
     patience: 5
     min_delta: 0.01
-  weights: [1.0, 6.0, 3.0]
 
 validation:
-  batch_size: 1
+  batch_size: 2
   shuffle: False
   pin_memory: True
 
 optimizer:
-  name: adam
+  name: adamw
   lr: 0.0005
-  weight_decay: 0 # 0.0001
+  weight_decay: 0.0001
   momentum: 0.9
 
 loss:
   name: crossentropyloss
+  label_smoothing: 0.1
 
 feature_block:
   in_channels: 1
-  growth_rate: 24
-  use_transition: False
-  compression: 0.5
+  growth_rate: 12
+  use_transition: True
+  compression: 0.75
   dense_block:
-    blocks: 1
-    layers: 5
+    blocks: 2
+    layers: 6

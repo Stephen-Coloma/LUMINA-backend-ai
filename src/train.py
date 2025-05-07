@@ -1,36 +1,48 @@
+# ==== Standard ====
+from pathlib import Path
+from datetime import datetime
+
+# ==== PyTorch ====
 import torch
+from torch import bfloat16
 from torch.amp import GradScaler, autocast
-from sklearn.model_selection import StratifiedShuffleSplit
+from torch.nn.utils import clip_grad_norm_
 from torch.utils.data import DataLoader, Subset
+
+# ==== Utilities ====
+from sklearn.model_selection import StratifiedShuffleSplit
+from tqdm import tqdm
+
+# ==== Project Modules ====
 from src.model.ai.nsclc_model import NSCLC_Model
-from src.utils.logger import setup_logger
 from src.utils.dataset import MedicalDataset
 from src.utils.config_loader import load_config
+from src.utils.logger import setup_logger, log_configuration
 from src.utils.early_stopping import EarlyStopping
 from src.utils.metrics import compute as compute_metrics, log as log_metrics
 from src.utils.factory import get_optimizer, get_loss_fn
-from src.utils.save import save_densenet as save_model
-from pathlib import Path
-from datetime import datetime
-from tqdm import tqdm
+from src.utils.save import save_checkpoint, save_densenet as save_model
 
-# ================== TRAIN FUNCTION ==================
+
+# ========== TRAIN FUNCTION ==========
 def train(model, train_loader, val_loader, loss_fn, optimizer, config, device, logger, start_epoch = None):
     torch.cuda.empty_cache()
 
     start_epoch = start_epoch or 0
     num_epochs = config.training.epochs + 1
 
-    # scaler = GradScaler(enabled=(device.type == 'cuda'))
+    scaler = GradScaler(enabled=(device.type == 'cuda'), init_scale=64, growth_interval=128)
 
+    # early stopping
     early_stopper = EarlyStopping(
         patience=config.training.early_stop.patience,
         min_delta=config.training.early_stop.min_delta
     )
+
     for epoch in range(start_epoch, num_epochs):
         try:
-            model.train()
             logger.info(f'Starting epoch [{epoch + 1}/{num_epochs - 1}]')
+            model.train()
 
             all_preds = []
             all_targets = []
@@ -46,27 +58,20 @@ def train(model, train_loader, val_loader, loss_fn, optimizer, config, device, l
                 ct_batch = ct_batch.to(device, non_blocking=True)
                 pet_batch = pet_batch.to(device, non_blocking=True)
 
-                # # forward pass with mixed precision
-                # with autocast(device.type):
-                #     outputs = model(ct_batch, pet_batch)
-                #     losses = loss_fn(outputs, targets)
-                #     _, preds = torch.max(outputs, 1)
-                #     all_preds.extend(preds.cpu().numpy())
-                #     all_targets.extend(targets.cpu().numpy())
-                #
-                # # backward pass
-                # scaler.scale(losses).backward()
-                # scaler.step(optimizer)
-                # scaler.update()
-
-                outputs = model(ct_batch, pet_batch)
-                losses = loss_fn(outputs, targets)
+                # forward pass with mixed precision
+                with autocast(device.type, dtype=bfloat16):
+                    outputs = model(ct_batch, pet_batch)
+                    losses = loss_fn(outputs, targets)
                 _, preds = torch.max(outputs, 1)
                 all_preds.extend(preds.cpu().numpy())
                 all_targets.extend(targets.cpu().numpy())
 
-                losses.backward()
-                optimizer.step()
+                # backward pass
+                scaler.scale(losses).backward()
+                scaler.unscale_(optimizer)
+                clip_grad_norm_(model.parameters(), max_norm=1.0)
+                scaler.step(optimizer)
+                scaler.update()
 
                 running_loss += losses.item()
                 progress_bar.set_postfix(loss=losses.item())
@@ -87,20 +92,13 @@ def train(model, train_loader, val_loader, loss_fn, optimizer, config, device, l
             timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
             model_path = Path(r'../model')
 
-            # either save the current model as a checkpoint or as the best model
             if early_stopper.early_stop:
                 logger.info(f'Early stopping triggered at epoch {epoch + 1}')
-                model_path = model_path / 'best_model' / f'{timestamp}.pth'
-            else:
-                model_path = model_path / 'checkpoints' / f'{timestamp}.pth'
+                save_model(model, (model_path / 'best_model' / f'{timestamp}.pth'))
 
-            save_model(epoch, model, optimizer, losses, model_path)
+            save_checkpoint(epoch, model, optimizer, losses, (model_path / 'checkpoints' / f'{timestamp}.pth'))
 
             logger.info(f'Epoch {epoch + 1} ended')
-
-            # stop training if early stop is true
-            if early_stopper.early_stop:
-                break
 
             torch.cuda.empty_cache()
         except Exception as e:
@@ -108,7 +106,7 @@ def train(model, train_loader, val_loader, loss_fn, optimizer, config, device, l
 
     logger.info('Training Ended')
 
-# ================== MAIN FUNCTION ==================
+# ========== MAIN FUNCTION ==========
 def main():
     # external model config file
     config = load_config('../configs/model.yml')
@@ -123,9 +121,6 @@ def main():
     # model instantiation
     model = NSCLC_Model(config).to(device)
 
-    # class weights
-    weights = torch.tensor(config.training.weights, dtype=torch.float32).to(device)
-
     # optimizer
     optimizer = get_optimizer(
         name=config.optimizer.name,
@@ -134,10 +129,10 @@ def main():
         weight_decay=config.optimizer.weight_decay
     )
 
-    # loss
+    # loss function
     loss_fn = get_loss_fn(
         name=config.loss.name,
-        # weight=weights
+        label_smoothing=config.loss.label_smoothing
     )
 
     # load dataset
@@ -171,7 +166,6 @@ def main():
 
     # load latest checkpoint if applicable
     checkpoint_files = sorted(Path(r'../model/checkpoints').glob('*.pth'), reverse=True)
-
     start_epoch = 0
     if checkpoint_files:
         last_checkpoint = checkpoint_files[0]
@@ -184,29 +178,11 @@ def main():
         torch.cuda.empty_cache()
 
     # log gpu and config setup
-    logger.info(f'Trained on: {torch.cuda.get_device_name()}')
-    logger.info(
-        '\nPARAMETERS:\n'
-        f'> Epochs: {config.training.epochs}\n'
-        f'> Batch Size: {config.training.batch_size} (Training) | {config.validation.batch_size} (Validation)\n'
-        f'> Optimizer: {config.optimizer.name}\n'
-        f'> Learning Rate: {config.optimizer.lr}\n'
-        f'> Weight Decay: {config.optimizer.weight_decay}\n'
-        f'> Loss Function: {config.loss.name}\n'
-        'FEATURE BLOCK:\n'
-        f'> Growth Rate: {config.feature_block.growth_rate}\n'
-        f'> Use Transition: {config.feature_block.use_transition}\n'
-        f'> Compression: {config.feature_block.compression}\n'
-        'DENSE BLOCK:\n'
-        f'> Num Blocks: {config.feature_block.dense_block.blocks}\n'
-        f'> Num Layers: {config.feature_block.dense_block.layers}'
-    )
+    log_configuration(config, logger, torch.cuda.get_device_name())
 
     # train model
     logger.info('Training Started')
     train(model, train_data_loader, validation_data_loader, loss_fn, optimizer, config, device, logger, start_epoch)
-
-
 
 def validate(model, data_loader, loss_fn, device):
     model.eval()
@@ -214,36 +190,24 @@ def validate(model, data_loader, loss_fn, device):
     all_preds = []
     all_targets = []
 
-    # with torch.no_grad():
-    #     for targets, ct_batch, pet_batch in data_loader:
-    #         targets = targets.to(device, non_blocking=True)
-    #         ct_batch = ct_batch.to(device, non_blocking=True)
-    #         pet_batch = pet_batch.to(device, non_blocking=True)
-    #
-    #         outputs = model(ct_batch, pet_batch)
-    #         losses = loss_fn(outputs, targets)
-    #         _, preds = torch.max(outputs, 1)
-    #         all_preds.extend(preds.cpu().numpy())
-    #         all_targets.extend(targets.cpu().numpy())
-    #
-    #         running_loss += losses.item()
-    #
-    # torch.cuda.empty_cache()
+    # with mixed precision
+    with torch.no_grad():
+        progress_bar = tqdm(data_loader, desc='Validating', leave=False)
+        for targets, ct_batch, pet_batch in progress_bar:
+            targets = targets.to(device, non_blocking=True)
+            ct_batch = ct_batch.to(device, non_blocking=True)
+            pet_batch = pet_batch.to(device, non_blocking=True)
 
-    progress_bar = tqdm(data_loader, desc='Validating', leave=False)
-    for targets, ct_batch, pet_batch in progress_bar:
-        targets = targets.to(device, non_blocking=True)
-        ct_batch = ct_batch.to(device, non_blocking=True)
-        pet_batch = pet_batch.to(device, non_blocking=True)
+            with autocast(device.type):
+                outputs = model(ct_batch, pet_batch)
+                losses = loss_fn(outputs, targets)
 
-        outputs = model(ct_batch, pet_batch)
-        losses = loss_fn(outputs, targets)
-        _, preds = torch.max(outputs, 1)
-        all_preds.extend(preds.cpu().numpy())
-        all_targets.extend(targets.cpu().numpy())
+            _, preds = torch.max(outputs, 1)
+            all_preds.extend(preds.cpu().numpy())
+            all_targets.extend(targets.cpu().numpy())
 
-        running_loss += losses.item()
-        progress_bar.set_postfix(loss=losses.item())
+            running_loss += losses.item()
+            progress_bar.set_postfix(loss=losses.item())
 
     torch.cuda.empty_cache()
 

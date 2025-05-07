@@ -13,7 +13,7 @@ def compute(all_targets, all_preds, running_loss, data_len):
 def log(results, logger, is_training=True):
     avg_loss, accuracy, precision, recall, f1_score, conf_mtx = results
 
-    header = 'Training Results' if is_training else 'Validation Results'
+    header = 'TRAINING RESULTS:' if is_training else 'VALIDATION RESULTS:'
     logger.info(
         f'\n{header}\n'
         f'> Avg Loss: {avg_loss:.4f}\n'
