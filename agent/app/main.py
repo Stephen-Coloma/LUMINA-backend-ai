@@ -1,9 +1,9 @@
 from fastapi import FastAPI
-from routers.app_routers import router
+from .routers.app_routers import router
 
 app = FastAPI()
 
-app.get("/")
+@app.get("/")
 def read_root():
     return {
         "message": "Welcome to the Backend API of the Agent",

@@ -1,10 +1,10 @@
-from preprocess.ai.dicom_converter import DicomConverter
-from preprocess.ai.volume_processing import VolumeProcessor
-from preprocess.ai.intensity_processing import IntensityProcessor
+from app.preprocess.ai.dicom_converter import DicomConverter
+from app.preprocess.ai.volume_processing import VolumeProcessor
+from app.preprocess.ai.intensity_processing import IntensityProcessor
 from pathlib import Path
 
 # Define preprocessing for AI
-async def preprocess_patient_data(ct_dir: Path, pet_dir: Path):
+def preprocess_patient_data(ct_dir: Path, pet_dir: Path):
 
     try:
         # Convert slices to 2D NumPy arrays
