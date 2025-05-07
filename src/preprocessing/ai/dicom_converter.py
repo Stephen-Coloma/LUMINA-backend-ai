@@ -14,6 +14,7 @@ def save_arrays(output_path: Path, filename: str, ct_volume: np.ndarray, pet_vol
     :param label: An uppercase character representing the non-small cell lung cancer type
     """
     logger = logging.getLogger('PreprocessingLogger')
+    output_path.mkdir(parents=True, exist_ok=True)
     try:
         file_path = output_path / f'{filename}.npy'
         np.save(file_path, {'label': label, 'CT': ct_volume, 'PET': pet_volume})

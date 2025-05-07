@@ -1,18 +1,41 @@
 model:
   architecture: "3D_DenseNet"
-  num_classes: 4
+
+data:
+  path: "../data"
+  num_classes: 3
+  train_val_split: 0.8
 
 training:
-  epochs: 10
-  learning_rate: 1e-4
-  batch_size: 4
+  epochs: 100
+  batch_size: 2
+  shuffle: True
+  pin_memory: True
+  mixed_precision: True
+  early_stop:
+    patience: 5
+    min_delta: 0.01
 
 validation:
-  batch_size: 4
+  batch_size: 2
+  shuffle: False
+  pin_memory: True
+
+optimizer:
+  name: adamw
+  lr: 0.0005
+  weight_decay: 0.0001
+  momentum: 0.9
+
+loss:
+  name: crossentropyloss
+  label_smoothing: 0.1
 
 feature_block:
   in_channels: 1
-  growth_rate: 32 # can change to 64 if GPU can handle it use either 32 or 16 only
-  num_layers: 6
-  activation: "Relu"
-  normalization: "batch_norm"
+  growth_rate: 12
+  use_transition: True
+  compression: 0.75
+  dense_block:
+    blocks: 2
+    layers: 6

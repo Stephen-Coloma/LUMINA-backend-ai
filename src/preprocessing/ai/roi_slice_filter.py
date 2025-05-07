@@ -69,3 +69,5 @@ class DicomROIFilter:
             dicom_name = dicom_dict.get(uid_key)
             if dicom_name:
                 self.roi_slices.append(dicom_name)
+
+        print(self.roi_slices)
