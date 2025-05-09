@@ -15,13 +15,13 @@ async def predict_images(file: UploadFile = File(...)):
                 shutil.copyfileobj(file.file, f)
             
             # Preprocess the data and get the prediction
-            ct_volume, pet_volume = process_zip_dicom(zip_path)
+            classification, confidence = process_zip_dicom(zip_path)
             print(f"Data processed. CT volume and PET volume retrieved.")
             print(f"CT volume shape: {ct_volume.shape}, PET volume shape: {pet_volume.shape}")
 
         return {
-            "ct_volume": ct_volume.shape,  
-            "pet_volume": pet_volume.shape  
+            "classification": classification,
+            "confidence": confidence,  
         }
 
     except Exception as e:

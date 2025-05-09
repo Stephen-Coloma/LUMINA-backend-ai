@@ -2,7 +2,8 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 import zipfile
 from app.preprocess.preprocessing import preprocess_patient_data
-# from app.models.model import ai_model
+from app.models.model import ai_model
+import torch
 
 def process_zip_dicom(zip_path: Path):
 
@@ -20,18 +21,22 @@ def process_zip_dicom(zip_path: Path):
         
         # Preprocess the data
         ct_volume, pet_volume = preprocess_patient_data(ct_dir, pet_dir)
+        print(f"CT volume shape: {ct_volume.shape}, PET volume shape: {pet_volume.shape}")
+
+        # Convert ct_volume and pet_volume to tensors
 
         # Predict using the model
-        # prediction = ai_model(ct_volume, pet_volume)
+        prediction = ai_model(ct_volume, pet_volume)
+        print(f"Prediction shape: {prediction.shape}")
 
         # Postprocess the result
-        # confidence, index = prediction.max(dim=0)
-        # index = index.item()
+        confidence, index = prediction.max(dim=0)
+        index = index.item()
 
-        # labels = { "Ardenocarnicoma", "Squamous Cell Carcinoma", "Small Cell Lung Cancer"}
-        # classification = labels[index]
-        # confidence = confidence.item()
+        labels = { "Ardenocarnicoma", "Squamous Cell Carcinoma", "Small Cell Lung Cancer"}
+        classification = labels[index]
+        confidence = confidence.item()
 
         # Return the result in variable format
-        return ct_volume, pet_volume
+        return classification, confidence
 
