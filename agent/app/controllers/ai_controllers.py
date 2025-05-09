@@ -37,7 +37,7 @@ def process_zip_dicom(zip_path: Path):
         confidence, index = probabilities[0].max(dim=0)
         index = index.item()
 
-        labels = ["Ardenocarnicoma", "Small Cell Lung Cancer", "Squamous Cell Carcinoma"]
+        labels = ["Adenocarnicoma", "Small Cell Lung Cancer", "Squamous Cell Carcinoma"]
         classification = labels[index]
         confidence = confidence.item()
 
