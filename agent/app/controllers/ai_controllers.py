@@ -3,7 +3,7 @@ from tempfile import TemporaryDirectory
 import zipfile
 from app.preprocess.preprocessing import preprocess_patient_data
 from app.models.model import ai_model
-import torch
+import torch.nn.functional as F # type: ignore
 
 def process_zip_dicom(zip_path: Path):
 
@@ -27,13 +27,17 @@ def process_zip_dicom(zip_path: Path):
 
         # Predict using the model
         prediction = ai_model(ct_volume, pet_volume)
-        print(f"Prediction shape: {prediction.shape}")
 
-        # Postprocess the result
-        confidence, index = prediction.max(dim=0)
+        probabilities = F.softmax(prediction, dim=1)
+
+        print('PROBABILITIES:', probabilities)
+        print('TEST:', probabilities[0].max(dim=0))
+
+        # Postprocess the resuls
+        confidence, index = probabilities[0].max(dim=0)
         index = index.item()
 
-        labels = { "Ardenocarnicoma", "Squamous Cell Carcinoma", "Small Cell Lung Cancer"}
+        labels = ["Ardenocarnicoma", "Small Cell Lung Cancer", "Squamous Cell Carcinoma"]
         classification = labels[index]
         confidence = confidence.item()
 
