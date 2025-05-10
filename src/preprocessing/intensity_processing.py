@@ -1,8 +1,27 @@
-import numpy as np
+# ==== Standard Imports ====
 import logging
 
+# ==== Third Party Imports ====
+import numpy as np
+
+
 class IntensityProcessor:
+    """
+    A class to process image intensities for different modalities such
+    as CT and PET. This class provides functions for converting intensity
+    values to Hounsfield Units (HU) and Standard Uptake Value (SUV). A
+    normalization function is also included to normalize the intensity
+    values.
+    """
+
     def __init__(self, slices: list, normalize: bool = True):
+        """
+        Initializes IntensityProcessor object.
+
+        Args:
+        :param slices: A list of slices and their corresponding metadata.
+        :param normalize: Flag indicating if normalization should be applied.
+        """
         self.slices = slices
         self.normalize = normalize
         self.logger = logging.getLogger('PreprocessingLogger')
@@ -29,8 +48,10 @@ class IntensityProcessor:
 
     def _convert_to_hu(self, image: np.ndarray, metadata) -> np.ndarray:
         """
-        Converts the image intensity to Hounsfield Units (HU) based on the DICOM metadata.
+        Converts the image intensity to Hounsfield Units (HU) based
+        on the DICOM metadata.
 
+        Args:
         :param image: The image array to be converted.
         :param metadata: A DICOM metadata associated with the image.
         :return: An image converted into Hounsfield Units.
@@ -46,8 +67,10 @@ class IntensityProcessor:
 
     def _convert_to_suv(self, image: np.ndarray, metadata) -> np.ndarray:
         """
-        Convert the image intensity to Standardized Uptake Value (SUV) based on the DICOM metadata.
+        Convert the image intensity to Standardized Uptake Value (SUV)
+        based on the DICOM metadata.
 
+        Args:
         :param image: The image array to be converted.
         :param metadata: A DICOM metadata associated with the image.
         :return: An image converted into Standardized Uptake Value.
@@ -67,6 +90,7 @@ class IntensityProcessor:
         """
         Normalizes the image array to a range from 0 to 1.
 
+        Args:
         :param image: The image to be normalized
         :return: A Normalized image
         """

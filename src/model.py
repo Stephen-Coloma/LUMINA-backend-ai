@@ -1,13 +1,16 @@
+# ==== Third Party Imports ====
 import torch.nn as nn
-from src.model.ai.classification_block import ClassificationBlock
-from src.model.ai.feature_extraction_block import FeatureExtractionBlock
-from src.model.ai.fusion_block import FusionBlock
 
-class NSCLC_Model(nn.Module):
+# ==== Local Project Imports ====
+from blocks import FeatureExtractionBlock, FusionBlock, ClassificationBlock
+
+
+# ========== DenseNet 3D Model Class ==========
+class DenseNet3D(nn.Module):
     def __init__(self, model_config):
-        super(NSCLC_Model, self).__init__()
+        super(DenseNet3D, self).__init__()
 
-        # obtain parameters from the model configuration
+        # obtain parameters from the blocks configuration
         self.num_classes = model_config.data.num_classes
 
         # feature block parameters
@@ -52,17 +55,10 @@ class NSCLC_Model(nn.Module):
         x_ct_features = self.feature_extraction_ct(x_ct)
         x_pet_features = self.feature_extraction_pet(x_pet)
 
-        # print(f'x_ct_features shape: {x_ct_features.shape}')
-        # print(f'x_pet_features shape: {x_pet_features.shape}')
-
         # fusion through concatenation
         x_fused = self.fusion_block(x_ct_features, x_pet_features)
 
-        # print(f'fused_features: {x_fused.shape}')
-
         # classification
         x = self.classification_block(x_fused)
-
-        # print(f'classification output: {x}')
 
         return x

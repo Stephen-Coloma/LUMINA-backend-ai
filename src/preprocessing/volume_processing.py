@@ -1,16 +1,34 @@
-import numpy as np
+# ==== Standard Imports ====
 import logging
 
+# ==== Third Party Imports ====
+import numpy as np
+
+
 class VolumeProcessor:
+    """
+    A utility class for preprocessing 3D medical image volumes.
+    The class provides depth dimension manipulation through
+    cropping and padding.
+    """
+
     def __init__(self, input_array: np.ndarray):
+        """
+        Initializes VolumeProcessor object.
+
+        Args:
+        :param input_array: The array shape to be preprocessed.
+        """
         self.input_array = input_array
         self.logger = logging.getLogger('PreprocessingLogger')
 
     def resize_depth(self, target_depth: int = 15) -> np.ndarray:
         """
         Resizes the depth of a 3D image array to a targeted depth.
-        1. If the input depth is greater than the target depth, the edges are cropped.
-        2. If the input depth is less than the target depth, a padding will be applied.
+        1. If the input depth is greater than the target depth,
+           the edges are cropped.
+        2. If the input depth is less than the target depth, a
+           padding will be applied.
 
         :param target_depth: The desired number of slices.
         :return: A 3D image array with a resized depth.

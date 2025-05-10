@@ -1,30 +1,28 @@
-# ==== Standard ====
+# ==== Standard Imports ====
 from pathlib import Path
 from datetime import datetime
 
-# ==== PyTorch ====
+# ==== Third Party Imports ====
 import torch
 from torch import bfloat16
 from torch.amp import GradScaler, autocast
 from torch.nn.utils import clip_grad_norm_
 from torch.utils.data import DataLoader, Subset
-
-# ==== Utilities ====
 from sklearn.model_selection import StratifiedShuffleSplit
 from tqdm import tqdm
 
-# ==== Project Modules ====
-from src.model.ai.nsclc_model import NSCLC_Model
-from src.utils.dataset import MedicalDataset
-from src.utils.config_loader import load_config
-from src.utils.logger import setup_logger, log_configuration
-from src.utils.early_stopping import EarlyStopping
-from src.utils.metrics import compute as compute_metrics, log as log_metrics
-from src.utils.factory import get_optimizer, get_loss_fn
-from src.utils.save import save_checkpoint, save_densenet as save_model
+# ==== Local Project Imports ====
+from .model import DenseNet3D
+from .data import MedicalDataset
+from utils import load_config
+from utils import EarlyStopping
+from utils import get_optimizer, get_loss_fn
+from utils import setup_logger, log_configuration
+from utils import compute as compute_metrics, log as log_metrics
+from utils import save_checkpoint, save_model
 
 
-# ========== TRAIN FUNCTION ==========
+# ========== Train Function ==========
 def train(model, train_loader, val_loader, loss_fn, optimizer, config, device, logger, start_epoch = None):
     torch.cuda.empty_cache()
 
@@ -49,6 +47,7 @@ def train(model, train_loader, val_loader, loss_fn, optimizer, config, device, l
 
             # training phase
             running_loss = 0.0
+            total_samples = 0
 
             progress_bar = tqdm(train_loader, desc='Training', leave=False)
             for targets, ct_batch, pet_batch in progress_bar:
@@ -62,9 +61,14 @@ def train(model, train_loader, val_loader, loss_fn, optimizer, config, device, l
                 with autocast(device.type, dtype=bfloat16):
                     outputs = model(ct_batch, pet_batch)
                     losses = loss_fn(outputs, targets)
+
                 _, preds = torch.max(outputs, 1)
                 all_preds.extend(preds.cpu().numpy())
                 all_targets.extend(targets.cpu().numpy())
+
+                if torch.isnan(losses) or torch.isinf(losses):
+                    logger.error("Loss is NaN or Inf. Skipping this batch.")
+                    continue
 
                 # backward pass
                 scaler.scale(losses).backward()
@@ -73,11 +77,13 @@ def train(model, train_loader, val_loader, loss_fn, optimizer, config, device, l
                 scaler.step(optimizer)
                 scaler.update()
 
-                running_loss += losses.item()
+                batch_size = targets.size(0)
+                running_loss += losses.item() * batch_size
+                total_samples += batch_size
                 progress_bar.set_postfix(loss=losses.item())
 
             # metric computation for training data
-            train_results = compute_metrics(all_targets, all_preds, running_loss, len(train_loader))
+            train_results = compute_metrics(all_targets, all_preds, running_loss, total_samples)
 
             # metric computation for validation data
             val_results = validate(model, val_loader, loss_fn, device)
@@ -94,7 +100,8 @@ def train(model, train_loader, val_loader, loss_fn, optimizer, config, device, l
 
             if early_stopper.early_stop:
                 logger.info(f'Early stopping triggered at epoch {epoch + 1}')
-                save_model(model, (model_path / 'best_model' / f'{timestamp}.pth'))
+                save_model(model, (model_path / f'best_model_{timestamp}.pth'))
+                early_stopper.reset()
 
             save_checkpoint(epoch, model, optimizer, losses, (model_path / 'checkpoints' / f'{timestamp}.pth'))
 
@@ -106,9 +113,9 @@ def train(model, train_loader, val_loader, loss_fn, optimizer, config, device, l
 
     logger.info('Training Ended')
 
-# ========== MAIN FUNCTION ==========
+# ========== Main Function ==========
 def main():
-    # external model config file
+    # external blocks config file
     config = load_config('../configs/model.yml')
 
     # console and file logger
@@ -118,8 +125,8 @@ def main():
     # device type (cuda for nvidia gpu, else cpu)
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-    # model instantiation
-    model = NSCLC_Model(config).to(device)
+    # blocks instantiation
+    model = DenseNet3D(config).to(device)
 
     # optimizer
     optimizer = get_optimizer(
@@ -180,15 +187,18 @@ def main():
     # log gpu and config setup
     log_configuration(config, logger, torch.cuda.get_device_name())
 
-    # train model
+    # train blocks
     logger.info('Training Started')
     train(model, train_data_loader, validation_data_loader, loss_fn, optimizer, config, device, logger, start_epoch)
 
 def validate(model, data_loader, loss_fn, device):
     model.eval()
-    running_loss = 0.0
+
     all_preds = []
     all_targets = []
+
+    running_loss = 0.0
+    total_samples = 0
 
     # with mixed precision
     with torch.no_grad():
@@ -198,7 +208,7 @@ def validate(model, data_loader, loss_fn, device):
             ct_batch = ct_batch.to(device, non_blocking=True)
             pet_batch = pet_batch.to(device, non_blocking=True)
 
-            with autocast(device.type):
+            with autocast(device.type, dtype=bfloat16):
                 outputs = model(ct_batch, pet_batch)
                 losses = loss_fn(outputs, targets)
 
@@ -206,13 +216,15 @@ def validate(model, data_loader, loss_fn, device):
             all_preds.extend(preds.cpu().numpy())
             all_targets.extend(targets.cpu().numpy())
 
-            running_loss += losses.item()
+            batch_size = targets.size(0)
+            running_loss += losses.item() * batch_size
+            total_samples += batch_size
             progress_bar.set_postfix(loss=losses.item())
 
     torch.cuda.empty_cache()
 
-    return compute_metrics(all_targets, all_preds, running_loss, len(data_loader))
+    return compute_metrics(all_targets, all_preds, running_loss, total_samples)
 
-# ================== RUNNABLE ==================
+# ========== Runnable ==========
 if __name__ == '__main__':
     main()

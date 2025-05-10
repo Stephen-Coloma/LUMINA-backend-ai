@@ -1,25 +1,32 @@
+# ==== Third Party Imports ====
 import torch
 from torch import nn as nn
-from torch.nn import functional as f
-from src.model.ai.cbam import CBAM
 
-# ===================== Feature Extraction Block =====================
+# ==== Local Project Imports ====
+from cbam import CBAM
+
+
 class FeatureExtractionBlock(nn.Module):
-    """ Feature Extraction Block
-            Combines Dense Block, CBAM, and an optional Transition Layer, repeated per block.
-
-        Architecture:
-            Input -> Dense Block -> CBAM -> Transition Layer -> Output
     """
+    A feature extraction block that integrates Dense Blocks,
+    CBAM (attention), and an optional Transition Layer for
+    channel and spatial down-sampling.
+
+    Architecture:
+        Input -> [Dense Block -> CBAM -> (Transition)] * num_blocks -> Output
+    """
+
     def __init__(self, in_channels, growth_rate, num_blocks, num_layers, use_transition=True, compression=0.5):
         """
+        Initializes FeatureExtractionBlock object.
+
         Args:
         :param in_channels: Number of input channels.
-        :param growth_rate: Number of new feature maps added to the output by each layer in the Dense Block.
-                            (i.e. growth in channel dimension per layer)
+        :param growth_rate: Number of feature maps each DenseBlock layer adds.
+        :param num_blocks: Number of Feature Extraction Block sequences.
         :param num_layers: Number of layers in the Dense Block.
-        :param use_transition: Activation of transition layer
-        :param compression: Factor to reduce the number of channels
+        :param use_transition: Flag indicating if a transition layer will be utilized.
+        :param compression: Factor to reduce the number of channels in the transition layer.
         """
         super(FeatureExtractionBlock, self).__init__()
         self.blocks = nn.ModuleList()
@@ -35,10 +42,13 @@ class FeatureExtractionBlock(nn.Module):
             current_channels += num_layers * growth_rate
 
             # CBAM
-            self.blocks.append(CBAM(current_channels))
+            self.blocks.append(nn.Sequential(
+                CBAM(current_channels),
+                nn.Dropout3d(p=0.1)
+            ))
 
             # Transition
-            if use_transition and i != 1:
+            if use_transition and i == 0:
                 reduced_channels = int(current_channels * compression)
                 transition = Transition(current_channels, reduced_channels)
                 self.blocks.append(transition)
@@ -51,21 +61,22 @@ class FeatureExtractionBlock(nn.Module):
             x = block(x)
         return x
 
-# ===================== Dense Block =====================
-class DenseBlock(nn.Module):
-    """ Dense Block:
-            Sequence of layers where each layer extracts new features and concatenates its output with all previous
-            feature maps enabling feature reuse.
 
-        Architecture:
-            [Bottleneck -> Conv3D(3x3x3) -> InstanceNorm -> ReLU] x num_layers
+class DenseBlock(nn.Module):
     """
+    A Dense Block for 3D volumetric feature extraction.
+
+    Architecture (per layer):
+        [Bottleneck -> Conv3d(3x3x3) -> InstanceNorm3d -> ReLU] * num_layers
+    """
+
     def __init__(self, in_channels, growth_rate, num_layers):
         """
+        Initializes DenseBlock object.
+
         Args:
-        :param in_channels: Number of input channels before entering the Dense Block.
-        :param growth_rate: Number of new feature maps added to the output by each layer.
-                            (i.e. growth in channel dimension per layer)
+        :param in_channels: Input feature channels.
+        :param growth_rate: Output channels added per layer.
         :param num_layers: Number of layers in the Dense Block.
         """
         super(DenseBlock, self).__init__()
@@ -76,7 +87,6 @@ class DenseBlock(nn.Module):
                 Bottleneck(in_channels + i * growth_rate, growth_rate),
 
                 # apply a 3x3x3 convolution to extract new features
-                # in_channel is also equal to growth_rate due to the bottleneck layer
                 nn.Conv3d(growth_rate, growth_rate, kernel_size=3, stride=1, padding=1, bias=False),
                 nn.InstanceNorm3d(growth_rate, affine=True),
                 nn.ReLU(inplace=True),
@@ -90,56 +100,60 @@ class DenseBlock(nn.Module):
             x = torch.cat([x, new_features], dim=1)
         return x
 
-# ===================== Bottleneck Layer =====================
-class Bottleneck(nn.Module):
-    """ Bottleneck Layer:
-            Applies a 1x1x1 convolution to reduce the number of input feature maps before passing them to the
-            dense block. This enforces the output feature maps to be equal to 'growth_rate', controlling feature
-            expansion.
 
-        Architecture:
-            Conv3D(1x1x1) -> InstanceNorm -> ReLU
+class Bottleneck(nn.Module):
     """
+    A bottleneck layer that reduces input feature dimensionality
+    before a 3D convolution.
+
+    Architecture:
+        Conv3d(1x1x1) -> InstanceNorm3d -> ReLU
+    """
+
     def __init__(self, in_channels, growth_rate):
         """
         Args:
-        :param in_channels: Number of input channels before the bottleneck layer.
-        :param growth_rate:  Number of output feature maps after the bottleneck layer.
+        :param in_channels: Input feature channels.
+        :param growth_rate:  Output channels after the bottleneck layer.
         """
         super(Bottleneck, self).__init__()
         self.conv = nn.Conv3d(in_channels, growth_rate, kernel_size=1, stride=1, bias=False)
-        self.bn = nn.InstanceNorm3d(growth_rate, affine=True)
+        self.norm = nn.InstanceNorm3d(growth_rate, affine=True)
         self.relu = nn.ReLU(inplace=True)
 
     def forward(self, x):
         x = self.conv(x)
-        x = self.bn(x)
+        x = self.norm(x)
         x = self.relu(x)
         return x
 
-# ===================== Transition Layer =====================
-class Transition(nn.Module):
-    """ Transition Layer
-            Reduces the number of feature maps and spatial dimensions.
 
-        Architecture:
-            Conv3D(1x1x1) -> InstanceNorm -> ReLU -> AvgPool3D(2x2x2)
+class Transition(nn.Module):
     """
+    A transition layer to reduce the number of channels
+    and spatial resolution.
+
+    Architecture:
+        Conv3d(1x1x1) -> InstanceNorm3d -> ReLU -> AvgPool3d(1x2x2)
+    """
+
     def __init__(self, in_channels, out_channels):
         """
+        Initializes Transition object.
+
         Args:
-        :param in_channels: The number of input feature channels.
-        :param out_channels: The number of output feature channels.
+        :param in_channels: Input feature channels.
+        :param out_channels: Output feature channels after compression.
         """
         super(Transition, self).__init__()
         self.conv = nn.Conv3d(in_channels, out_channels, kernel_size=1, stride=1, bias=False)
-        self.bn = nn.InstanceNorm3d(out_channels, affine=True)
+        self.norm = nn.InstanceNorm3d(out_channels, affine=True)
         self.relu = nn.ReLU(inplace=True)
         self.avg_pool = nn.AvgPool3d(kernel_size=(1, 2, 2), stride=(1, 2, 2))
 
     def forward(self, x):
         x = self.conv(x)
-        x = self.bn(x)
+        x = self.norm(x)
         x = self.relu(x)
         x = self.avg_pool(x)
         return x

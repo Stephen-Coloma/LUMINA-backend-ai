@@ -1,12 +1,28 @@
+# ==== Standard Imports ====
+from pathlib import Path
+import logging
+
+# ==== Third Party Imports ====
 import numpy as np
 import torch
 import torch.nn.functional as F
 from torch.utils.data import Dataset
-from pathlib import Path
-import logging
+
 
 class MedicalDataset(Dataset):
+    """
+    A custom PyTorch dataset class for loading medical imaging
+    data stored in .npy format. The file contains a dictionary
+    that composes of the label, CT volume, and PET volume.
+    """
+
     def __init__(self, dataset_path: Path):
+        """
+        Initializes MedicalDataset object.
+
+        Args:
+        :param dataset_path: The path of the dataset containing .npy files.
+        """
         self.logger = logging.getLogger('TrainingLogger')
         self.dataset = []
 
@@ -25,9 +41,21 @@ class MedicalDataset(Dataset):
                 self.logger.warning(f'Failed to load {data_file.name}: {e}')
 
     def __len__(self):
+        """
+        Returns the number of samples in the dataset.
+
+        :return: The total number of samples.
+        """
         return len(self.dataset)
 
     def __getitem__(self, index):
+        """
+        Retrieves one sample from the dataset.
+
+        Args:
+        :param index: The index of the sample to retrieve.
+        :return: A tuple of label, ct, and pet tensors.
+        """
         data = self.dataset[index]
 
         # convert label string to integer index

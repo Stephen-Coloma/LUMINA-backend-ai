@@ -1,0 +1,1385 @@
+2025-05-04 17:27:11,063 - INFO - =====< PRE-PROCESSING PATIENT A0164 >=====
+2025-05-04 17:27:16,399 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:27:16,415 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:27:16,416 - INFO - Found 163 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0164\CT
+2025-05-04 17:27:16,730 - INFO - Successfully loaded and sorted 163 slices.
+2025-05-04 17:27:16,730 - INFO - Found 163 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0164\PET
+2025-05-04 17:27:16,909 - INFO - Successfully loaded and sorted 163 slices.
+2025-05-04 17:27:17,308 - INFO - Resizing slices from 163 to 32
+2025-05-04 17:27:17,308 - INFO - Resizing slices from 163 to 32
+2025-05-04 17:27:17,368 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0164.npy
+2025-05-04 17:27:17,368 - INFO - ---------- Successfully processed patient A0164 ----------
+2025-05-04 17:27:17,392 - INFO - =====< PRE-PROCESSING PATIENT A0165 >=====
+2025-05-04 17:27:21,854 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:27:21,871 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:27:21,871 - INFO - Found 27 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0165\CT
+2025-05-04 17:27:21,922 - INFO - Successfully loaded and sorted 27 slices.
+2025-05-04 17:27:21,922 - INFO - Found 27 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0165\PET
+2025-05-04 17:27:21,952 - INFO - Successfully loaded and sorted 27 slices.
+2025-05-04 17:27:22,018 - INFO - Resizing slices from 27 to 32
+2025-05-04 17:27:22,032 - INFO - Resizing slices from 27 to 32
+2025-05-04 17:27:22,090 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0165.npy
+2025-05-04 17:27:22,090 - INFO - ---------- Successfully processed patient A0165 ----------
+2025-05-04 17:27:22,095 - INFO - =====< PRE-PROCESSING PATIENT A0166 >=====
+2025-05-04 17:27:25,625 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:27:25,633 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:27:25,633 - INFO - Found 15 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0166\CT
+2025-05-04 17:27:25,660 - INFO - Successfully loaded and sorted 15 slices.
+2025-05-04 17:27:25,660 - INFO - Found 15 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0166\PET
+2025-05-04 17:27:25,676 - INFO - Successfully loaded and sorted 15 slices.
+2025-05-04 17:27:25,714 - INFO - Resizing slices from 15 to 32
+2025-05-04 17:27:25,723 - INFO - Resizing slices from 15 to 32
+2025-05-04 17:27:25,781 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0166.npy
+2025-05-04 17:27:25,781 - INFO - ---------- Successfully processed patient A0166 ----------
+2025-05-04 17:27:25,784 - INFO - =====< PRE-PROCESSING PATIENT A0167 >=====
+2025-05-04 17:27:29,915 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:27:29,926 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:27:29,926 - INFO - Found 68 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0167\CT
+2025-05-04 17:27:30,055 - INFO - Successfully loaded and sorted 68 slices.
+2025-05-04 17:27:30,055 - INFO - Found 68 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0167\PET
+2025-05-04 17:27:30,176 - INFO - Successfully loaded and sorted 68 slices.
+2025-05-04 17:27:30,343 - INFO - Resizing slices from 68 to 32
+2025-05-04 17:27:30,343 - INFO - Resizing slices from 68 to 32
+2025-05-04 17:27:30,394 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0167.npy
+2025-05-04 17:27:30,394 - INFO - ---------- Successfully processed patient A0167 ----------
+2025-05-04 17:27:30,405 - INFO - =====< PRE-PROCESSING PATIENT A0168 >=====
+2025-05-04 17:27:35,133 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:27:35,155 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:27:35,155 - INFO - Found 15 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0168\CT
+2025-05-04 17:27:35,183 - INFO - Successfully loaded and sorted 15 slices.
+2025-05-04 17:27:35,183 - INFO - Found 15 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0168\PET
+2025-05-04 17:27:35,199 - INFO - Successfully loaded and sorted 15 slices.
+2025-05-04 17:27:35,236 - INFO - Resizing slices from 15 to 32
+2025-05-04 17:27:35,246 - INFO - Resizing slices from 15 to 32
+2025-05-04 17:27:35,302 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0168.npy
+2025-05-04 17:27:35,302 - INFO - ---------- Successfully processed patient A0168 ----------
+2025-05-04 17:27:35,305 - INFO - =====< PRE-PROCESSING PATIENT A0169 >=====
+2025-05-04 17:27:40,047 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:27:40,066 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:27:40,066 - INFO - Found 37 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0169\CT
+2025-05-04 17:27:40,134 - INFO - Successfully loaded and sorted 37 slices.
+2025-05-04 17:27:40,134 - INFO - Found 37 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0169\PET
+2025-05-04 17:27:40,176 - INFO - Successfully loaded and sorted 37 slices.
+2025-05-04 17:27:40,269 - INFO - Resizing slices from 37 to 32
+2025-05-04 17:27:40,269 - INFO - Resizing slices from 37 to 32
+2025-05-04 17:27:40,320 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0169.npy
+2025-05-04 17:27:40,320 - INFO - ---------- Successfully processed patient A0169 ----------
+2025-05-04 17:27:40,326 - INFO - =====< PRE-PROCESSING PATIENT A0170 >=====
+2025-05-04 17:27:44,750 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:27:44,762 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:27:44,762 - INFO - Found 54 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0170\CT
+2025-05-04 17:27:44,861 - INFO - Successfully loaded and sorted 54 slices.
+2025-05-04 17:27:44,861 - INFO - Found 54 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0170\PET
+2025-05-04 17:27:44,921 - INFO - Successfully loaded and sorted 54 slices.
+2025-05-04 17:27:45,056 - INFO - Resizing slices from 54 to 32
+2025-05-04 17:27:45,056 - INFO - Resizing slices from 54 to 32
+2025-05-04 17:27:45,111 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0170.npy
+2025-05-04 17:27:45,111 - INFO - ---------- Successfully processed patient A0170 ----------
+2025-05-04 17:27:45,119 - INFO - =====< PRE-PROCESSING PATIENT A0171 >=====
+2025-05-04 17:27:48,346 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:27:48,357 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:27:48,358 - INFO - Found 53 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0171\CT
+2025-05-04 17:27:48,455 - INFO - Successfully loaded and sorted 53 slices.
+2025-05-04 17:27:48,456 - INFO - Found 53 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0171\PET
+2025-05-04 17:27:48,514 - INFO - Successfully loaded and sorted 53 slices.
+2025-05-04 17:27:48,646 - INFO - Resizing slices from 53 to 32
+2025-05-04 17:27:48,646 - INFO - Resizing slices from 53 to 32
+2025-05-04 17:27:48,705 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0171.npy
+2025-05-04 17:27:48,705 - INFO - ---------- Successfully processed patient A0171 ----------
+2025-05-04 17:27:48,714 - INFO - =====< PRE-PROCESSING PATIENT A0173 >=====
+2025-05-04 17:27:52,640 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:27:52,659 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:27:52,660 - INFO - Found 34 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0173\CT
+2025-05-04 17:27:52,722 - INFO - Successfully loaded and sorted 34 slices.
+2025-05-04 17:27:52,722 - INFO - Found 34 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0173\PET
+2025-05-04 17:27:52,760 - INFO - Successfully loaded and sorted 34 slices.
+2025-05-04 17:27:52,845 - INFO - Resizing slices from 34 to 32
+2025-05-04 17:27:52,846 - INFO - Resizing slices from 34 to 32
+2025-05-04 17:27:52,900 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0173.npy
+2025-05-04 17:27:52,900 - INFO - ---------- Successfully processed patient A0173 ----------
+2025-05-04 17:27:52,906 - INFO - =====< PRE-PROCESSING PATIENT A0174 >=====
+2025-05-04 17:27:57,944 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:27:57,965 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:27:57,965 - INFO - Found 26 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0174\CT
+2025-05-04 17:27:58,015 - INFO - Successfully loaded and sorted 26 slices.
+2025-05-04 17:27:58,015 - INFO - Found 26 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0174\PET
+2025-05-04 17:27:58,044 - INFO - Successfully loaded and sorted 26 slices.
+2025-05-04 17:27:58,107 - INFO - Resizing slices from 26 to 32
+2025-05-04 17:27:58,119 - INFO - Resizing slices from 26 to 32
+2025-05-04 17:27:58,174 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0174.npy
+2025-05-04 17:27:58,174 - INFO - ---------- Successfully processed patient A0174 ----------
+2025-05-04 17:27:58,178 - INFO - =====< PRE-PROCESSING PATIENT A0175 >=====
+2025-05-04 17:28:03,029 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:28:03,046 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:28:03,046 - INFO - Found 34 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0175\CT
+2025-05-04 17:28:03,110 - INFO - Successfully loaded and sorted 34 slices.
+2025-05-04 17:28:03,110 - INFO - Found 34 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0175\PET
+2025-05-04 17:28:03,148 - INFO - Successfully loaded and sorted 34 slices.
+2025-05-04 17:28:03,234 - INFO - Resizing slices from 34 to 32
+2025-05-04 17:28:03,235 - INFO - Resizing slices from 34 to 32
+2025-05-04 17:28:03,285 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0175.npy
+2025-05-04 17:28:03,285 - INFO - ---------- Successfully processed patient A0175 ----------
+2025-05-04 17:28:03,291 - INFO - =====< PRE-PROCESSING PATIENT A0176 >=====
+2025-05-04 17:28:08,786 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:28:08,806 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:28:08,807 - INFO - Found 36 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0176\CT
+2025-05-04 17:28:08,873 - INFO - Successfully loaded and sorted 36 slices.
+2025-05-04 17:28:08,873 - INFO - Found 36 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0176\PET
+2025-05-04 17:28:08,913 - INFO - Successfully loaded and sorted 36 slices.
+2025-05-04 17:28:09,004 - INFO - Resizing slices from 36 to 32
+2025-05-04 17:28:09,004 - INFO - Resizing slices from 36 to 32
+2025-05-04 17:28:09,053 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0176.npy
+2025-05-04 17:28:09,053 - INFO - ---------- Successfully processed patient A0176 ----------
+2025-05-04 17:28:09,059 - INFO - =====< PRE-PROCESSING PATIENT A0177 >=====
+2025-05-04 17:28:14,196 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:28:14,216 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:28:14,216 - INFO - Found 35 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0177\CT
+2025-05-04 17:28:14,281 - INFO - Successfully loaded and sorted 35 slices.
+2025-05-04 17:28:14,282 - INFO - Found 35 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0177\PET
+2025-05-04 17:28:14,358 - INFO - Successfully loaded and sorted 35 slices.
+2025-05-04 17:28:14,447 - INFO - Resizing slices from 35 to 32
+2025-05-04 17:28:14,447 - INFO - Resizing slices from 35 to 32
+2025-05-04 17:28:14,501 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0177.npy
+2025-05-04 17:28:14,501 - INFO - ---------- Successfully processed patient A0177 ----------
+2025-05-04 17:28:14,506 - INFO - =====< PRE-PROCESSING PATIENT A0178 >=====
+2025-05-04 17:28:18,633 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:28:18,656 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:28:18,657 - INFO - Found 46 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0178\CT
+2025-05-04 17:28:18,742 - INFO - Successfully loaded and sorted 46 slices.
+2025-05-04 17:28:18,743 - INFO - Found 46 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0178\PET
+2025-05-04 17:28:18,794 - INFO - Successfully loaded and sorted 46 slices.
+2025-05-04 17:28:18,909 - INFO - Resizing slices from 46 to 32
+2025-05-04 17:28:18,909 - INFO - Resizing slices from 46 to 32
+2025-05-04 17:28:18,957 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0178.npy
+2025-05-04 17:28:18,958 - INFO - ---------- Successfully processed patient A0178 ----------
+2025-05-04 17:28:18,964 - INFO - =====< PRE-PROCESSING PATIENT A0179 >=====
+2025-05-04 17:28:22,478 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:28:22,490 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:28:22,491 - INFO - Found 68 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0179\CT
+2025-05-04 17:28:22,620 - INFO - Successfully loaded and sorted 68 slices.
+2025-05-04 17:28:22,620 - INFO - Found 68 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0179\PET
+2025-05-04 17:28:22,696 - INFO - Successfully loaded and sorted 68 slices.
+2025-05-04 17:28:22,869 - INFO - Resizing slices from 68 to 32
+2025-05-04 17:28:22,869 - INFO - Resizing slices from 68 to 32
+2025-05-04 17:28:22,927 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0179.npy
+2025-05-04 17:28:22,928 - INFO - ---------- Successfully processed patient A0179 ----------
+2025-05-04 17:28:22,939 - INFO - =====< PRE-PROCESSING PATIENT A0180 >=====
+2025-05-04 17:28:28,333 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:28:28,353 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:28:28,354 - INFO - Found 43 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0180\CT
+2025-05-04 17:28:28,434 - INFO - Successfully loaded and sorted 43 slices.
+2025-05-04 17:28:28,434 - INFO - Found 43 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0180\PET
+2025-05-04 17:28:28,482 - INFO - Successfully loaded and sorted 43 slices.
+2025-05-04 17:28:28,591 - INFO - Resizing slices from 43 to 32
+2025-05-04 17:28:28,591 - INFO - Resizing slices from 43 to 32
+2025-05-04 17:28:28,641 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0180.npy
+2025-05-04 17:28:28,641 - INFO - ---------- Successfully processed patient A0180 ----------
+2025-05-04 17:28:28,648 - INFO - =====< PRE-PROCESSING PATIENT A0181 >=====
+2025-05-04 17:28:33,875 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:28:33,889 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:28:33,890 - INFO - Found 60 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0181\CT
+2025-05-04 17:28:34,003 - INFO - Successfully loaded and sorted 60 slices.
+2025-05-04 17:28:34,004 - INFO - Found 60 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0181\PET
+2025-05-04 17:28:34,072 - INFO - Successfully loaded and sorted 60 slices.
+2025-05-04 17:28:34,220 - INFO - Resizing slices from 60 to 32
+2025-05-04 17:28:34,220 - INFO - Resizing slices from 60 to 32
+2025-05-04 17:28:34,273 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0181.npy
+2025-05-04 17:28:34,273 - INFO - ---------- Successfully processed patient A0181 ----------
+2025-05-04 17:28:34,282 - INFO - =====< PRE-PROCESSING PATIENT A0182 >=====
+2025-05-04 17:28:39,653 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:28:39,670 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:28:39,671 - INFO - Found 75 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0182\CT
+2025-05-04 17:28:39,812 - INFO - Successfully loaded and sorted 75 slices.
+2025-05-04 17:28:39,812 - INFO - Found 75 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0182\PET
+2025-05-04 17:28:39,943 - INFO - Successfully loaded and sorted 75 slices.
+2025-05-04 17:28:40,126 - INFO - Resizing slices from 75 to 32
+2025-05-04 17:28:40,126 - INFO - Resizing slices from 75 to 32
+2025-05-04 17:28:40,185 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0182.npy
+2025-05-04 17:28:40,185 - INFO - ---------- Successfully processed patient A0182 ----------
+2025-05-04 17:28:40,195 - INFO - =====< PRE-PROCESSING PATIENT A0183 >=====
+2025-05-04 17:28:44,890 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:28:44,904 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:28:44,904 - INFO - Found 51 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0183\CT
+2025-05-04 17:28:44,998 - INFO - Successfully loaded and sorted 51 slices.
+2025-05-04 17:28:44,999 - INFO - Found 37 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0183\PET
+2025-05-04 17:28:45,039 - INFO - Successfully loaded and sorted 37 slices.
+2025-05-04 17:28:45,166 - INFO - Resizing slices from 51 to 32
+2025-05-04 17:28:45,166 - INFO - Resizing slices from 37 to 32
+2025-05-04 17:28:45,216 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0183.npy
+2025-05-04 17:28:45,216 - INFO - ---------- Successfully processed patient A0183 ----------
+2025-05-04 17:28:45,224 - INFO - =====< PRE-PROCESSING PATIENT A0184 >=====
+2025-05-04 17:28:50,621 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:28:50,641 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:28:50,641 - INFO - Found 65 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0184\CT
+2025-05-04 17:28:50,765 - INFO - Successfully loaded and sorted 65 slices.
+2025-05-04 17:28:50,765 - INFO - Found 65 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0184\PET
+2025-05-04 17:28:50,835 - INFO - Successfully loaded and sorted 65 slices.
+2025-05-04 17:28:50,996 - INFO - Resizing slices from 65 to 32
+2025-05-04 17:28:50,997 - INFO - Resizing slices from 65 to 32
+2025-05-04 17:28:51,046 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0184.npy
+2025-05-04 17:28:51,047 - INFO - ---------- Successfully processed patient A0184 ----------
+2025-05-04 17:28:51,057 - INFO - =====< PRE-PROCESSING PATIENT A0185 >=====
+2025-05-04 17:28:55,381 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:28:55,402 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:28:55,402 - INFO - Found 21 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0185\CT
+2025-05-04 17:28:55,443 - INFO - Successfully loaded and sorted 21 slices.
+2025-05-04 17:28:55,443 - INFO - Found 21 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0185\PET
+2025-05-04 17:28:55,466 - INFO - Successfully loaded and sorted 21 slices.
+2025-05-04 17:28:55,516 - INFO - Resizing slices from 21 to 32
+2025-05-04 17:28:55,527 - INFO - Resizing slices from 21 to 32
+2025-05-04 17:28:55,579 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0185.npy
+2025-05-04 17:28:55,580 - INFO - ---------- Successfully processed patient A0185 ----------
+2025-05-04 17:28:55,583 - INFO - =====< PRE-PROCESSING PATIENT A0187 >=====
+2025-05-04 17:29:00,643 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:29:00,663 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:29:00,663 - INFO - Found 65 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0187\CT
+2025-05-04 17:29:00,784 - INFO - Successfully loaded and sorted 65 slices.
+2025-05-04 17:29:00,784 - INFO - Found 65 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0187\PET
+2025-05-04 17:29:00,857 - INFO - Successfully loaded and sorted 65 slices.
+2025-05-04 17:29:01,021 - INFO - Resizing slices from 65 to 32
+2025-05-04 17:29:01,021 - INFO - Resizing slices from 65 to 32
+2025-05-04 17:29:01,073 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0187.npy
+2025-05-04 17:29:01,073 - INFO - ---------- Successfully processed patient A0187 ----------
+2025-05-04 17:29:01,086 - INFO - =====< PRE-PROCESSING PATIENT A0188 >=====
+2025-05-04 17:29:04,367 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:29:04,382 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:29:04,383 - INFO - Found 79 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0188\CT
+2025-05-04 17:29:04,532 - INFO - Successfully loaded and sorted 79 slices.
+2025-05-04 17:29:04,532 - INFO - Found 79 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0188\PET
+2025-05-04 17:29:04,623 - INFO - Successfully loaded and sorted 79 slices.
+2025-05-04 17:29:04,816 - INFO - Resizing slices from 79 to 32
+2025-05-04 17:29:04,816 - INFO - Resizing slices from 79 to 32
+2025-05-04 17:29:04,868 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0188.npy
+2025-05-04 17:29:04,868 - INFO - ---------- Successfully processed patient A0188 ----------
+2025-05-04 17:29:04,879 - INFO - =====< PRE-PROCESSING PATIENT A0189 >=====
+2025-05-04 17:29:08,194 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:29:08,212 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:29:08,212 - INFO - Found 47 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0189\CT
+2025-05-04 17:29:08,300 - INFO - Successfully loaded and sorted 47 slices.
+2025-05-04 17:29:08,300 - INFO - Found 47 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0189\PET
+2025-05-04 17:29:08,395 - INFO - Successfully loaded and sorted 47 slices.
+2025-05-04 17:29:08,512 - INFO - Resizing slices from 47 to 32
+2025-05-04 17:29:08,512 - INFO - Resizing slices from 47 to 32
+2025-05-04 17:29:08,563 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0189.npy
+2025-05-04 17:29:08,564 - INFO - ---------- Successfully processed patient A0189 ----------
+2025-05-04 17:29:08,571 - INFO - =====< PRE-PROCESSING PATIENT A0190 >=====
+2025-05-04 17:29:11,971 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:29:11,990 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:29:11,990 - INFO - Found 19 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0190\CT
+2025-05-04 17:29:12,025 - INFO - Successfully loaded and sorted 19 slices.
+2025-05-04 17:29:12,026 - INFO - Found 19 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0190\PET
+2025-05-04 17:29:12,046 - INFO - Successfully loaded and sorted 19 slices.
+2025-05-04 17:29:12,093 - INFO - Resizing slices from 19 to 32
+2025-05-04 17:29:12,104 - INFO - Resizing slices from 19 to 32
+2025-05-04 17:29:12,159 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0190.npy
+2025-05-04 17:29:12,159 - INFO - ---------- Successfully processed patient A0190 ----------
+2025-05-04 17:29:12,163 - INFO - =====< PRE-PROCESSING PATIENT A0191 >=====
+2025-05-04 17:29:17,132 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:29:17,152 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:29:17,152 - INFO - Found 23 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0191\CT
+2025-05-04 17:29:17,197 - INFO - Successfully loaded and sorted 23 slices.
+2025-05-04 17:29:17,197 - INFO - Found 23 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0191\PET
+2025-05-04 17:29:17,221 - INFO - Successfully loaded and sorted 23 slices.
+2025-05-04 17:29:17,276 - INFO - Resizing slices from 23 to 32
+2025-05-04 17:29:17,287 - INFO - Resizing slices from 23 to 32
+2025-05-04 17:29:17,345 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0191.npy
+2025-05-04 17:29:17,345 - INFO - ---------- Successfully processed patient A0191 ----------
+2025-05-04 17:29:17,349 - INFO - =====< PRE-PROCESSING PATIENT A0192 >=====
+2025-05-04 17:29:22,902 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:29:22,923 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:29:22,924 - INFO - Found 14 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0192\CT
+2025-05-04 17:29:22,949 - INFO - Successfully loaded and sorted 14 slices.
+2025-05-04 17:29:22,950 - INFO - Found 14 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0192\PET
+2025-05-04 17:29:22,964 - INFO - Successfully loaded and sorted 14 slices.
+2025-05-04 17:29:22,999 - INFO - Resizing slices from 14 to 32
+2025-05-04 17:29:23,009 - INFO - Resizing slices from 14 to 32
+2025-05-04 17:29:23,059 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0192.npy
+2025-05-04 17:29:23,059 - INFO - ---------- Successfully processed patient A0192 ----------
+2025-05-04 17:29:23,062 - INFO - =====< PRE-PROCESSING PATIENT A0193 >=====
+2025-05-04 17:29:27,492 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:29:27,512 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:29:27,513 - INFO - Found 57 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0193\CT
+2025-05-04 17:29:27,620 - INFO - Successfully loaded and sorted 57 slices.
+2025-05-04 17:29:27,620 - INFO - Found 57 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0193\PET
+2025-05-04 17:29:27,683 - INFO - Successfully loaded and sorted 57 slices.
+2025-05-04 17:29:27,840 - INFO - Resizing slices from 57 to 32
+2025-05-04 17:29:27,840 - INFO - Resizing slices from 57 to 32
+2025-05-04 17:29:27,892 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0193.npy
+2025-05-04 17:29:27,892 - INFO - ---------- Successfully processed patient A0193 ----------
+2025-05-04 17:29:27,906 - INFO - =====< PRE-PROCESSING PATIENT A0194 >=====
+2025-05-04 17:29:32,630 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:29:32,642 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:29:32,642 - INFO - Found 30 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0194\CT
+2025-05-04 17:29:32,697 - INFO - Successfully loaded and sorted 30 slices.
+2025-05-04 17:29:32,697 - INFO - Found 30 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0194\PET
+2025-05-04 17:29:32,729 - INFO - Successfully loaded and sorted 30 slices.
+2025-05-04 17:29:32,802 - INFO - Resizing slices from 30 to 32
+2025-05-04 17:29:32,814 - INFO - Resizing slices from 30 to 32
+2025-05-04 17:29:32,869 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0194.npy
+2025-05-04 17:29:32,869 - INFO - ---------- Successfully processed patient A0194 ----------
+2025-05-04 17:29:32,874 - INFO - =====< PRE-PROCESSING PATIENT A0195 >=====
+2025-05-04 17:29:36,851 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:29:36,872 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:29:36,872 - INFO - Found 15 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0195\CT
+2025-05-04 17:29:36,900 - INFO - Successfully loaded and sorted 15 slices.
+2025-05-04 17:29:36,900 - INFO - Found 15 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0195\PET
+2025-05-04 17:29:36,916 - INFO - Successfully loaded and sorted 15 slices.
+2025-05-04 17:29:36,953 - INFO - Resizing slices from 15 to 32
+2025-05-04 17:29:36,962 - INFO - Resizing slices from 15 to 32
+2025-05-04 17:29:37,014 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0195.npy
+2025-05-04 17:29:37,014 - INFO - ---------- Successfully processed patient A0195 ----------
+2025-05-04 17:29:37,017 - INFO - =====< PRE-PROCESSING PATIENT A0196 >=====
+2025-05-04 17:29:41,079 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:29:41,099 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:29:41,100 - INFO - Found 35 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0196\CT
+2025-05-04 17:29:41,164 - INFO - Successfully loaded and sorted 35 slices.
+2025-05-04 17:29:41,164 - INFO - Found 35 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0196\PET
+2025-05-04 17:29:41,201 - INFO - Successfully loaded and sorted 35 slices.
+2025-05-04 17:29:41,286 - INFO - Resizing slices from 35 to 32
+2025-05-04 17:29:41,286 - INFO - Resizing slices from 35 to 32
+2025-05-04 17:29:41,344 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0196.npy
+2025-05-04 17:29:41,344 - INFO - ---------- Successfully processed patient A0196 ----------
+2025-05-04 17:29:41,350 - INFO - =====< PRE-PROCESSING PATIENT A0197 >=====
+2025-05-04 17:29:46,591 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:29:46,610 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:29:46,610 - INFO - Found 51 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0197\CT
+2025-05-04 17:29:46,707 - INFO - Successfully loaded and sorted 51 slices.
+2025-05-04 17:29:46,707 - INFO - Found 51 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0197\PET
+2025-05-04 17:29:46,763 - INFO - Successfully loaded and sorted 51 slices.
+2025-05-04 17:29:46,890 - INFO - Resizing slices from 51 to 32
+2025-05-04 17:29:46,890 - INFO - Resizing slices from 51 to 32
+2025-05-04 17:29:46,942 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0197.npy
+2025-05-04 17:29:46,942 - INFO - ---------- Successfully processed patient A0197 ----------
+2025-05-04 17:29:46,951 - INFO - =====< PRE-PROCESSING PATIENT A0198 >=====
+2025-05-04 17:29:52,403 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:29:52,424 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:29:52,424 - INFO - Found 27 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0198\CT
+2025-05-04 17:29:52,474 - INFO - Successfully loaded and sorted 27 slices.
+2025-05-04 17:29:52,474 - INFO - Found 27 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0198\PET
+2025-05-04 17:29:52,502 - INFO - Successfully loaded and sorted 27 slices.
+2025-05-04 17:29:52,567 - INFO - Resizing slices from 27 to 32
+2025-05-04 17:29:52,579 - INFO - Resizing slices from 27 to 32
+2025-05-04 17:29:52,631 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0198.npy
+2025-05-04 17:29:52,631 - INFO - ---------- Successfully processed patient A0198 ----------
+2025-05-04 17:29:52,635 - INFO - =====< PRE-PROCESSING PATIENT A0199 >=====
+2025-05-04 17:29:58,251 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:29:58,270 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:29:58,271 - INFO - Found 31 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0199\CT
+2025-05-04 17:29:58,328 - INFO - Successfully loaded and sorted 31 slices.
+2025-05-04 17:29:58,328 - INFO - Found 31 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0199\PET
+2025-05-04 17:29:58,362 - INFO - Successfully loaded and sorted 31 slices.
+2025-05-04 17:29:58,436 - INFO - Resizing slices from 31 to 32
+2025-05-04 17:29:58,448 - INFO - Resizing slices from 31 to 32
+2025-05-04 17:29:58,499 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0199.npy
+2025-05-04 17:29:58,499 - INFO - ---------- Successfully processed patient A0199 ----------
+2025-05-04 17:29:58,505 - INFO - =====< PRE-PROCESSING PATIENT A0200 >=====
+2025-05-04 17:30:03,558 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:30:03,573 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:30:03,574 - INFO - Found 49 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0200\CT
+2025-05-04 17:30:03,700 - INFO - Successfully loaded and sorted 49 slices.
+2025-05-04 17:30:03,701 - INFO - Found 49 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0200\PET
+2025-05-04 17:30:03,755 - INFO - Successfully loaded and sorted 49 slices.
+2025-05-04 17:30:03,877 - INFO - Resizing slices from 49 to 32
+2025-05-04 17:30:03,877 - INFO - Resizing slices from 49 to 32
+2025-05-04 17:30:03,933 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0200.npy
+2025-05-04 17:30:03,934 - INFO - ---------- Successfully processed patient A0200 ----------
+2025-05-04 17:30:03,943 - INFO - =====< PRE-PROCESSING PATIENT A0201 >=====
+2025-05-04 17:30:08,991 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:30:09,012 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:30:09,012 - INFO - Found 21 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0201\CT
+2025-05-04 17:30:09,052 - INFO - Successfully loaded and sorted 21 slices.
+2025-05-04 17:30:09,053 - INFO - Found 21 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0201\PET
+2025-05-04 17:30:09,075 - INFO - Successfully loaded and sorted 21 slices.
+2025-05-04 17:30:09,128 - INFO - Resizing slices from 21 to 32
+2025-05-04 17:30:09,139 - INFO - Resizing slices from 21 to 32
+2025-05-04 17:30:09,195 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0201.npy
+2025-05-04 17:30:09,195 - INFO - ---------- Successfully processed patient A0201 ----------
+2025-05-04 17:30:09,199 - INFO - =====< PRE-PROCESSING PATIENT A0202 >=====
+2025-05-04 17:30:13,172 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:30:13,188 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:30:13,189 - INFO - Found 117 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0202\CT
+2025-05-04 17:30:13,415 - INFO - Successfully loaded and sorted 117 slices.
+2025-05-04 17:30:13,415 - INFO - Found 117 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0202\PET
+2025-05-04 17:30:13,542 - INFO - Successfully loaded and sorted 117 slices.
+2025-05-04 17:30:13,831 - INFO - Resizing slices from 117 to 32
+2025-05-04 17:30:13,832 - INFO - Resizing slices from 117 to 32
+2025-05-04 17:30:13,884 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0202.npy
+2025-05-04 17:30:13,884 - INFO - ---------- Successfully processed patient A0202 ----------
+2025-05-04 17:30:13,912 - INFO - =====< PRE-PROCESSING PATIENT A0203 >=====
+2025-05-04 17:30:18,769 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:30:18,788 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:30:18,788 - INFO - Found 61 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0203\CT
+2025-05-04 17:30:18,902 - INFO - Successfully loaded and sorted 61 slices.
+2025-05-04 17:30:18,902 - INFO - Found 61 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0203\PET
+2025-05-04 17:30:18,968 - INFO - Successfully loaded and sorted 61 slices.
+2025-05-04 17:30:19,118 - INFO - Resizing slices from 61 to 32
+2025-05-04 17:30:19,118 - INFO - Resizing slices from 61 to 32
+2025-05-04 17:30:19,166 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0203.npy
+2025-05-04 17:30:19,166 - INFO - ---------- Successfully processed patient A0203 ----------
+2025-05-04 17:30:19,175 - INFO - =====< PRE-PROCESSING PATIENT A0204 >=====
+2025-05-04 17:30:24,272 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:30:24,293 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:30:24,294 - INFO - Found 22 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0204\CT
+2025-05-04 17:30:24,334 - INFO - Successfully loaded and sorted 22 slices.
+2025-05-04 17:30:24,334 - INFO - Found 22 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0204\PET
+2025-05-04 17:30:24,358 - INFO - Successfully loaded and sorted 22 slices.
+2025-05-04 17:30:24,411 - INFO - Resizing slices from 22 to 32
+2025-05-04 17:30:24,422 - INFO - Resizing slices from 22 to 32
+2025-05-04 17:30:24,479 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0204.npy
+2025-05-04 17:30:24,479 - INFO - ---------- Successfully processed patient A0204 ----------
+2025-05-04 17:30:24,484 - INFO - =====< PRE-PROCESSING PATIENT A0205 >=====
+2025-05-04 17:30:29,533 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:30:29,552 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:30:29,553 - INFO - Found 36 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0205\CT
+2025-05-04 17:30:29,620 - INFO - Successfully loaded and sorted 36 slices.
+2025-05-04 17:30:29,620 - INFO - Found 36 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0205\PET
+2025-05-04 17:30:29,658 - INFO - Successfully loaded and sorted 36 slices.
+2025-05-04 17:30:29,749 - INFO - Resizing slices from 36 to 32
+2025-05-04 17:30:29,749 - INFO - Resizing slices from 36 to 32
+2025-05-04 17:30:29,800 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0205.npy
+2025-05-04 17:30:29,800 - INFO - ---------- Successfully processed patient A0205 ----------
+2025-05-04 17:30:29,806 - INFO - =====< PRE-PROCESSING PATIENT A0206 >=====
+2025-05-04 17:30:33,234 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:30:33,258 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:30:33,258 - INFO - Found 6 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0206\CT
+2025-05-04 17:30:33,270 - INFO - Successfully loaded and sorted 6 slices.
+2025-05-04 17:30:33,270 - INFO - Found 6 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0206\PET
+2025-05-04 17:30:33,276 - INFO - Successfully loaded and sorted 6 slices.
+2025-05-04 17:30:33,291 - INFO - Resizing slices from 6 to 32
+2025-05-04 17:30:33,301 - INFO - Resizing slices from 6 to 32
+2025-05-04 17:30:33,358 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0206.npy
+2025-05-04 17:30:33,358 - INFO - ---------- Successfully processed patient A0206 ----------
+2025-05-04 17:30:33,361 - INFO - =====< PRE-PROCESSING PATIENT A0208 >=====
+2025-05-04 17:30:38,169 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:30:38,191 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:30:38,191 - INFO - Found 17 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0208\CT
+2025-05-04 17:30:38,222 - INFO - Successfully loaded and sorted 17 slices.
+2025-05-04 17:30:38,222 - INFO - Found 17 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0208\PET
+2025-05-04 17:30:38,277 - INFO - Successfully loaded and sorted 17 slices.
+2025-05-04 17:30:38,326 - INFO - Resizing slices from 17 to 32
+2025-05-04 17:30:38,336 - INFO - Resizing slices from 17 to 32
+2025-05-04 17:30:38,396 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0208.npy
+2025-05-04 17:30:38,396 - INFO - ---------- Successfully processed patient A0208 ----------
+2025-05-04 17:30:38,401 - INFO - =====< PRE-PROCESSING PATIENT A0210 >=====
+2025-05-04 17:30:42,137 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:30:42,154 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:30:42,155 - INFO - Found 22 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0210\CT
+2025-05-04 17:30:42,196 - INFO - Successfully loaded and sorted 22 slices.
+2025-05-04 17:30:42,196 - INFO - Found 22 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0210\PET
+2025-05-04 17:30:42,218 - INFO - Successfully loaded and sorted 22 slices.
+2025-05-04 17:30:42,272 - INFO - Resizing slices from 22 to 32
+2025-05-04 17:30:42,283 - INFO - Resizing slices from 22 to 32
+2025-05-04 17:30:42,334 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0210.npy
+2025-05-04 17:30:42,334 - INFO - ---------- Successfully processed patient A0210 ----------
+2025-05-04 17:30:42,339 - INFO - =====< PRE-PROCESSING PATIENT A0211 >=====
+2025-05-04 17:30:46,577 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:30:46,592 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:30:46,592 - INFO - Found 65 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0211\CT
+2025-05-04 17:30:46,714 - INFO - Successfully loaded and sorted 65 slices.
+2025-05-04 17:30:46,714 - INFO - Found 65 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0211\PET
+2025-05-04 17:30:46,787 - INFO - Successfully loaded and sorted 65 slices.
+2025-05-04 17:30:46,955 - INFO - Resizing slices from 65 to 32
+2025-05-04 17:30:46,955 - INFO - Resizing slices from 65 to 32
+2025-05-04 17:30:47,014 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0211.npy
+2025-05-04 17:30:47,014 - INFO - ---------- Successfully processed patient A0211 ----------
+2025-05-04 17:30:47,033 - INFO - =====< PRE-PROCESSING PATIENT A0212 >=====
+2025-05-04 17:30:51,412 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:30:51,427 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:30:51,427 - INFO - Found 84 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0212\CT
+2025-05-04 17:30:51,585 - INFO - Successfully loaded and sorted 84 slices.
+2025-05-04 17:30:51,585 - INFO - Found 84 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0212\PET
+2025-05-04 17:30:51,681 - INFO - Successfully loaded and sorted 84 slices.
+2025-05-04 17:30:51,885 - INFO - Resizing slices from 84 to 32
+2025-05-04 17:30:51,885 - INFO - Resizing slices from 84 to 32
+2025-05-04 17:30:51,943 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0212.npy
+2025-05-04 17:30:51,943 - INFO - ---------- Successfully processed patient A0212 ----------
+2025-05-04 17:30:51,962 - INFO - =====< PRE-PROCESSING PATIENT A0213 >=====
+2025-05-04 17:30:55,837 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:30:55,855 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:30:55,855 - INFO - Found 28 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0213\CT
+2025-05-04 17:30:55,907 - INFO - Successfully loaded and sorted 28 slices.
+2025-05-04 17:30:55,907 - INFO - Found 28 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0213\PET
+2025-05-04 17:30:55,937 - INFO - Successfully loaded and sorted 28 slices.
+2025-05-04 17:30:56,005 - INFO - Resizing slices from 28 to 32
+2025-05-04 17:30:56,016 - INFO - Resizing slices from 28 to 32
+2025-05-04 17:30:56,073 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0213.npy
+2025-05-04 17:30:56,073 - INFO - ---------- Successfully processed patient A0213 ----------
+2025-05-04 17:30:56,078 - INFO - =====< PRE-PROCESSING PATIENT A0214 >=====
+2025-05-04 17:30:59,430 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:30:59,448 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:30:59,448 - INFO - Found 11 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0214\CT
+2025-05-04 17:30:59,469 - INFO - Successfully loaded and sorted 11 slices.
+2025-05-04 17:30:59,469 - INFO - Found 11 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0214\PET
+2025-05-04 17:30:59,481 - INFO - Successfully loaded and sorted 11 slices.
+2025-05-04 17:30:59,508 - INFO - Resizing slices from 11 to 32
+2025-05-04 17:30:59,517 - INFO - Resizing slices from 11 to 32
+2025-05-04 17:30:59,574 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0214.npy
+2025-05-04 17:30:59,574 - INFO - ---------- Successfully processed patient A0214 ----------
+2025-05-04 17:30:59,577 - INFO - =====< PRE-PROCESSING PATIENT A0216 >=====
+2025-05-04 17:31:08,436 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:31:08,457 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:31:08,458 - INFO - Found 49 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0216\CT
+2025-05-04 17:31:08,552 - INFO - Successfully loaded and sorted 49 slices.
+2025-05-04 17:31:08,552 - INFO - Found 49 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0216\PET
+2025-05-04 17:31:08,607 - INFO - Successfully loaded and sorted 49 slices.
+2025-05-04 17:31:08,729 - INFO - Resizing slices from 49 to 32
+2025-05-04 17:31:08,729 - INFO - Resizing slices from 49 to 32
+2025-05-04 17:31:08,779 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0216.npy
+2025-05-04 17:31:08,779 - INFO - ---------- Successfully processed patient A0216 ----------
+2025-05-04 17:31:08,788 - INFO - =====< PRE-PROCESSING PATIENT A0217 >=====
+2025-05-04 17:31:13,248 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:31:13,266 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:31:13,267 - INFO - Found 66 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0217\CT
+2025-05-04 17:31:13,389 - INFO - Successfully loaded and sorted 66 slices.
+2025-05-04 17:31:13,389 - INFO - Found 66 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0217\PET
+2025-05-04 17:31:13,505 - INFO - Successfully loaded and sorted 66 slices.
+2025-05-04 17:31:13,666 - INFO - Resizing slices from 66 to 32
+2025-05-04 17:31:13,666 - INFO - Resizing slices from 66 to 32
+2025-05-04 17:31:13,722 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0217.npy
+2025-05-04 17:31:13,722 - INFO - ---------- Successfully processed patient A0217 ----------
+2025-05-04 17:31:13,731 - INFO - =====< PRE-PROCESSING PATIENT A0218 >=====
+2025-05-04 17:31:17,810 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:31:17,821 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:31:17,821 - INFO - Found 26 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0218\CT
+2025-05-04 17:31:17,869 - INFO - Successfully loaded and sorted 26 slices.
+2025-05-04 17:31:17,869 - INFO - Found 26 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0218\PET
+2025-05-04 17:31:17,897 - INFO - Successfully loaded and sorted 26 slices.
+2025-05-04 17:31:17,962 - INFO - Resizing slices from 26 to 32
+2025-05-04 17:31:17,974 - INFO - Resizing slices from 26 to 32
+2025-05-04 17:31:18,028 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0218.npy
+2025-05-04 17:31:18,028 - INFO - ---------- Successfully processed patient A0218 ----------
+2025-05-04 17:31:18,033 - INFO - =====< PRE-PROCESSING PATIENT A0220 >=====
+2025-05-04 17:31:25,249 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:31:25,267 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:31:25,268 - INFO - Found 83 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0220\CT
+2025-05-04 17:31:25,425 - INFO - Successfully loaded and sorted 83 slices.
+2025-05-04 17:31:25,425 - INFO - Found 83 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0220\PET
+2025-05-04 17:31:25,513 - INFO - Successfully loaded and sorted 83 slices.
+2025-05-04 17:31:25,721 - INFO - Resizing slices from 83 to 32
+2025-05-04 17:31:25,721 - INFO - Resizing slices from 83 to 32
+2025-05-04 17:31:25,778 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0220.npy
+2025-05-04 17:31:25,778 - INFO - ---------- Successfully processed patient A0220 ----------
+2025-05-04 17:31:25,798 - INFO - =====< PRE-PROCESSING PATIENT A0221 >=====
+2025-05-04 17:31:30,556 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:31:30,574 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:31:30,574 - INFO - Found 32 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0221\CT
+2025-05-04 17:31:30,632 - INFO - Successfully loaded and sorted 32 slices.
+2025-05-04 17:31:30,633 - INFO - Found 32 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0221\PET
+2025-05-04 17:31:30,667 - INFO - Successfully loaded and sorted 32 slices.
+2025-05-04 17:31:30,745 - INFO - Resizing slices from 32 to 32
+2025-05-04 17:31:30,745 - INFO - Resizing slices from 32 to 32
+2025-05-04 17:31:30,802 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0221.npy
+2025-05-04 17:31:30,802 - INFO - ---------- Successfully processed patient A0221 ----------
+2025-05-04 17:31:30,808 - INFO - =====< PRE-PROCESSING PATIENT A0222 >=====
+2025-05-04 17:31:33,802 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:31:33,813 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:31:33,814 - INFO - Found 86 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0222\CT
+2025-05-04 17:31:33,977 - INFO - Successfully loaded and sorted 86 slices.
+2025-05-04 17:31:33,977 - INFO - Found 86 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0222\PET
+2025-05-04 17:31:34,074 - INFO - Successfully loaded and sorted 86 slices.
+2025-05-04 17:31:34,296 - INFO - Resizing slices from 86 to 32
+2025-05-04 17:31:34,296 - INFO - Resizing slices from 86 to 32
+2025-05-04 17:31:34,352 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0222.npy
+2025-05-04 17:31:34,352 - INFO - ---------- Successfully processed patient A0222 ----------
+2025-05-04 17:31:34,370 - INFO - =====< PRE-PROCESSING PATIENT A0223 >=====
+2025-05-04 17:31:38,876 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:31:38,896 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:31:38,896 - INFO - Found 32 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0223\CT
+2025-05-04 17:31:38,955 - INFO - Successfully loaded and sorted 32 slices.
+2025-05-04 17:31:38,955 - INFO - Found 32 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0223\PET
+2025-05-04 17:31:38,988 - INFO - Successfully loaded and sorted 32 slices.
+2025-05-04 17:31:39,069 - INFO - Resizing slices from 32 to 32
+2025-05-04 17:31:39,069 - INFO - Resizing slices from 32 to 32
+2025-05-04 17:31:39,127 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0223.npy
+2025-05-04 17:31:39,127 - INFO - ---------- Successfully processed patient A0223 ----------
+2025-05-04 17:31:39,132 - INFO - =====< PRE-PROCESSING PATIENT A0224 >=====
+2025-05-04 17:31:43,730 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:31:43,748 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:31:43,749 - INFO - Found 40 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0224\CT
+2025-05-04 17:31:43,826 - INFO - Successfully loaded and sorted 40 slices.
+2025-05-04 17:31:43,826 - INFO - Found 40 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0224\PET
+2025-05-04 17:31:43,917 - INFO - Successfully loaded and sorted 40 slices.
+2025-05-04 17:31:44,023 - INFO - Resizing slices from 40 to 32
+2025-05-04 17:31:44,024 - INFO - Resizing slices from 40 to 32
+2025-05-04 17:31:44,094 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0224.npy
+2025-05-04 17:31:44,094 - INFO - ---------- Successfully processed patient A0224 ----------
+2025-05-04 17:31:44,100 - INFO - =====< PRE-PROCESSING PATIENT A0225 >=====
+2025-05-04 17:31:49,644 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:31:49,667 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:31:49,668 - INFO - Found 38 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0225\CT
+2025-05-04 17:31:49,739 - INFO - Successfully loaded and sorted 38 slices.
+2025-05-04 17:31:49,740 - INFO - Found 38 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0225\PET
+2025-05-04 17:31:49,781 - INFO - Successfully loaded and sorted 38 slices.
+2025-05-04 17:31:49,880 - INFO - Resizing slices from 38 to 32
+2025-05-04 17:31:49,880 - INFO - Resizing slices from 38 to 32
+2025-05-04 17:31:49,930 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0225.npy
+2025-05-04 17:31:49,930 - INFO - ---------- Successfully processed patient A0225 ----------
+2025-05-04 17:31:49,936 - INFO - =====< PRE-PROCESSING PATIENT A0226 >=====
+2025-05-04 17:31:53,677 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:31:53,699 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:31:53,699 - INFO - Found 24 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0226\CT
+2025-05-04 17:31:53,745 - INFO - Successfully loaded and sorted 24 slices.
+2025-05-04 17:31:53,745 - INFO - Found 24 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0226\PET
+2025-05-04 17:31:53,770 - INFO - Successfully loaded and sorted 24 slices.
+2025-05-04 17:31:53,831 - INFO - Resizing slices from 24 to 32
+2025-05-04 17:31:53,841 - INFO - Resizing slices from 24 to 32
+2025-05-04 17:31:53,899 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0226.npy
+2025-05-04 17:31:53,899 - INFO - ---------- Successfully processed patient A0226 ----------
+2025-05-04 17:31:53,903 - INFO - =====< PRE-PROCESSING PATIENT A0227 >=====
+2025-05-04 17:31:58,638 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:31:58,658 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:31:58,658 - INFO - Found 37 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0227\CT
+2025-05-04 17:31:58,729 - INFO - Successfully loaded and sorted 37 slices.
+2025-05-04 17:31:58,729 - INFO - Found 37 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0227\PET
+2025-05-04 17:31:58,766 - INFO - Successfully loaded and sorted 37 slices.
+2025-05-04 17:31:58,860 - INFO - Resizing slices from 37 to 32
+2025-05-04 17:31:58,860 - INFO - Resizing slices from 37 to 32
+2025-05-04 17:31:58,915 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0227.npy
+2025-05-04 17:31:58,915 - INFO - ---------- Successfully processed patient A0227 ----------
+2025-05-04 17:31:58,921 - INFO - =====< PRE-PROCESSING PATIENT A0228 >=====
+2025-05-04 17:32:03,684 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:32:03,704 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:32:03,705 - INFO - Found 13 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0228\CT
+2025-05-04 17:32:03,729 - INFO - Successfully loaded and sorted 13 slices.
+2025-05-04 17:32:03,729 - INFO - Found 13 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0228\PET
+2025-05-04 17:32:03,743 - INFO - Successfully loaded and sorted 13 slices.
+2025-05-04 17:32:03,774 - INFO - Resizing slices from 13 to 32
+2025-05-04 17:32:03,784 - INFO - Resizing slices from 13 to 32
+2025-05-04 17:32:03,838 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0228.npy
+2025-05-04 17:32:03,838 - INFO - ---------- Successfully processed patient A0228 ----------
+2025-05-04 17:32:03,841 - INFO - =====< PRE-PROCESSING PATIENT A0229 >=====
+2025-05-04 17:32:06,578 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:32:06,591 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:32:06,591 - INFO - Found 22 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0229\CT
+2025-05-04 17:32:06,632 - INFO - Successfully loaded and sorted 22 slices.
+2025-05-04 17:32:06,632 - INFO - Found 22 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0229\PET
+2025-05-04 17:32:06,655 - INFO - Successfully loaded and sorted 22 slices.
+2025-05-04 17:32:06,710 - INFO - Resizing slices from 22 to 32
+2025-05-04 17:32:06,720 - INFO - Resizing slices from 22 to 32
+2025-05-04 17:32:06,772 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0229.npy
+2025-05-04 17:32:06,773 - INFO - ---------- Successfully processed patient A0229 ----------
+2025-05-04 17:32:06,777 - INFO - =====< PRE-PROCESSING PATIENT A0230 >=====
+2025-05-04 17:32:11,298 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:32:11,318 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:32:11,318 - INFO - Found 69 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0230\CT
+2025-05-04 17:32:11,450 - INFO - Successfully loaded and sorted 69 slices.
+2025-05-04 17:32:11,450 - INFO - Found 69 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0230\PET
+2025-05-04 17:32:11,526 - INFO - Successfully loaded and sorted 69 slices.
+2025-05-04 17:32:11,710 - INFO - Resizing slices from 69 to 32
+2025-05-04 17:32:11,710 - INFO - Resizing slices from 69 to 32
+2025-05-04 17:32:11,763 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0230.npy
+2025-05-04 17:32:11,763 - INFO - ---------- Successfully processed patient A0230 ----------
+2025-05-04 17:32:11,783 - INFO - =====< PRE-PROCESSING PATIENT A0231 >=====
+2025-05-04 17:32:14,540 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:32:14,552 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:32:14,552 - INFO - Found 37 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0231\CT
+2025-05-04 17:32:14,621 - INFO - Successfully loaded and sorted 37 slices.
+2025-05-04 17:32:14,621 - INFO - Found 37 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0231\PET
+2025-05-04 17:32:14,661 - INFO - Successfully loaded and sorted 37 slices.
+2025-05-04 17:32:14,754 - INFO - Resizing slices from 37 to 32
+2025-05-04 17:32:14,754 - INFO - Resizing slices from 37 to 32
+2025-05-04 17:32:14,815 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0231.npy
+2025-05-04 17:32:14,816 - INFO - ---------- Successfully processed patient A0231 ----------
+2025-05-04 17:32:14,824 - INFO - =====< PRE-PROCESSING PATIENT A0232 >=====
+2025-05-04 17:32:18,885 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:32:18,898 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:32:18,899 - INFO - Found 12 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0232\CT
+2025-05-04 17:32:18,921 - INFO - Successfully loaded and sorted 12 slices.
+2025-05-04 17:32:18,921 - INFO - Found 12 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0232\PET
+2025-05-04 17:32:18,934 - INFO - Successfully loaded and sorted 12 slices.
+2025-05-04 17:32:18,964 - INFO - Resizing slices from 12 to 32
+2025-05-04 17:32:18,973 - INFO - Resizing slices from 12 to 32
+2025-05-04 17:32:19,022 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0232.npy
+2025-05-04 17:32:19,022 - INFO - ---------- Successfully processed patient A0232 ----------
+2025-05-04 17:32:19,025 - INFO - =====< PRE-PROCESSING PATIENT A0233 >=====
+2025-05-04 17:32:22,582 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:32:22,593 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:32:22,593 - INFO - Found 42 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0233\CT
+2025-05-04 17:32:22,673 - INFO - Successfully loaded and sorted 42 slices.
+2025-05-04 17:32:22,673 - INFO - Found 42 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0233\PET
+2025-05-04 17:32:22,720 - INFO - Successfully loaded and sorted 42 slices.
+2025-05-04 17:32:22,829 - INFO - Resizing slices from 42 to 32
+2025-05-04 17:32:22,829 - INFO - Resizing slices from 42 to 32
+2025-05-04 17:32:22,887 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0233.npy
+2025-05-04 17:32:22,887 - INFO - ---------- Successfully processed patient A0233 ----------
+2025-05-04 17:32:22,894 - INFO - =====< PRE-PROCESSING PATIENT A0234 >=====
+2025-05-04 17:32:27,534 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:32:27,552 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:32:27,553 - INFO - Found 66 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0234\CT
+2025-05-04 17:32:27,713 - INFO - Successfully loaded and sorted 66 slices.
+2025-05-04 17:32:27,714 - INFO - Found 66 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0234\PET
+2025-05-04 17:32:27,789 - INFO - Successfully loaded and sorted 66 slices.
+2025-05-04 17:32:27,956 - INFO - Resizing slices from 66 to 32
+2025-05-04 17:32:27,956 - INFO - Resizing slices from 66 to 32
+2025-05-04 17:32:28,015 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0234.npy
+2025-05-04 17:32:28,015 - INFO - ---------- Successfully processed patient A0234 ----------
+2025-05-04 17:32:28,029 - INFO - =====< PRE-PROCESSING PATIENT A0235 >=====
+2025-05-04 17:32:32,764 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:32:32,774 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:32:32,774 - INFO - Found 99 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0235\CT
+2025-05-04 17:32:32,960 - INFO - Successfully loaded and sorted 99 slices.
+2025-05-04 17:32:32,960 - INFO - Found 99 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0235\PET
+2025-05-04 17:32:33,069 - INFO - Successfully loaded and sorted 99 slices.
+2025-05-04 17:32:33,322 - INFO - Resizing slices from 99 to 32
+2025-05-04 17:32:33,322 - INFO - Resizing slices from 99 to 32
+2025-05-04 17:32:33,379 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0235.npy
+2025-05-04 17:32:33,379 - INFO - ---------- Successfully processed patient A0235 ----------
+2025-05-04 17:32:33,402 - INFO - =====< PRE-PROCESSING PATIENT A0236 >=====
+2025-05-04 17:32:37,476 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:32:37,490 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:32:37,490 - INFO - Found 36 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0236\CT
+2025-05-04 17:32:37,560 - INFO - Successfully loaded and sorted 36 slices.
+2025-05-04 17:32:37,560 - INFO - Found 36 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0236\PET
+2025-05-04 17:32:37,601 - INFO - Successfully loaded and sorted 36 slices.
+2025-05-04 17:32:37,700 - INFO - Resizing slices from 36 to 32
+2025-05-04 17:32:37,700 - INFO - Resizing slices from 36 to 32
+2025-05-04 17:32:37,757 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0236.npy
+2025-05-04 17:32:37,757 - INFO - ---------- Successfully processed patient A0236 ----------
+2025-05-04 17:32:37,764 - INFO - =====< PRE-PROCESSING PATIENT A0237 >=====
+2025-05-04 17:32:42,896 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:32:42,909 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:32:42,910 - INFO - Found 71 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0237\CT
+2025-05-04 17:32:43,040 - INFO - Successfully loaded and sorted 71 slices.
+2025-05-04 17:32:43,040 - INFO - Found 43 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0237\PET
+2025-05-04 17:32:43,089 - INFO - Successfully loaded and sorted 43 slices.
+2025-05-04 17:32:43,263 - INFO - Resizing slices from 71 to 32
+2025-05-04 17:32:43,263 - INFO - Resizing slices from 43 to 32
+2025-05-04 17:32:43,316 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0237.npy
+2025-05-04 17:32:43,316 - INFO - ---------- Successfully processed patient A0237 ----------
+2025-05-04 17:32:43,326 - INFO - =====< PRE-PROCESSING PATIENT A0238 >=====
+2025-05-04 17:32:47,267 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:32:47,277 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:32:47,278 - INFO - Found 69 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0238\CT
+2025-05-04 17:32:47,407 - INFO - Successfully loaded and sorted 69 slices.
+2025-05-04 17:32:47,407 - INFO - Found 69 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0238\PET
+2025-05-04 17:32:47,532 - INFO - Successfully loaded and sorted 69 slices.
+2025-05-04 17:32:47,700 - INFO - Resizing slices from 69 to 32
+2025-05-04 17:32:47,701 - INFO - Resizing slices from 69 to 32
+2025-05-04 17:32:47,748 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0238.npy
+2025-05-04 17:32:47,748 - INFO - ---------- Successfully processed patient A0238 ----------
+2025-05-04 17:32:47,758 - INFO - =====< PRE-PROCESSING PATIENT A0239 >=====
+2025-05-04 17:32:52,252 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:32:52,267 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:32:52,267 - INFO - Skipping patient A0239 due to missing DICOM files in CT or PET directory.
+2025-05-04 17:32:52,267 - INFO - =====< PRE-PROCESSING PATIENT A0240 >=====
+2025-05-04 17:32:56,870 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:32:56,890 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:32:56,891 - INFO - Found 17 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0240\CT
+2025-05-04 17:32:56,922 - INFO - Successfully loaded and sorted 17 slices.
+2025-05-04 17:32:56,922 - INFO - Found 17 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0240\PET
+2025-05-04 17:32:56,940 - INFO - Successfully loaded and sorted 17 slices.
+2025-05-04 17:32:56,981 - INFO - Resizing slices from 17 to 32
+2025-05-04 17:32:56,991 - INFO - Resizing slices from 17 to 32
+2025-05-04 17:32:57,045 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0240.npy
+2025-05-04 17:32:57,045 - INFO - ---------- Successfully processed patient A0240 ----------
+2025-05-04 17:32:57,049 - INFO - =====< PRE-PROCESSING PATIENT A0241 >=====
+2025-05-04 17:33:02,115 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:33:02,132 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:33:02,133 - INFO - Found 67 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0241\CT
+2025-05-04 17:33:02,258 - INFO - Successfully loaded and sorted 67 slices.
+2025-05-04 17:33:02,258 - INFO - Found 67 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0241\PET
+2025-05-04 17:33:02,334 - INFO - Successfully loaded and sorted 67 slices.
+2025-05-04 17:33:02,501 - INFO - Resizing slices from 67 to 32
+2025-05-04 17:33:02,501 - INFO - Resizing slices from 67 to 32
+2025-05-04 17:33:02,563 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0241.npy
+2025-05-04 17:33:02,564 - INFO - ---------- Successfully processed patient A0241 ----------
+2025-05-04 17:33:02,574 - INFO - =====< PRE-PROCESSING PATIENT A0242 >=====
+2025-05-04 17:33:08,286 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:33:08,302 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:33:08,303 - INFO - Found 118 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0242\CT
+2025-05-04 17:33:08,527 - INFO - Successfully loaded and sorted 118 slices.
+2025-05-04 17:33:08,528 - INFO - Found 118 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0242\PET
+2025-05-04 17:33:08,656 - INFO - Successfully loaded and sorted 118 slices.
+2025-05-04 17:33:08,976 - INFO - Resizing slices from 118 to 32
+2025-05-04 17:33:08,977 - INFO - Resizing slices from 118 to 32
+2025-05-04 17:33:09,029 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0242.npy
+2025-05-04 17:33:09,029 - INFO - ---------- Successfully processed patient A0242 ----------
+2025-05-04 17:33:09,056 - INFO - =====< PRE-PROCESSING PATIENT A0243 >=====
+2025-05-04 17:33:13,715 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:33:13,736 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:33:13,736 - INFO - Found 15 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0243\CT
+2025-05-04 17:33:13,764 - INFO - Successfully loaded and sorted 15 slices.
+2025-05-04 17:33:13,764 - INFO - Found 15 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0243\PET
+2025-05-04 17:33:13,781 - INFO - Successfully loaded and sorted 15 slices.
+2025-05-04 17:33:13,817 - INFO - Resizing slices from 15 to 32
+2025-05-04 17:33:13,827 - INFO - Resizing slices from 15 to 32
+2025-05-04 17:33:13,878 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0243.npy
+2025-05-04 17:33:13,878 - INFO - ---------- Successfully processed patient A0243 ----------
+2025-05-04 17:33:13,881 - INFO - =====< PRE-PROCESSING PATIENT A0244 >=====
+2025-05-04 17:33:18,280 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:33:18,296 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:33:18,297 - INFO - Found 23 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0244\CT
+2025-05-04 17:33:18,340 - INFO - Successfully loaded and sorted 23 slices.
+2025-05-04 17:33:18,340 - INFO - Found 23 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0244\PET
+2025-05-04 17:33:18,363 - INFO - Successfully loaded and sorted 23 slices.
+2025-05-04 17:33:18,419 - INFO - Resizing slices from 23 to 32
+2025-05-04 17:33:18,430 - INFO - Resizing slices from 23 to 32
+2025-05-04 17:33:18,481 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0244.npy
+2025-05-04 17:33:18,481 - INFO - ---------- Successfully processed patient A0244 ----------
+2025-05-04 17:33:18,485 - INFO - =====< PRE-PROCESSING PATIENT A0246 >=====
+2025-05-04 17:33:23,178 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:33:23,197 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:33:23,198 - INFO - Found 41 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0246\CT
+2025-05-04 17:33:23,276 - INFO - Successfully loaded and sorted 41 slices.
+2025-05-04 17:33:23,276 - INFO - Found 41 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0246\PET
+2025-05-04 17:33:23,319 - INFO - Successfully loaded and sorted 41 slices.
+2025-05-04 17:33:23,428 - INFO - Resizing slices from 41 to 32
+2025-05-04 17:33:23,428 - INFO - Resizing slices from 41 to 32
+2025-05-04 17:33:23,487 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0246.npy
+2025-05-04 17:33:23,487 - INFO - ---------- Successfully processed patient A0246 ----------
+2025-05-04 17:33:23,493 - INFO - =====< PRE-PROCESSING PATIENT A0247 >=====
+2025-05-04 17:33:26,356 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:33:26,368 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:33:26,368 - INFO - Found 32 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0247\CT
+2025-05-04 17:33:26,429 - INFO - Successfully loaded and sorted 32 slices.
+2025-05-04 17:33:26,430 - INFO - Found 32 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0247\PET
+2025-05-04 17:33:26,464 - INFO - Successfully loaded and sorted 32 slices.
+2025-05-04 17:33:26,545 - INFO - Resizing slices from 32 to 32
+2025-05-04 17:33:26,545 - INFO - Resizing slices from 32 to 32
+2025-05-04 17:33:26,597 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0247.npy
+2025-05-04 17:33:26,597 - INFO - ---------- Successfully processed patient A0247 ----------
+2025-05-04 17:33:26,603 - INFO - =====< PRE-PROCESSING PATIENT A0248 >=====
+2025-05-04 17:33:31,736 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:33:31,756 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:33:31,757 - INFO - Found 28 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0248\CT
+2025-05-04 17:33:31,848 - INFO - Successfully loaded and sorted 28 slices.
+2025-05-04 17:33:31,848 - INFO - Found 28 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0248\PET
+2025-05-04 17:33:31,878 - INFO - Successfully loaded and sorted 28 slices.
+2025-05-04 17:33:31,947 - INFO - Resizing slices from 28 to 32
+2025-05-04 17:33:31,959 - INFO - Resizing slices from 28 to 32
+2025-05-04 17:33:32,012 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0248.npy
+2025-05-04 17:33:32,012 - INFO - ---------- Successfully processed patient A0248 ----------
+2025-05-04 17:33:32,017 - INFO - =====< PRE-PROCESSING PATIENT A0249 >=====
+2025-05-04 17:33:37,467 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:33:37,485 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:33:37,486 - INFO - Found 80 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0249\CT
+2025-05-04 17:33:37,638 - INFO - Successfully loaded and sorted 80 slices.
+2025-05-04 17:33:37,638 - INFO - Found 80 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0249\PET
+2025-05-04 17:33:37,729 - INFO - Successfully loaded and sorted 80 slices.
+2025-05-04 17:33:37,936 - INFO - Resizing slices from 80 to 32
+2025-05-04 17:33:37,936 - INFO - Resizing slices from 80 to 32
+2025-05-04 17:33:37,993 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0249.npy
+2025-05-04 17:33:37,993 - INFO - ---------- Successfully processed patient A0249 ----------
+2025-05-04 17:33:38,016 - INFO - =====< PRE-PROCESSING PATIENT A0250 >=====
+2025-05-04 17:33:42,727 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:33:42,740 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:33:42,740 - INFO - Found 64 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0250\CT
+2025-05-04 17:33:42,861 - INFO - Successfully loaded and sorted 64 slices.
+2025-05-04 17:33:42,861 - INFO - Found 64 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0250\PET
+2025-05-04 17:33:42,934 - INFO - Successfully loaded and sorted 64 slices.
+2025-05-04 17:33:43,092 - INFO - Resizing slices from 64 to 32
+2025-05-04 17:33:43,092 - INFO - Resizing slices from 64 to 32
+2025-05-04 17:33:43,144 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0250.npy
+2025-05-04 17:33:43,144 - INFO - ---------- Successfully processed patient A0250 ----------
+2025-05-04 17:33:43,155 - INFO - =====< PRE-PROCESSING PATIENT A0252 >=====
+2025-05-04 17:33:46,778 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:33:46,790 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:33:46,790 - INFO - Found 12 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0252\CT
+2025-05-04 17:33:46,813 - INFO - Successfully loaded and sorted 12 slices.
+2025-05-04 17:33:46,813 - INFO - Found 12 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0252\PET
+2025-05-04 17:33:46,826 - INFO - Successfully loaded and sorted 12 slices.
+2025-05-04 17:33:46,856 - INFO - Resizing slices from 12 to 32
+2025-05-04 17:33:46,866 - INFO - Resizing slices from 12 to 32
+2025-05-04 17:33:46,918 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0252.npy
+2025-05-04 17:33:46,918 - INFO - ---------- Successfully processed patient A0252 ----------
+2025-05-04 17:33:46,921 - INFO - =====< PRE-PROCESSING PATIENT A0253 >=====
+2025-05-04 17:33:52,069 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:33:52,082 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:33:52,083 - INFO - Found 37 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0253\CT
+2025-05-04 17:33:52,155 - INFO - Successfully loaded and sorted 37 slices.
+2025-05-04 17:33:52,155 - INFO - Found 37 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0253\PET
+2025-05-04 17:33:52,194 - INFO - Successfully loaded and sorted 37 slices.
+2025-05-04 17:33:52,286 - INFO - Resizing slices from 37 to 32
+2025-05-04 17:33:52,286 - INFO - Resizing slices from 37 to 32
+2025-05-04 17:33:52,342 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0253.npy
+2025-05-04 17:33:52,342 - INFO - ---------- Successfully processed patient A0253 ----------
+2025-05-04 17:33:52,348 - INFO - =====< PRE-PROCESSING PATIENT A0254 >=====
+2025-05-04 17:33:57,042 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:33:57,053 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:33:57,053 - INFO - Found 95 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0254\CT
+2025-05-04 17:33:57,230 - INFO - Successfully loaded and sorted 95 slices.
+2025-05-04 17:33:57,230 - INFO - Found 95 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0254\PET
+2025-05-04 17:33:57,385 - INFO - Successfully loaded and sorted 95 slices.
+2025-05-04 17:33:57,639 - INFO - Resizing slices from 95 to 32
+2025-05-04 17:33:57,639 - INFO - Resizing slices from 95 to 32
+2025-05-04 17:33:57,693 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0254.npy
+2025-05-04 17:33:57,693 - INFO - ---------- Successfully processed patient A0254 ----------
+2025-05-04 17:33:57,716 - INFO - =====< PRE-PROCESSING PATIENT A0256 >=====
+2025-05-04 17:34:02,382 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:34:02,395 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:34:02,396 - INFO - Found 35 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0256\CT
+2025-05-04 17:34:02,461 - INFO - Successfully loaded and sorted 35 slices.
+2025-05-04 17:34:02,462 - INFO - Found 35 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0256\PET
+2025-05-04 17:34:02,500 - INFO - Successfully loaded and sorted 35 slices.
+2025-05-04 17:34:02,587 - INFO - Resizing slices from 35 to 32
+2025-05-04 17:34:02,587 - INFO - Resizing slices from 35 to 32
+2025-05-04 17:34:02,643 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0256.npy
+2025-05-04 17:34:02,643 - INFO - ---------- Successfully processed patient A0256 ----------
+2025-05-04 17:34:02,648 - INFO - =====< PRE-PROCESSING PATIENT A0257 >=====
+2025-05-04 17:34:05,414 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:34:05,426 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:34:05,426 - INFO - Found 50 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0257\CT
+2025-05-04 17:34:05,521 - INFO - Successfully loaded and sorted 50 slices.
+2025-05-04 17:34:05,521 - INFO - Found 50 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0257\PET
+2025-05-04 17:34:05,576 - INFO - Successfully loaded and sorted 50 slices.
+2025-05-04 17:34:05,702 - INFO - Resizing slices from 50 to 32
+2025-05-04 17:34:05,702 - INFO - Resizing slices from 50 to 32
+2025-05-04 17:34:05,754 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0257.npy
+2025-05-04 17:34:05,754 - INFO - ---------- Successfully processed patient A0257 ----------
+2025-05-04 17:34:05,761 - INFO - =====< PRE-PROCESSING PATIENT A0258 >=====
+2025-05-04 17:34:10,361 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:34:10,374 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:34:10,374 - INFO - Found 51 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0258\CT
+2025-05-04 17:34:10,470 - INFO - Successfully loaded and sorted 51 slices.
+2025-05-04 17:34:10,470 - INFO - Found 5 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0258\PET
+2025-05-04 17:34:10,476 - INFO - Successfully loaded and sorted 5 slices.
+2025-05-04 17:34:10,593 - INFO - Resizing slices from 51 to 32
+2025-05-04 17:34:10,594 - INFO - Resizing slices from 5 to 32
+2025-05-04 17:34:10,648 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0258.npy
+2025-05-04 17:34:10,648 - INFO - ---------- Successfully processed patient A0258 ----------
+2025-05-04 17:34:10,655 - INFO - =====< PRE-PROCESSING PATIENT A0259 >=====
+2025-05-04 17:34:13,372 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:34:13,380 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:34:13,381 - INFO - Skipping patient A0259 due to missing DICOM files in CT or PET directory.
+2025-05-04 17:34:13,381 - INFO - =====< PRE-PROCESSING PATIENT A0260 >=====
+2025-05-04 17:34:17,547 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:34:17,558 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:34:17,558 - INFO - Found 68 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0260\CT
+2025-05-04 17:34:17,683 - INFO - Successfully loaded and sorted 68 slices.
+2025-05-04 17:34:17,683 - INFO - Found 68 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0260\PET
+2025-05-04 17:34:17,759 - INFO - Successfully loaded and sorted 68 slices.
+2025-05-04 17:34:17,938 - INFO - Resizing slices from 68 to 32
+2025-05-04 17:34:17,938 - INFO - Resizing slices from 68 to 32
+2025-05-04 17:34:17,998 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0260.npy
+2025-05-04 17:34:17,998 - INFO - ---------- Successfully processed patient A0260 ----------
+2025-05-04 17:34:18,014 - INFO - =====< PRE-PROCESSING PATIENT A0261 >=====
+2025-05-04 17:34:22,472 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:34:22,486 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:34:22,486 - INFO - Skipping patient A0261 due to missing DICOM files in CT or PET directory.
+2025-05-04 17:34:22,487 - INFO - =====< PRE-PROCESSING PATIENT A0262 >=====
+2025-05-04 17:34:27,013 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:34:27,027 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:34:27,028 - INFO - Found 55 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0262\CT
+2025-05-04 17:34:27,131 - INFO - Successfully loaded and sorted 55 slices.
+2025-05-04 17:34:27,131 - INFO - Found 55 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0262\PET
+2025-05-04 17:34:27,191 - INFO - Successfully loaded and sorted 55 slices.
+2025-05-04 17:34:27,327 - INFO - Resizing slices from 55 to 32
+2025-05-04 17:34:27,327 - INFO - Resizing slices from 55 to 32
+2025-05-04 17:34:27,379 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0262.npy
+2025-05-04 17:34:27,379 - INFO - ---------- Successfully processed patient A0262 ----------
+2025-05-04 17:34:27,389 - INFO - =====< PRE-PROCESSING PATIENT A0263 >=====
+2025-05-04 17:34:32,067 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:34:32,090 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:34:32,090 - INFO - Found 39 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0263\CT
+2025-05-04 17:34:32,164 - INFO - Successfully loaded and sorted 39 slices.
+2025-05-04 17:34:32,164 - INFO - Found 39 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0263\PET
+2025-05-04 17:34:32,206 - INFO - Successfully loaded and sorted 39 slices.
+2025-05-04 17:34:32,307 - INFO - Resizing slices from 39 to 32
+2025-05-04 17:34:32,307 - INFO - Resizing slices from 39 to 32
+2025-05-04 17:34:32,362 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0263.npy
+2025-05-04 17:34:32,362 - INFO - ---------- Successfully processed patient A0263 ----------
+2025-05-04 17:34:32,369 - INFO - =====< PRE-PROCESSING PATIENT A0264 >=====
+2025-05-04 17:34:35,305 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:34:35,313 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:34:35,314 - INFO - Found 63 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0264\CT
+2025-05-04 17:34:35,431 - INFO - Successfully loaded and sorted 63 slices.
+2025-05-04 17:34:35,431 - INFO - Found 63 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0264\PET
+2025-05-04 17:34:35,543 - INFO - Successfully loaded and sorted 63 slices.
+2025-05-04 17:34:35,698 - INFO - Resizing slices from 63 to 32
+2025-05-04 17:34:35,698 - INFO - Resizing slices from 63 to 32
+2025-05-04 17:34:35,753 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0264.npy
+2025-05-04 17:34:35,754 - INFO - ---------- Successfully processed patient A0264 ----------
+2025-05-04 17:34:35,769 - INFO - =====< PRE-PROCESSING PATIENT A0265 >=====
+2025-05-04 17:34:39,710 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:34:39,720 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:34:39,721 - INFO - Found 35 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0265\CT
+2025-05-04 17:34:39,785 - INFO - Successfully loaded and sorted 35 slices.
+2025-05-04 17:34:39,785 - INFO - Found 35 DICOM files in D:\Datasets\Dataset\Lung_Dx-A0265\PET
+2025-05-04 17:34:39,824 - INFO - Successfully loaded and sorted 35 slices.
+2025-05-04 17:34:39,914 - INFO - Resizing slices from 35 to 32
+2025-05-04 17:34:39,914 - INFO - Resizing slices from 35 to 32
+2025-05-04 17:34:39,967 - INFO - CT and PET volumes successfully saved to ..\data\pny\A0265.npy
+2025-05-04 17:34:39,967 - INFO - ---------- Successfully processed patient A0265 ----------
+2025-05-04 17:34:39,973 - INFO - =====< PRE-PROCESSING PATIENT B0033 >=====
+2025-05-04 17:34:44,181 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:34:44,198 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:34:44,199 - INFO - Found 57 DICOM files in D:\Datasets\Dataset\Lung_Dx-B0033\CT
+2025-05-04 17:34:44,307 - INFO - Successfully loaded and sorted 57 slices.
+2025-05-04 17:34:44,308 - INFO - Found 57 DICOM files in D:\Datasets\Dataset\Lung_Dx-B0033\PET
+2025-05-04 17:34:44,368 - INFO - Successfully loaded and sorted 57 slices.
+2025-05-04 17:34:44,511 - INFO - Resizing slices from 57 to 32
+2025-05-04 17:34:44,511 - INFO - Resizing slices from 57 to 32
+2025-05-04 17:34:44,569 - INFO - CT and PET volumes successfully saved to ..\data\pny\B0033.npy
+2025-05-04 17:34:44,569 - INFO - ---------- Successfully processed patient B0033 ----------
+2025-05-04 17:34:44,581 - INFO - =====< PRE-PROCESSING PATIENT B0034 >=====
+2025-05-04 17:34:48,653 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:34:48,672 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:34:48,673 - INFO - Found 75 DICOM files in D:\Datasets\Dataset\Lung_Dx-B0034\CT
+2025-05-04 17:34:48,813 - INFO - Successfully loaded and sorted 75 slices.
+2025-05-04 17:34:48,813 - INFO - Found 75 DICOM files in D:\Datasets\Dataset\Lung_Dx-B0034\PET
+2025-05-04 17:34:48,897 - INFO - Successfully loaded and sorted 75 slices.
+2025-05-04 17:34:49,087 - INFO - Resizing slices from 75 to 32
+2025-05-04 17:34:49,087 - INFO - Resizing slices from 75 to 32
+2025-05-04 17:34:49,143 - INFO - CT and PET volumes successfully saved to ..\data\pny\B0034.npy
+2025-05-04 17:34:49,143 - INFO - ---------- Successfully processed patient B0034 ----------
+2025-05-04 17:34:49,161 - INFO - =====< PRE-PROCESSING PATIENT B0036 >=====
+2025-05-04 17:34:54,058 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:34:54,076 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:34:54,077 - INFO - Found 112 DICOM files in D:\Datasets\Dataset\Lung_Dx-B0036\CT
+2025-05-04 17:34:54,292 - INFO - Successfully loaded and sorted 112 slices.
+2025-05-04 17:34:54,292 - INFO - Found 112 DICOM files in D:\Datasets\Dataset\Lung_Dx-B0036\PET
+2025-05-04 17:34:54,418 - INFO - Successfully loaded and sorted 112 slices.
+2025-05-04 17:34:54,710 - INFO - Resizing slices from 112 to 32
+2025-05-04 17:34:54,711 - INFO - Resizing slices from 112 to 32
+2025-05-04 17:34:54,769 - INFO - CT and PET volumes successfully saved to ..\data\pny\B0036.npy
+2025-05-04 17:34:54,769 - INFO - ---------- Successfully processed patient B0036 ----------
+2025-05-04 17:34:54,799 - INFO - =====< PRE-PROCESSING PATIENT B0037 >=====
+2025-05-04 17:34:59,461 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:34:59,474 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:34:59,475 - INFO - Found 27 DICOM files in D:\Datasets\Dataset\Lung_Dx-B0037\CT
+2025-05-04 17:34:59,564 - INFO - Successfully loaded and sorted 27 slices.
+2025-05-04 17:34:59,564 - INFO - Found 27 DICOM files in D:\Datasets\Dataset\Lung_Dx-B0037\PET
+2025-05-04 17:34:59,594 - INFO - Successfully loaded and sorted 27 slices.
+2025-05-04 17:34:59,662 - INFO - Resizing slices from 27 to 32
+2025-05-04 17:34:59,675 - INFO - Resizing slices from 27 to 32
+2025-05-04 17:34:59,726 - INFO - CT and PET volumes successfully saved to ..\data\pny\B0037.npy
+2025-05-04 17:34:59,726 - INFO - ---------- Successfully processed patient B0037 ----------
+2025-05-04 17:34:59,731 - INFO - =====< PRE-PROCESSING PATIENT B0038 >=====
+2025-05-04 17:35:03,620 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:35:03,628 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:35:03,629 - INFO - Found 121 DICOM files in D:\Datasets\Dataset\Lung_Dx-B0038\CT
+2025-05-04 17:35:03,856 - INFO - Successfully loaded and sorted 121 slices.
+2025-05-04 17:35:03,856 - INFO - Found 61 DICOM files in D:\Datasets\Dataset\Lung_Dx-B0038\PET
+2025-05-04 17:35:03,920 - INFO - Successfully loaded and sorted 61 slices.
+2025-05-04 17:35:04,221 - INFO - Resizing slices from 121 to 32
+2025-05-04 17:35:04,221 - INFO - Resizing slices from 61 to 32
+2025-05-04 17:35:04,281 - INFO - CT and PET volumes successfully saved to ..\data\pny\B0038.npy
+2025-05-04 17:35:04,281 - INFO - ---------- Successfully processed patient B0038 ----------
+2025-05-04 17:35:04,311 - INFO - =====< PRE-PROCESSING PATIENT B0040 >=====
+2025-05-04 17:35:06,183 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:35:06,197 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:35:06,197 - INFO - Skipping patient B0040 due to missing DICOM files in CT or PET directory.
+2025-05-04 17:35:06,197 - INFO - =====< PRE-PROCESSING PATIENT B0041 >=====
+2025-05-04 17:35:10,120 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:35:10,129 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:35:10,129 - INFO - Skipping patient B0041 due to missing DICOM files in CT or PET directory.
+2025-05-04 17:35:10,129 - INFO - =====< PRE-PROCESSING PATIENT B0042 >=====
+2025-05-04 17:35:13,193 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:35:13,204 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:35:13,204 - INFO - Found 40 DICOM files in D:\Datasets\Dataset\Lung_Dx-B0042\CT
+2025-05-04 17:35:13,280 - INFO - Successfully loaded and sorted 40 slices.
+2025-05-04 17:35:13,280 - INFO - Found 40 DICOM files in D:\Datasets\Dataset\Lung_Dx-B0042\PET
+2025-05-04 17:35:13,324 - INFO - Successfully loaded and sorted 40 slices.
+2025-05-04 17:35:13,423 - INFO - Resizing slices from 40 to 32
+2025-05-04 17:35:13,423 - INFO - Resizing slices from 40 to 32
+2025-05-04 17:35:13,481 - INFO - CT and PET volumes successfully saved to ..\data\pny\B0042.npy
+2025-05-04 17:35:13,482 - INFO - ---------- Successfully processed patient B0042 ----------
+2025-05-04 17:35:13,488 - INFO - =====< PRE-PROCESSING PATIENT B0043 >=====
+2025-05-04 17:35:17,759 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:35:17,769 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:35:17,770 - INFO - Found 40 DICOM files in D:\Datasets\Dataset\Lung_Dx-B0043\CT
+2025-05-04 17:35:17,844 - INFO - Successfully loaded and sorted 40 slices.
+2025-05-04 17:35:17,845 - INFO - Found 40 DICOM files in D:\Datasets\Dataset\Lung_Dx-B0043\PET
+2025-05-04 17:35:17,887 - INFO - Successfully loaded and sorted 40 slices.
+2025-05-04 17:35:17,987 - INFO - Resizing slices from 40 to 32
+2025-05-04 17:35:17,987 - INFO - Resizing slices from 40 to 32
+2025-05-04 17:35:18,039 - INFO - CT and PET volumes successfully saved to ..\data\pny\B0043.npy
+2025-05-04 17:35:18,039 - INFO - ---------- Successfully processed patient B0043 ----------
+2025-05-04 17:35:18,045 - INFO - =====< PRE-PROCESSING PATIENT G0033 >=====
+2025-05-04 17:35:20,430 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:35:20,445 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:35:20,446 - INFO - Found 37 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0033\CT
+2025-05-04 17:35:20,515 - INFO - Successfully loaded and sorted 37 slices.
+2025-05-04 17:35:20,515 - INFO - Found 37 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0033\PET
+2025-05-04 17:35:20,554 - INFO - Successfully loaded and sorted 37 slices.
+2025-05-04 17:35:20,646 - INFO - Resizing slices from 37 to 32
+2025-05-04 17:35:20,646 - INFO - Resizing slices from 37 to 32
+2025-05-04 17:35:20,704 - INFO - CT and PET volumes successfully saved to ..\data\pny\G0033.npy
+2025-05-04 17:35:20,705 - INFO - ---------- Successfully processed patient G0033 ----------
+2025-05-04 17:35:20,710 - INFO - =====< PRE-PROCESSING PATIENT G0034 >=====
+2025-05-04 17:35:24,012 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:35:24,031 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:35:24,031 - INFO - Found 71 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0034\CT
+2025-05-04 17:35:24,164 - INFO - Successfully loaded and sorted 71 slices.
+2025-05-04 17:35:24,164 - INFO - Found 71 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0034\PET
+2025-05-04 17:35:24,245 - INFO - Successfully loaded and sorted 71 slices.
+2025-05-04 17:35:24,436 - INFO - Resizing slices from 71 to 32
+2025-05-04 17:35:24,436 - INFO - Resizing slices from 71 to 32
+2025-05-04 17:35:24,496 - INFO - CT and PET volumes successfully saved to ..\data\pny\G0034.npy
+2025-05-04 17:35:24,496 - INFO - ---------- Successfully processed patient G0034 ----------
+2025-05-04 17:35:24,515 - INFO - =====< PRE-PROCESSING PATIENT G0035 >=====
+2025-05-04 17:35:26,620 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:35:26,639 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:35:26,639 - INFO - Found 36 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0035\CT
+2025-05-04 17:35:26,706 - INFO - Successfully loaded and sorted 36 slices.
+2025-05-04 17:35:26,707 - INFO - Found 36 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0035\PET
+2025-05-04 17:35:26,785 - INFO - Successfully loaded and sorted 36 slices.
+2025-05-04 17:35:26,880 - INFO - Resizing slices from 36 to 32
+2025-05-04 17:35:26,880 - INFO - Resizing slices from 36 to 32
+2025-05-04 17:35:26,932 - INFO - CT and PET volumes successfully saved to ..\data\pny\G0035.npy
+2025-05-04 17:35:26,932 - INFO - ---------- Successfully processed patient G0035 ----------
+2025-05-04 17:35:26,939 - INFO - =====< PRE-PROCESSING PATIENT G0036 >=====
+2025-05-04 17:35:29,317 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:35:29,334 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:35:29,334 - INFO - Found 67 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0036\CT
+2025-05-04 17:35:29,461 - INFO - Successfully loaded and sorted 67 slices.
+2025-05-04 17:35:29,461 - INFO - Found 67 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0036\PET
+2025-05-04 17:35:29,536 - INFO - Successfully loaded and sorted 67 slices.
+2025-05-04 17:35:29,705 - INFO - Resizing slices from 67 to 32
+2025-05-04 17:35:29,705 - INFO - Resizing slices from 67 to 32
+2025-05-04 17:35:29,767 - INFO - CT and PET volumes successfully saved to ..\data\pny\G0036.npy
+2025-05-04 17:35:29,767 - INFO - ---------- Successfully processed patient G0036 ----------
+2025-05-04 17:35:29,780 - INFO - =====< PRE-PROCESSING PATIENT G0037 >=====
+2025-05-04 17:35:33,531 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:35:33,549 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:35:33,550 - INFO - Found 41 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0037\CT
+2025-05-04 17:35:33,628 - INFO - Successfully loaded and sorted 41 slices.
+2025-05-04 17:35:33,628 - INFO - Found 41 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0037\PET
+2025-05-04 17:35:33,673 - INFO - Successfully loaded and sorted 41 slices.
+2025-05-04 17:35:33,778 - INFO - Resizing slices from 41 to 32
+2025-05-04 17:35:33,778 - INFO - Resizing slices from 41 to 32
+2025-05-04 17:35:33,828 - INFO - CT and PET volumes successfully saved to ..\data\pny\G0037.npy
+2025-05-04 17:35:33,828 - INFO - ---------- Successfully processed patient G0037 ----------
+2025-05-04 17:35:33,837 - INFO - =====< PRE-PROCESSING PATIENT G0038 >=====
+2025-05-04 17:35:37,107 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:35:37,125 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:35:37,126 - INFO - Found 44 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0038\CT
+2025-05-04 17:35:37,208 - INFO - Successfully loaded and sorted 44 slices.
+2025-05-04 17:35:37,208 - INFO - Found 44 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0038\PET
+2025-05-04 17:35:37,253 - INFO - Successfully loaded and sorted 44 slices.
+2025-05-04 17:35:37,364 - INFO - Resizing slices from 44 to 32
+2025-05-04 17:35:37,364 - INFO - Resizing slices from 44 to 32
+2025-05-04 17:35:37,419 - INFO - CT and PET volumes successfully saved to ..\data\pny\G0038.npy
+2025-05-04 17:35:37,419 - INFO - ---------- Successfully processed patient G0038 ----------
+2025-05-04 17:35:37,429 - INFO - =====< PRE-PROCESSING PATIENT G0039 >=====
+2025-05-04 17:35:39,693 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:35:39,711 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:35:39,712 - INFO - Found 57 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0039\CT
+2025-05-04 17:35:39,821 - INFO - Successfully loaded and sorted 57 slices.
+2025-05-04 17:35:39,821 - INFO - Found 57 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0039\PET
+2025-05-04 17:35:39,883 - INFO - Successfully loaded and sorted 57 slices.
+2025-05-04 17:35:40,028 - INFO - Resizing slices from 57 to 32
+2025-05-04 17:35:40,028 - INFO - Resizing slices from 57 to 32
+2025-05-04 17:35:40,082 - INFO - CT and PET volumes successfully saved to ..\data\pny\G0039.npy
+2025-05-04 17:35:40,082 - INFO - ---------- Successfully processed patient G0039 ----------
+2025-05-04 17:35:40,096 - INFO - =====< PRE-PROCESSING PATIENT G0040 >=====
+2025-05-04 17:35:42,525 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:35:42,541 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:35:42,542 - INFO - Found 74 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0040\CT
+2025-05-04 17:35:42,683 - INFO - Successfully loaded and sorted 74 slices.
+2025-05-04 17:35:42,683 - INFO - Found 74 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0040\PET
+2025-05-04 17:35:42,765 - INFO - Successfully loaded and sorted 74 slices.
+2025-05-04 17:35:42,963 - INFO - Resizing slices from 74 to 32
+2025-05-04 17:35:42,963 - INFO - Resizing slices from 74 to 32
+2025-05-04 17:35:43,018 - INFO - CT and PET volumes successfully saved to ..\data\pny\G0040.npy
+2025-05-04 17:35:43,018 - INFO - ---------- Successfully processed patient G0040 ----------
+2025-05-04 17:35:43,035 - INFO - =====< PRE-PROCESSING PATIENT G0041 >=====
+2025-05-04 17:35:46,633 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:35:46,643 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:35:46,644 - INFO - Found 46 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0041\CT
+2025-05-04 17:35:46,767 - INFO - Successfully loaded and sorted 46 slices.
+2025-05-04 17:35:46,767 - INFO - Found 46 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0041\PET
+2025-05-04 17:35:46,817 - INFO - Successfully loaded and sorted 46 slices.
+2025-05-04 17:35:46,934 - INFO - Resizing slices from 46 to 32
+2025-05-04 17:35:46,934 - INFO - Resizing slices from 46 to 32
+2025-05-04 17:35:46,995 - INFO - CT and PET volumes successfully saved to ..\data\pny\G0041.npy
+2025-05-04 17:35:46,995 - INFO - ---------- Successfully processed patient G0041 ----------
+2025-05-04 17:35:47,002 - INFO - =====< PRE-PROCESSING PATIENT G0042 >=====
+2025-05-04 17:35:50,977 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:35:50,987 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:35:50,988 - INFO - Found 52 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0042\CT
+2025-05-04 17:35:51,084 - INFO - Successfully loaded and sorted 52 slices.
+2025-05-04 17:35:51,084 - INFO - Found 52 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0042\PET
+2025-05-04 17:35:51,140 - INFO - Successfully loaded and sorted 52 slices.
+2025-05-04 17:35:51,272 - INFO - Resizing slices from 52 to 32
+2025-05-04 17:35:51,272 - INFO - Resizing slices from 52 to 32
+2025-05-04 17:35:51,324 - INFO - CT and PET volumes successfully saved to ..\data\pny\G0042.npy
+2025-05-04 17:35:51,324 - INFO - ---------- Successfully processed patient G0042 ----------
+2025-05-04 17:35:51,333 - INFO - =====< PRE-PROCESSING PATIENT G0043 >=====
+2025-05-04 17:35:55,032 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:35:55,072 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:35:55,073 - INFO - Found 41 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0043\CT
+2025-05-04 17:35:55,150 - INFO - Successfully loaded and sorted 41 slices.
+2025-05-04 17:35:55,150 - INFO - Found 41 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0043\PET
+2025-05-04 17:35:55,201 - INFO - Successfully loaded and sorted 41 slices.
+2025-05-04 17:35:55,303 - INFO - Resizing slices from 41 to 32
+2025-05-04 17:35:55,303 - INFO - Resizing slices from 41 to 32
+2025-05-04 17:35:55,357 - INFO - CT and PET volumes successfully saved to ..\data\pny\G0043.npy
+2025-05-04 17:35:55,357 - INFO - ---------- Successfully processed patient G0043 ----------
+2025-05-04 17:35:55,365 - INFO - =====< PRE-PROCESSING PATIENT G0044 >=====
+2025-05-04 17:35:59,577 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:35:59,591 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:35:59,591 - INFO - Found 30 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0044\CT
+2025-05-04 17:35:59,648 - INFO - Successfully loaded and sorted 30 slices.
+2025-05-04 17:35:59,648 - INFO - Found 30 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0044\PET
+2025-05-04 17:35:59,682 - INFO - Successfully loaded and sorted 30 slices.
+2025-05-04 17:35:59,757 - INFO - Resizing slices from 30 to 32
+2025-05-04 17:35:59,770 - INFO - Resizing slices from 30 to 32
+2025-05-04 17:35:59,823 - INFO - CT and PET volumes successfully saved to ..\data\pny\G0044.npy
+2025-05-04 17:35:59,823 - INFO - ---------- Successfully processed patient G0044 ----------
+2025-05-04 17:35:59,829 - INFO - =====< PRE-PROCESSING PATIENT G0045 >=====
+2025-05-04 17:36:01,302 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:36:01,316 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:36:01,316 - INFO - Skipping patient G0045 due to missing DICOM files in CT or PET directory.
+2025-05-04 17:36:01,317 - INFO - =====< PRE-PROCESSING PATIENT G0046 >=====
+2025-05-04 17:36:04,597 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:36:04,609 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:36:04,609 - INFO - Found 39 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0046\CT
+2025-05-04 17:36:04,683 - INFO - Successfully loaded and sorted 39 slices.
+2025-05-04 17:36:04,683 - INFO - Found 39 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0046\PET
+2025-05-04 17:36:04,724 - INFO - Successfully loaded and sorted 39 slices.
+2025-05-04 17:36:04,827 - INFO - Resizing slices from 39 to 32
+2025-05-04 17:36:04,827 - INFO - Resizing slices from 39 to 32
+2025-05-04 17:36:04,884 - INFO - CT and PET volumes successfully saved to ..\data\pny\G0046.npy
+2025-05-04 17:36:04,884 - INFO - ---------- Successfully processed patient G0046 ----------
+2025-05-04 17:36:04,895 - INFO - =====< PRE-PROCESSING PATIENT G0048 >=====
+2025-05-04 17:36:09,771 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:36:09,785 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:36:09,786 - INFO - Found 39 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0048\CT
+2025-05-04 17:36:09,859 - INFO - Successfully loaded and sorted 39 slices.
+2025-05-04 17:36:09,859 - INFO - Found 39 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0048\PET
+2025-05-04 17:36:09,902 - INFO - Successfully loaded and sorted 39 slices.
+2025-05-04 17:36:10,000 - INFO - Resizing slices from 39 to 32
+2025-05-04 17:36:10,000 - INFO - Resizing slices from 39 to 32
+2025-05-04 17:36:10,058 - INFO - CT and PET volumes successfully saved to ..\data\pny\G0048.npy
+2025-05-04 17:36:10,058 - INFO - ---------- Successfully processed patient G0048 ----------
+2025-05-04 17:36:10,065 - INFO - =====< PRE-PROCESSING PATIENT G0049 >=====
+2025-05-04 17:36:14,834 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:36:14,846 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:36:14,846 - INFO - Found 48 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0049\CT
+2025-05-04 17:36:14,938 - INFO - Successfully loaded and sorted 48 slices.
+2025-05-04 17:36:14,938 - INFO - Found 48 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0049\PET
+2025-05-04 17:36:14,990 - INFO - Successfully loaded and sorted 48 slices.
+2025-05-04 17:36:15,113 - INFO - Resizing slices from 48 to 32
+2025-05-04 17:36:15,113 - INFO - Resizing slices from 48 to 32
+2025-05-04 17:36:15,165 - INFO - CT and PET volumes successfully saved to ..\data\pny\G0049.npy
+2025-05-04 17:36:15,165 - INFO - ---------- Successfully processed patient G0049 ----------
+2025-05-04 17:36:15,175 - INFO - =====< PRE-PROCESSING PATIENT G0050 >=====
+2025-05-04 17:36:18,177 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:36:18,191 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:36:18,191 - INFO - Found 21 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0050\CT
+2025-05-04 17:36:18,230 - INFO - Successfully loaded and sorted 21 slices.
+2025-05-04 17:36:18,230 - INFO - Found 21 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0050\PET
+2025-05-04 17:36:18,253 - INFO - Successfully loaded and sorted 21 slices.
+2025-05-04 17:36:18,304 - INFO - Resizing slices from 21 to 32
+2025-05-04 17:36:18,315 - INFO - Resizing slices from 21 to 32
+2025-05-04 17:36:18,365 - INFO - CT and PET volumes successfully saved to ..\data\pny\G0050.npy
+2025-05-04 17:36:18,365 - INFO - ---------- Successfully processed patient G0050 ----------
+2025-05-04 17:36:18,370 - INFO - =====< PRE-PROCESSING PATIENT G0051 >=====
+2025-05-04 17:36:21,982 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:36:21,998 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:36:21,998 - INFO - Found 59 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0051\CT
+2025-05-04 17:36:22,143 - INFO - Successfully loaded and sorted 59 slices.
+2025-05-04 17:36:22,143 - INFO - Found 59 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0051\PET
+2025-05-04 17:36:22,208 - INFO - Successfully loaded and sorted 59 slices.
+2025-05-04 17:36:22,359 - INFO - Resizing slices from 59 to 32
+2025-05-04 17:36:22,359 - INFO - Resizing slices from 59 to 32
+2025-05-04 17:36:22,411 - INFO - CT and PET volumes successfully saved to ..\data\pny\G0051.npy
+2025-05-04 17:36:22,411 - INFO - ---------- Successfully processed patient G0051 ----------
+2025-05-04 17:36:22,427 - INFO - =====< PRE-PROCESSING PATIENT G0052 >=====
+2025-05-04 17:36:25,787 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:36:25,798 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:36:25,799 - INFO - Found 63 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0052\CT
+2025-05-04 17:36:25,920 - INFO - Successfully loaded and sorted 63 slices.
+2025-05-04 17:36:25,920 - INFO - Found 63 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0052\PET
+2025-05-04 17:36:25,992 - INFO - Successfully loaded and sorted 63 slices.
+2025-05-04 17:36:26,151 - INFO - Resizing slices from 63 to 32
+2025-05-04 17:36:26,151 - INFO - Resizing slices from 63 to 32
+2025-05-04 17:36:26,211 - INFO - CT and PET volumes successfully saved to ..\data\pny\G0052.npy
+2025-05-04 17:36:26,211 - INFO - ---------- Successfully processed patient G0052 ----------
+2025-05-04 17:36:26,225 - INFO - =====< PRE-PROCESSING PATIENT G0053 >=====
+2025-05-04 17:36:28,167 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:36:28,180 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:36:28,180 - INFO - Skipping patient G0053 due to missing DICOM files in CT or PET directory.
+2025-05-04 17:36:28,180 - INFO - =====< PRE-PROCESSING PATIENT G0054 >=====
+2025-05-04 17:36:32,324 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:36:32,335 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:36:32,335 - INFO - Found 46 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0054\CT
+2025-05-04 17:36:32,423 - INFO - Successfully loaded and sorted 46 slices.
+2025-05-04 17:36:32,423 - INFO - Found 46 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0054\PET
+2025-05-04 17:36:32,473 - INFO - Successfully loaded and sorted 46 slices.
+2025-05-04 17:36:32,588 - INFO - Resizing slices from 46 to 32
+2025-05-04 17:36:32,588 - INFO - Resizing slices from 46 to 32
+2025-05-04 17:36:32,645 - INFO - CT and PET volumes successfully saved to ..\data\pny\G0054.npy
+2025-05-04 17:36:32,645 - INFO - ---------- Successfully processed patient G0054 ----------
+2025-05-04 17:36:32,654 - INFO - =====< PRE-PROCESSING PATIENT G0055 >=====
+2025-05-04 17:36:37,194 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:36:37,207 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:36:37,207 - INFO - Found 45 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0055\CT
+2025-05-04 17:36:37,292 - INFO - Successfully loaded and sorted 45 slices.
+2025-05-04 17:36:37,292 - INFO - Found 45 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0055\PET
+2025-05-04 17:36:37,344 - INFO - Successfully loaded and sorted 45 slices.
+2025-05-04 17:36:37,460 - INFO - Resizing slices from 45 to 32
+2025-05-04 17:36:37,460 - INFO - Resizing slices from 45 to 32
+2025-05-04 17:36:37,510 - INFO - CT and PET volumes successfully saved to ..\data\pny\G0055.npy
+2025-05-04 17:36:37,510 - INFO - ---------- Successfully processed patient G0055 ----------
+2025-05-04 17:36:37,517 - INFO - =====< PRE-PROCESSING PATIENT G0056 >=====
+2025-05-04 17:36:42,515 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:36:42,528 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:36:42,529 - INFO - Found 48 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0056\CT
+2025-05-04 17:36:42,620 - INFO - Successfully loaded and sorted 48 slices.
+2025-05-04 17:36:42,621 - INFO - Found 42 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0056\PET
+2025-05-04 17:36:42,665 - INFO - Successfully loaded and sorted 42 slices.
+2025-05-04 17:36:42,784 - INFO - Resizing slices from 48 to 32
+2025-05-04 17:36:42,784 - INFO - Resizing slices from 42 to 32
+2025-05-04 17:36:42,834 - INFO - CT and PET volumes successfully saved to ..\data\pny\G0056.npy
+2025-05-04 17:36:42,834 - INFO - ---------- Successfully processed patient G0056 ----------
+2025-05-04 17:36:42,846 - INFO - =====< PRE-PROCESSING PATIENT G0057 >=====
+2025-05-04 17:36:46,059 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:36:46,072 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:36:46,072 - INFO - Found 32 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0057\CT
+2025-05-04 17:36:46,132 - INFO - Successfully loaded and sorted 32 slices.
+2025-05-04 17:36:46,132 - INFO - Found 32 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0057\PET
+2025-05-04 17:36:46,168 - INFO - Successfully loaded and sorted 32 slices.
+2025-05-04 17:36:46,245 - INFO - Resizing slices from 32 to 32
+2025-05-04 17:36:46,245 - INFO - Resizing slices from 32 to 32
+2025-05-04 17:36:46,300 - INFO - CT and PET volumes successfully saved to ..\data\pny\G0057.npy
+2025-05-04 17:36:46,300 - INFO - ---------- Successfully processed patient G0057 ----------
+2025-05-04 17:36:46,305 - INFO - =====< PRE-PROCESSING PATIENT G0058 >=====
+2025-05-04 17:36:50,395 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:36:50,403 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:36:50,404 - INFO - Found 122 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0058\CT
+2025-05-04 17:36:50,672 - INFO - Successfully loaded and sorted 122 slices.
+2025-05-04 17:36:50,672 - INFO - Found 122 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0058\PET
+2025-05-04 17:36:50,809 - INFO - Successfully loaded and sorted 122 slices.
+2025-05-04 17:36:51,143 - INFO - Resizing slices from 122 to 32
+2025-05-04 17:36:51,143 - INFO - Resizing slices from 122 to 32
+2025-05-04 17:36:51,202 - INFO - CT and PET volumes successfully saved to ..\data\pny\G0058.npy
+2025-05-04 17:36:51,203 - INFO - ---------- Successfully processed patient G0058 ----------
+2025-05-04 17:36:51,238 - INFO - =====< PRE-PROCESSING PATIENT G0059 >=====
+2025-05-04 17:36:55,688 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:36:55,700 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:36:55,701 - INFO - Found 44 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0059\CT
+2025-05-04 17:36:55,783 - INFO - Successfully loaded and sorted 44 slices.
+2025-05-04 17:36:55,783 - INFO - Found 44 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0059\PET
+2025-05-04 17:36:55,831 - INFO - Successfully loaded and sorted 44 slices.
+2025-05-04 17:36:55,944 - INFO - Resizing slices from 44 to 32
+2025-05-04 17:36:55,944 - INFO - Resizing slices from 44 to 32
+2025-05-04 17:36:55,993 - INFO - CT and PET volumes successfully saved to ..\data\pny\G0059.npy
+2025-05-04 17:36:55,993 - INFO - ---------- Successfully processed patient G0059 ----------
+2025-05-04 17:36:56,000 - INFO - =====< PRE-PROCESSING PATIENT G0060 >=====
+2025-05-04 17:37:00,358 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:37:00,370 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:37:00,371 - INFO - Found 59 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0060\CT
+2025-05-04 17:37:00,478 - INFO - Successfully loaded and sorted 59 slices.
+2025-05-04 17:37:00,478 - INFO - Found 59 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0060\PET
+2025-05-04 17:37:00,543 - INFO - Successfully loaded and sorted 59 slices.
+2025-05-04 17:37:00,693 - INFO - Resizing slices from 59 to 32
+2025-05-04 17:37:00,693 - INFO - Resizing slices from 59 to 32
+2025-05-04 17:37:00,742 - INFO - CT and PET volumes successfully saved to ..\data\pny\G0060.npy
+2025-05-04 17:37:00,742 - INFO - ---------- Successfully processed patient G0060 ----------
+2025-05-04 17:37:00,751 - INFO - =====< PRE-PROCESSING PATIENT G0062 >=====
+2025-05-04 17:37:03,808 - INFO - Successfully filtered slices for CT scans
+2025-05-04 17:37:03,818 - INFO - Successfully filtered slices for PET scans
+2025-05-04 17:37:03,818 - INFO - Found 77 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0062\CT
+2025-05-04 17:37:03,961 - INFO - Successfully loaded and sorted 77 slices.
+2025-05-04 17:37:03,962 - INFO - Found 77 DICOM files in D:\Datasets\Dataset\Lung_Dx-G0062\PET
+2025-05-04 17:37:04,046 - INFO - Successfully loaded and sorted 77 slices.
+2025-05-04 17:37:04,232 - INFO - Resizing slices from 77 to 32
+2025-05-04 17:37:04,233 - INFO - Resizing slices from 77 to 32
+2025-05-04 17:37:04,285 - INFO - CT and PET volumes successfully saved to ..\data\pny\G0062.npy
+2025-05-04 17:37:04,285 - INFO - ---------- Successfully processed patient G0062 ----------
+2025-05-04 17:37:04,298 - INFO - =====< DATA AUGMENTATION >=====
+2025-05-04 17:37:38,907 - INFO - Augmented 83 samples for class B.
+2025-05-04 17:38:13,215 - INFO - Augmented 64 samples for class G.
+2025-05-04 17:38:13,215 - INFO - Data augmentation completed

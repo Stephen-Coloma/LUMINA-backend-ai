@@ -1,9 +1,28 @@
-from pydicom import dcmread
+# ==== Standard Imports ====
 from pathlib import Path
 import logging
 
+# ==== Third Party Imports ====
+from pydicom import dcmread
+
+
 class DicomROIFilter:
+    """
+    A class to filter DICOM slices based on the Region of Interest
+    (ROI). The class takes paths to DICOM files and annotations,
+    then filters the slices that belong to the ROI and removes the
+    irrelevant ones.
+    """
+
     def __init__(self, dicom_path: Path, anno_path: Path, patient_num: str):
+        """
+        Initializes DicomROIFilter object.
+
+        Args:
+        :param dicom_path: The path to the directory containing DICOM files.
+        :param anno_path: The path to the directory containing annotation files.
+        :param patient_num: The patient number used for identifying the DICOM and annotation files.
+        """
         self.dicom_path = dicom_path
         self.anno_path = anno_path
         self.patient_num = patient_num
@@ -13,8 +32,9 @@ class DicomROIFilter:
 
     def filter_slices(self):
         """
-        Filters DICOM slices to retain only those that are a part of the ROI (Region of Interest).
-        Slices that are not a part of the ROI are deleted.
+        Filters DICOM slices to retain only those that are a part of the
+        ROI (Region of Interest). Slices that are not a part of the ROI
+        are deleted.
         """
         for modality in ['CT', 'PET']:
             modality_path = self.dicom_path / modality
@@ -34,7 +54,8 @@ class DicomROIFilter:
 
     def _get_uid_paths(self) -> dict:
         """
-        Retrieves the DICOM slice SOPInstanceUIDs to their file names from the DICOM directory.
+        Retrieves the DICOM slice SOPInstanceUIDs to their file names
+        from the DICOM directory.
 
         :return: A dictionary mapping SOPInstanceUID to DICOM file names.
         """
@@ -60,7 +81,8 @@ class DicomROIFilter:
 
     def _get_roi_slices(self):
         """
-        Populates the roi_slices list with DICOM file names that are a part of the ROI (Region of Interest).
+        Populates the roi_slices list with DICOM file names that
+        are a part of the ROI (Region of Interest).
         """
         dicom_dict = self._get_uid_paths()
 

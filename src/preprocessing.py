@@ -1,15 +1,15 @@
-from src.preprocessing.ai.roi_slice_filter import DicomROIFilter
-from src.preprocessing.ai.dicom_converter import DicomConverter
-from src.preprocessing.ai.volume_processing import VolumeProcessor
-from src.preprocessing.ai.intensity_processing import IntensityProcessor
-from src.preprocessing.ai.dicom_augmentor import Augmentator
-from src.preprocessing.ai.dicom_converter import save_arrays
+# ==== Standard Imports ====
 from pathlib import Path
-from src.utils.logger import setup_logger
 import logging
 
+# ==== Local Project Imports ====
+from preprocessing import DicomROIFilter, DicomConverter, VolumeProcessor, IntensityProcessor, Augmenter, save_arrays
+from utils import setup_logger
+
+
+# ========== Data Augmentation Function ==========
 def augment_data(input_path: Path, output_path: Path, logger: logging):
-    augmentor = Augmentator()
+    augmentor = Augmenter()
     tally = augmentor.get_minority_classes(input_path)
     target = max(tally.values())
     minority_classes = {k: target - v for k, v in tally.items() if v < target}
@@ -26,6 +26,7 @@ def augment_data(input_path: Path, output_path: Path, logger: logging):
 
     logger.info(f'Data augmentation completed')
 
+# ========== Data Preprocessing Function ==========
 def preprocess_patient_data(anno_path: Path, output_path: Path, patient_dir: Path, logger: logging):
     patient_num = patient_dir.name.split('-')[-1]
     patient_dicom_ct = patient_dir / 'CT'
@@ -72,6 +73,7 @@ def preprocess_patient_data(anno_path: Path, output_path: Path, patient_dir: Pat
         logger.error(f'Error processing patient {patient_num}: {e}')
         raise
 
+# ========== Main Function ==========
 def main():
     dicom_path = Path(r'D:\Datasets\Dataset')
     anno_path = Path(r'D:\Datasets\Annotation')
@@ -90,5 +92,6 @@ def main():
 
     augment_data(input_path_aug, output_path_aug, logger)
 
+# ========== Runnable ==========
 if __name__ == '__main__':
     main()
