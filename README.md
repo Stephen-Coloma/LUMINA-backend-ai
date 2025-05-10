@@ -1,28 +1,26 @@
-# NSCLC Classifier Model
+# Lung Cancer DenseNet Classifier
 
-## Guide
-### Preprocessing
-1. Head over to the preprocessing.py file and look for `dicom_path` and `anno_path` variables located in the main function
-```commandline
-# preprocessing.py
-def main():
-    dicom_path = Path(r'D:\Datasets\Dataset')    // CHANGE THE PATH ON WHERE THE DATASET IS STORED IN YOUR COMPUTER
-    anno_path = Path(r'D:\Datasets\Annotation')  // DO THE SAME WITH THE ANNOTATIONS
-    ...
-```
-2. Ensure that a directory named `data` is created in the project folder (outside the src package)
-3. Run the script found at the very bottom of the file
-```commandline
-if __name__ == '__main__':
-    main()
-```
-### Training
-Before running the train.py file, you can tweak some values contained in the model.yml file located int the configs directory.
-Here you can change most of the hyperparameters and parameters that the model uses such as the `learning rate`, `epochs`, `optimizer`, and many more.
+## About
+The `Lung Cancer DenseNet Classifier` is a deep learning model designed to classify
+subtypes of lung cancer using 3D medical imaging data. This project leverages a 3D
+DenseNet-based architecture for detecting subtle patterns within medical scans.
 
-After changing some values if necessary, you can now run the train.py file. A logger is implemented so that you can check training logs in the logs directory.
-The log file will be created everytime you run the script wherein the logfile is named such that it stores the timestamp of when you first ran the program.
+This model takes 3D CT and PET scan volumes as input and classifies them into distinct
+lung cancer subtypes. It is built using PyTorch and includes preprocessing, feature extraction,
+and classification components that handle volumetric data.
 
-During training, after every epoch, the current state of the model will be saved, this is known as `checkpoints` to ensure that you can continue training on another day without loosing any progress.
-Just keep in mind that you can only continue training as long as you don't modify anything in the model.yml and the scripts inside the model package as the model parameters need to be preserved
-all throughout the epochs.
+## Key Features
+### 3D DenseNet Architecture
+Utilizes DenseNet to maintain efficient information flow through deep layers,
+which is crucial for 3D volumetric medical imaging tasks.
+### Multi-modal Input
+Designed to take in both CT and PET scans for richer feature extraction.
+### End-to-End Solution
+Contains the entire pipeline for lung cancer subtype classification from data
+preprocessing to model training and evaluation.
+### Somewhat Easy Parameter Tuning
+A configuration file is integrated where hyperparameters can be changed along with the type of optimizers
+and loss functions.
+
+## Agent
+A website is created as the agent for integrating the deep learning model.
