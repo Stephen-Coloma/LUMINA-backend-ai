@@ -3,6 +3,8 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 import shutil
 from app.controllers.ai_controllers import process_zip_dicom
+from app.schemas import Symptoms
+from app.models.model import data_sci_model
 
 router = APIRouter()
 
@@ -27,12 +29,29 @@ async def predict_images(file: UploadFile = File(...)):
         print(f"Error occurred: {str(e)}")
         raise HTTPException(status_code=400, detail=str(e))
 
-# Route for data
+# Route for Data Science
 @router.get("/diagnose")
-async def diagnose_symptoms():
-    print("Received request for symptom diagnosis.")
-    # Preprocess first
-    # Predict using the model
-    # Postprocess the result
-    # Return the result
-    return {"message": "Diagnose symptoms"}
+async def diagnose_symptoms(data: Symptoms):
+   gender = 1 if data.gender == "female" else 0
+   
+   input_features = [[
+      gender,
+      data.age,
+      int(data.smoking),
+      int(data.yellowFingers),
+      int(data.anxiety),
+      int(data.peerPressure),
+      int(data.chronicDisease),
+      int(data.fatigue),
+      int(data.allergy),
+      int(data.wheezing),
+      int(data.alcohol),
+      int(data.coughing),
+      int(data.shortnessOfBreath),
+      int(data.swallowingDifficulty),
+      int(data.chestPain)
+    ]]
+   
+   prediction = data_sci_model.predict(input_features)
+   
+   return {"prediction": int(prediction[0])}

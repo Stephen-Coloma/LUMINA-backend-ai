@@ -1,13 +1,11 @@
-import torch # type: ignore
-from app.models.ai.nsclc_model import NSCLC_Model
+import torch
+import joblib
 
-# ai_model = NSCLC_Model(model_config=None)  # Assuming model_config is defined somewhere in your code
-# ai_model.load_state_dict(torch.load("C:/Users/Renuel Balogo/Documents/Projects Cloned/nsclc-classifier-ai/agent/app/models/best_model.pth", weights_only=True, map_location=torch.device('cpu')))
-# # ai_model.eval()
+# AI Model
 gpu = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-ai_model = torch.jit.load("C:/Users/steph/Desktop/nsclc-classifier-ai/agent/app/models/best_model.pt", )
+ai_model = torch.jit.load("C:/Users/Renuel Balogo/Documents/Projects Cloned/nsclc-classifier-ai/agent/app/models/best_model.pt")
+ai_model = ai_model.to(gpu)
 ai_model.eval()
 
-ai_model = ai_model.to(gpu)
-# data_sci_model= torch.load("model_b.pth")
-# data_sci_model.eval()
+# Machine Learning Model
+data_sci_model= joblib.load("C:/Users/Renuel Balogo/Documents/Projects Cloned/nsclc-classifier-ai/agent/app/models/logistic_model.pkl")
