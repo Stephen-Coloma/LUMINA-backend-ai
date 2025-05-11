@@ -16,6 +16,7 @@ class DenseNet3D(nn.Module):
         # feature block parameters
         in_channels = model_config.feature_block.in_channels
         growth_rate = model_config.feature_block.growth_rate
+        use_cbam = model_config.feature_block.use_cbam
         use_transition = model_config.feature_block.use_transition
         compression = model_config.feature_block.compression
         num_blocks = model_config.feature_block.dense_block.blocks
@@ -27,6 +28,7 @@ class DenseNet3D(nn.Module):
             growth_rate=growth_rate,
             num_blocks=num_blocks,
             num_layers=num_layers,
+            use_cbam=use_cbam,
             use_transition=use_transition,
             compression=compression
         )
@@ -35,6 +37,7 @@ class DenseNet3D(nn.Module):
             growth_rate=growth_rate,
             num_blocks=num_blocks,
             num_layers=num_layers,
+            use_cbam=use_cbam,
             use_transition=use_transition,
             compression=compression
         )

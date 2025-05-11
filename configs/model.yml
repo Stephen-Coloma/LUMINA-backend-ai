@@ -34,6 +34,7 @@ loss:
 feature_block:
   in_channels: 1
   growth_rate: 12
+  use_cbam: True
   use_transition: True
   compression: 0.75
   dense_block:
