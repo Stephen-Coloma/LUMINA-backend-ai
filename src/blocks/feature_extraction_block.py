@@ -1,5 +1,6 @@
 # ==== Third Party Imports ====
 import torch
+from pandas.conftest import compression
 from torch import nn as nn
 
 # ==== Local Project Imports ====
@@ -8,51 +9,42 @@ from cbam import CBAM
 
 class FeatureExtractionBlock(nn.Module):
     """
-    A feature extraction block that integrates Dense Blocks,
-    CBAM (attention), and an optional Transition Layer for
-    channel and spatial down-sampling.
+    The feature extraction block is composed of multiple Dense
+    Blocks. Each block may include an attention mechanism and
+    a transition layer for spatial/channel downsampling.
 
     Architecture:
-        Input -> [Dense Block -> CBAM -> (Transition)] * num_blocks -> Output
+        Input -> Dense Block * num_blocks -> Output
     """
 
-    def __init__(self, in_channels, growth_rate, num_blocks, num_layers, use_transition=True, compression=0.5):
+    def __init__(self, in_channels, growth_rate, num_blocks, num_layers, use_cbam=True, use_transition=True, compression=0.5):
         """
         Initializes FeatureExtractionBlock object.
 
         Args:
         :param in_channels: Number of input channels.
         :param growth_rate: Number of feature maps each DenseBlock layer adds.
-        :param num_blocks: Number of Feature Extraction Block sequences.
-        :param num_layers: Number of layers in the Dense Block.
+        :param num_blocks: Number of Dense Block sequences.
+        :param num_layers: Number of layers in each Dense Block.
+        :param use_cbam: Flag indicating if an attention mechanism will be utilized.
         :param use_transition: Flag indicating if a transition layer will be utilized.
         :param compression: Factor to reduce the number of channels in the transition layer.
         """
         super(FeatureExtractionBlock, self).__init__()
         self.blocks = nn.ModuleList()
-        self.use_transition = use_transition
-        self.compression = compression
-
         current_channels = in_channels
 
         for i in range(num_blocks):
-            # Dense Block
-            dense_block = DenseBlock(current_channels, growth_rate, num_layers)
-            self.blocks.append(dense_block)
-            current_channels += num_layers * growth_rate
-
-            # CBAM
-            self.blocks.append(nn.Sequential(
-                CBAM(current_channels),
-                nn.Dropout3d(p=0.1)
-            ))
-
-            # Transition
-            if use_transition and i == 0:
-                reduced_channels = int(current_channels * compression)
-                transition = Transition(current_channels, reduced_channels)
-                self.blocks.append(transition)
-                current_channels = reduced_channels
+            block = DenseBlock(
+                in_channels=current_channels,
+                growth_rate=growth_rate,
+                num_layers=num_layers,
+                use_cbam=use_cbam,
+                use_transition=(use_transition and i == 0), # only add transition after the first block if use_transition is true
+                compression=compression
+            )
+            self.blocks.append(block)
+            current_channels = block.out_channels
 
         self.out_channels = current_channels
 
@@ -67,20 +59,28 @@ class DenseBlock(nn.Module):
     A Dense Block for 3D volumetric feature extraction.
 
     Architecture (per layer):
-        [Bottleneck -> Conv3d(3x3x3) -> InstanceNorm3d -> ReLU] * num_layers
+        [Bottleneck -> Conv3d(3x3x3) -> InstanceNorm3d -> ReLU] * num_layers -> CBAM -> Transition Layer
     """
 
-    def __init__(self, in_channels, growth_rate, num_layers):
+    def __init__(self, in_channels, growth_rate, num_layers, use_cbam=True, use_transition=True, compression=0.5):
         """
         Initializes DenseBlock object.
 
         Args:
         :param in_channels: Input feature channels.
         :param growth_rate: Output channels added per layer.
-        :param num_layers: Number of layers in the Dense Block.
+        :param num_layers: Number of dense layers.
+        :param use_cbam: Flag indicating if an attention mechanism will be utilized.
+        :param use_transition: Flag indicating if a transition layer will be utilized.
+        :param compression: Factor to reduce the number of channels in the transition layer.
         """
         super(DenseBlock, self).__init__()
         self.layers = nn.ModuleList()
+        self.use_cbam = use_cbam
+        self.use_transition = use_transition
+
+        current_channels = in_channels
+
         for i in range(num_layers):
             self.layers.append(nn.Sequential(
                 # apply a bottleneck layer to reduce feature maps
@@ -91,6 +91,20 @@ class DenseBlock(nn.Module):
                 nn.InstanceNorm3d(growth_rate, affine=True),
                 nn.ReLU(inplace=True),
             ))
+            current_channels += growth_rate
+
+        if self.use_cbam:
+            self.attn = nn.Sequential(
+                CBAM(current_channels),
+                nn.Dropout3d(p=0.1)
+            )
+
+        if self.use_transition:
+            reduced_channels = int(current_channels * compression)
+            self.transition = Transition(current_channels, reduced_channels)
+            self.out_channels = reduced_channels
+        else:
+            self.out_channels = current_channels
 
     def forward(self, x):
         for layer in self.layers:
@@ -98,6 +112,13 @@ class DenseBlock(nn.Module):
 
             # concatenate new feature maps with the previous ones
             x = torch.cat([x, new_features], dim=1)
+
+        if self.use_cbam:
+            x = self.attn(x)
+
+        if self.use_transition:
+            x = self.transition(x)
+
         return x
 
 
