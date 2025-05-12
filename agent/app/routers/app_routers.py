@@ -35,7 +35,7 @@ async def diagnose_symptoms(data: Symptoms):
     gender = 1 if data.gender == "female" else 0
 
     symptoms_dict = {
-        "MALE": [gender],
+        "GENDER": [gender],
         "AGE": [data.age],
         "SMOKING": [int(data.smoking)],
         "YELLOW_FINGERS": [int(data.yellowFingers)],
