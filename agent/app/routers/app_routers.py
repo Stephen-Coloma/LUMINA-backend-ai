@@ -55,9 +55,13 @@ async def diagnose_symptoms(data: Symptoms):
     symptoms_df = pd.DataFrame(symptoms_dict)
     prediction = data_sci_model.predict(symptoms_df)
     confidence = data_sci_model.predict_proba(symptoms_df)[0]
-
     
+    if(prediction == 0):
+        confidence = confidence[0]
+    else:
+        confidence = confidence[1]
+
     return {
         "prediction": int(prediction[0]),
-        "confidence": float(confidence[0])
+        "confidence": float(confidence)
     }
