@@ -30,7 +30,7 @@ async def predict_images(file: UploadFile = File(...)):
         print(f"Error occurred: {str(e)}")
         raise HTTPException(status_code=400, detail=str(e))
 
-@router.get("/diagnose")
+@router.post("/diagnose")
 async def diagnose_symptoms(data: Symptoms):
     gender = 1 if data.gender == "female" else 0
 
