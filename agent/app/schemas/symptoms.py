@@ -1,7 +1,7 @@
 from pydantic import BaseModel, conint
 from typing import Literal
 
-class HealthData(BaseModel):
+class Symptoms(BaseModel):
     gender: Literal["male", "female"]
     age: conint(ge=0)
     smoking: bool

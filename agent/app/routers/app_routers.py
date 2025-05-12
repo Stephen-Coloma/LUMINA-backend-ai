@@ -3,8 +3,9 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 import shutil
 from app.controllers.ai_controllers import process_zip_dicom
-from app.schemas import Symptoms
+from app.schemas.symptoms import Symptoms
 from app.models.model import data_sci_model
+import pandas as pd
 
 router = APIRouter()
 
@@ -29,29 +30,34 @@ async def predict_images(file: UploadFile = File(...)):
         print(f"Error occurred: {str(e)}")
         raise HTTPException(status_code=400, detail=str(e))
 
-# Route for Data Science
 @router.get("/diagnose")
 async def diagnose_symptoms(data: Symptoms):
-   gender = 1 if data.gender == "female" else 0
-   
-   input_features = [[
-      gender,
-      data.age,
-      int(data.smoking),
-      int(data.yellowFingers),
-      int(data.anxiety),
-      int(data.peerPressure),
-      int(data.chronicDisease),
-      int(data.fatigue),
-      int(data.allergy),
-      int(data.wheezing),
-      int(data.alcohol),
-      int(data.coughing),
-      int(data.shortnessOfBreath),
-      int(data.swallowingDifficulty),
-      int(data.chestPain)
-    ]]
-   
-   prediction = data_sci_model.predict(input_features)
-   
-   return {"prediction": int(prediction[0])}
+    gender = 1 if data.gender == "female" else 0
+
+    symptoms_dict = {
+        "MALE": [gender],
+        "AGE": [data.age],
+        "SMOKING": [int(data.smoking)],
+        "YELLOW_FINGERS": [int(data.yellowFingers)],
+        "ANXIETY": [int(data.anxiety)],
+        "PEER_PRESSURE": [int(data.peerPressure)],
+        "CHRONIC DISEASE": [int(data.chronicDisease)],
+        "FATIGUE": [int(data.fatigue)],
+        "ALLERGY": [int(data.allergy)],
+        "WHEEZING": [int(data.wheezing)],
+        "ALCOHOL CONSUMING": [int(data.alcohol)],
+        "COUGHING": [int(data.coughing)],
+        "SHORTNESS OF BREATH": [int(data.shortnessOfBreath)],
+        "SWALLOWING DIFFICULTY": [int(data.swallowingDifficulty)],
+        "CHEST PAIN": [int(data.chestPain)],
+    }
+
+    symptoms_df = pd.DataFrame(symptoms_dict)
+    prediction = data_sci_model.predict(symptoms_df)
+    confidence = data_sci_model.predict_proba(symptoms_df)[0]
+
+    
+    return {
+        "prediction": int(prediction[0]),
+        "confidence": float(confidence[0])
+    }
