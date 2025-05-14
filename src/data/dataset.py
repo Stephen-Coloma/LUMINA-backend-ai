@@ -35,8 +35,8 @@ class MedicalDataset(Dataset):
 
         for data_file in dataset_path.glob('**/*.npy'):
             try:
-                item = np.load(data_file, allow_pickle=True).item()
-                self.dataset.append(item)
+                _ = np.load(data_file, allow_pickle=True).item()
+                self.dataset.append(data_file)
             except Exception as e:
                 self.logger.warning(f'Failed to load {data_file.name}: {e}')
 
@@ -56,7 +56,8 @@ class MedicalDataset(Dataset):
         :param index: The index of the sample to retrieve.
         :return: A tuple of label, ct, and pet tensors.
         """
-        data = self.dataset[index]
+        data_file = self.dataset[index]
+        data = np.load(data_file, allow_pickle=True).item()
 
         # convert label string to integer index
         label_str = data['label']

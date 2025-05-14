@@ -7,19 +7,18 @@ import torch
 from torch import bfloat16
 from torch.amp import GradScaler, autocast
 from torch.nn.utils import clip_grad_norm_
-from torch.utils.data import DataLoader, Subset
-from sklearn.model_selection import StratifiedShuffleSplit
 from tqdm import tqdm
 
 # ==== Local Project Imports ====
-from .model import DenseNet3D
-from .data import MedicalDataset
-from utils import load_config
-from utils import EarlyStopping
-from utils import get_optimizer, get_loss_fn
-from utils import setup_logger, log_configuration
-from utils import compute as compute_metrics, log as log_metrics
-from utils import save_checkpoint, save_model
+from src.model import DenseNet3D
+from src.utils.config_loader import load_config
+from src.utils.early_stopping import EarlyStopping
+from src.utils.factory import get_optimizer, get_loss_fn
+from src.utils.logger import setup_logger, log_configuration
+from src.utils.metrics import compute as compute_metrics, log as log_metrics
+from src.utils.save import save_checkpoint, save_model
+from src.utils.load_dataset import get_dataset, get_train_val_dataset
+from src.utils.validate_or_test_model import validate_or_test
 
 
 # ========== Train Function ==========
@@ -86,7 +85,7 @@ def train(model, train_loader, val_loader, loss_fn, optimizer, config, device, l
             train_results = compute_metrics(all_targets, all_preds, running_loss, total_samples)
 
             # metric computation for validation data
-            val_results = validate(model, val_loader, loss_fn, device)
+            val_results = validate_or_test(model, val_loader, loss_fn, device, 'Validating')
 
             # store results in a log file
             log_metrics(train_results, logger, is_training=True)
@@ -103,7 +102,7 @@ def train(model, train_loader, val_loader, loss_fn, optimizer, config, device, l
                 save_model(model, (model_path / f'best_model_{timestamp}.pth'))
                 early_stopper.reset()
 
-            save_checkpoint(epoch, model, optimizer, losses, (model_path / 'checkpoints' / f'{timestamp}.pth'))
+            save_checkpoint(epoch, model, optimizer, losses, (model_path / 'checkpoints' / f'{timestamp}.pt'))
 
             logger.info(f'Epoch {epoch + 1} ended')
 
@@ -115,18 +114,22 @@ def train(model, train_loader, val_loader, loss_fn, optimizer, config, device, l
 
 # ========== Main Function ==========
 def main():
-    # external blocks config file
+    # config file
     config = load_config('../configs/model.yml')
 
     # console and file logger
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
     logger = setup_logger(Path('../logs'), f'{timestamp}_Training.log', 'TrainingLogger')
 
-    # device type (cuda for nvidia gpu, else cpu)
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    # device type
+    device = torch.device('cuda')
 
-    # blocks instantiation
+    # model instantiation
     model = DenseNet3D(config).to(device)
+
+    # load dataset
+    dataset = get_dataset(config)
+    train_dl, val_dl = get_train_val_dataset(dataset, config)
 
     # optimizer
     optimizer = get_optimizer(
@@ -140,35 +143,6 @@ def main():
     loss_fn = get_loss_fn(
         name=config.loss.name,
         label_smoothing=config.loss.label_smoothing
-    )
-
-    # load dataset
-    dataset_path = Path(config.data.path)
-    dataset = MedicalDataset(dataset_path)
-
-    # extract labels
-    labels = [dataset[i][0] for i in range(len(dataset))]
-
-    # stratified shuffle split
-    split_value = config.data.train_val_split
-    splitter = StratifiedShuffleSplit(n_splits=1, test_size=1 - split_value,random_state=42)
-    train_idx, val_idx = next(splitter.split(X=labels, y=labels))
-
-    train_dataset = Subset(dataset, train_idx)
-    validation_dataset = Subset(dataset, val_idx)
-
-    # create dataloader instances
-    train_data_loader = DataLoader(
-        train_dataset,
-        batch_size=config.training.batch_size,
-        shuffle=config.training.shuffle,
-        pin_memory=config.training.pin_memory
-    )
-    validation_data_loader = DataLoader(
-        validation_dataset,
-        batch_size=config.validation.batch_size,
-        shuffle=config.validation.shuffle,
-        pin_memory=config.validation.pin_memory
     )
 
     # load latest checkpoint if applicable
@@ -187,43 +161,9 @@ def main():
     # log gpu and config setup
     log_configuration(config, logger, torch.cuda.get_device_name())
 
-    # train blocks
+    # training
     logger.info('Training Started')
-    train(model, train_data_loader, validation_data_loader, loss_fn, optimizer, config, device, logger, start_epoch)
-
-def validate(model, data_loader, loss_fn, device):
-    model.eval()
-
-    all_preds = []
-    all_targets = []
-
-    running_loss = 0.0
-    total_samples = 0
-
-    # with mixed precision
-    with torch.no_grad():
-        progress_bar = tqdm(data_loader, desc='Validating', leave=False)
-        for targets, ct_batch, pet_batch in progress_bar:
-            targets = targets.to(device, non_blocking=True)
-            ct_batch = ct_batch.to(device, non_blocking=True)
-            pet_batch = pet_batch.to(device, non_blocking=True)
-
-            with autocast(device.type, dtype=bfloat16):
-                outputs = model(ct_batch, pet_batch)
-                losses = loss_fn(outputs, targets)
-
-            _, preds = torch.max(outputs, 1)
-            all_preds.extend(preds.cpu().numpy())
-            all_targets.extend(targets.cpu().numpy())
-
-            batch_size = targets.size(0)
-            running_loss += losses.item() * batch_size
-            total_samples += batch_size
-            progress_bar.set_postfix(loss=losses.item())
-
-    torch.cuda.empty_cache()
-
-    return compute_metrics(all_targets, all_preds, running_loss, total_samples)
+    train(model, train_dl, val_dl, loss_fn, optimizer, config, device, logger, start_epoch)
 
 # ========== Runnable ==========
 if __name__ == '__main__':

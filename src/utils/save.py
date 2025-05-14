@@ -37,6 +37,7 @@ def save_model(model, path):
     """
     model.eval()
     example_input = torch.randn(1, 1, 32, 200, 200)
+    example_input = example_input.to(device=torch.device('cuda'))
 
     traced_model = torch.jit.trace(model, (example_input, example_input))
     traced_model.save(path)

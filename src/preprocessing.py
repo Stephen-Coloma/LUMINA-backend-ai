@@ -3,8 +3,12 @@ from pathlib import Path
 import logging
 
 # ==== Local Project Imports ====
-from preprocessing import DicomROIFilter, DicomConverter, VolumeProcessor, IntensityProcessor, Augmenter, save_arrays
-from utils import setup_logger
+from src.preprocessing.roi_slice_filter import DicomROIFilter
+from src.preprocessing.dicom_converter import DicomConverter, save_arrays
+from src.preprocessing.volume_processing import VolumeProcessor
+from src.preprocessing.intensity_processing import IntensityProcessor
+from src.preprocessing.dicom_augmentor import Augmenter
+from src.utils.logger import setup_logger
 
 
 # ========== Data Augmentation Function ==========

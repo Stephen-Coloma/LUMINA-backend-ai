@@ -2,7 +2,9 @@
 import torch.nn as nn
 
 # ==== Local Project Imports ====
-from blocks import FeatureExtractionBlock, FusionBlock, ClassificationBlock
+from src.blocks.feature_extraction_block import FeatureExtractionBlock
+from src.blocks.fusion_block import FusionBlock
+from src.blocks.classification_block import ClassificationBlock
 
 
 # ========== DenseNet 3D Model Class ==========

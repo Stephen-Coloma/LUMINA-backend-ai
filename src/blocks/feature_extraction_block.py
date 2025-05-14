@@ -1,10 +1,9 @@
 # ==== Third Party Imports ====
 import torch
-from pandas.conftest import compression
 from torch import nn as nn
 
 # ==== Local Project Imports ====
-from cbam import CBAM
+from src.blocks.cbam import CBAM
 
 
 class FeatureExtractionBlock(nn.Module):
@@ -90,6 +89,7 @@ class DenseBlock(nn.Module):
                 nn.Conv3d(growth_rate, growth_rate, kernel_size=3, stride=1, padding=1, bias=False),
                 nn.InstanceNorm3d(growth_rate, affine=True),
                 nn.ReLU(inplace=True),
+                # nn.Dropout3d(p=0.1) Not Used BTW
             ))
             current_channels += growth_rate
 
